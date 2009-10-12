@@ -1,7 +1,7 @@
-\name{latOnGreatCircle}
+\name{gcLat}
 \Rdversion{1.1}
 
-\alias{latOnGreatCircle}
+\alias{gcLat}
 
 \title{
 Latitude on a Great Circle
@@ -12,7 +12,7 @@ Get a latiude (given a longitude) on a great circle
 }
 
 \usage{
-latOnGreatCircle(p1, p2, lon) 
+gcLat(p1, p2, lon) 
 }
 
 \arguments{
@@ -34,9 +34,13 @@ a matrix of points
 Robert Hijmans based on a formula by Ed Williams
 }
 
+\seealso{
+\code{\link[geosphere]{gcLon}, \link[geosphere]{polePoint}}
+}
+
 
 \examples{
-latOnGreatCircle(c(5,52), c(-120,37), lon=-120)
+gcLat(c(5,52), c(-120,37), lon=-120)
 }
 
 \keyword{ spatial }

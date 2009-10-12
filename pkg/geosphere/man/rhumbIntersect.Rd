@@ -1,18 +1,18 @@
-\name{radialIntersect}
+\name{rhumbIntersect}
 \Rdversion{1.1}
 
-\alias{radialIntersect}
+\alias{rhumbIntersect}
 
 \title{
 Intersecting radials
 }
 
 \description{
-Intersection between two lines defined by their point of origin and true bearing
+Intersection between two rhumb lines defined by their point of origin and true bearing
 }
 
 \usage{
-radialIntersect(p1, brng1, p2, brng2) 
+rhumbIntersect(p1, brng1, p2, brng2) 
 }
 
 \arguments{
@@ -28,7 +28,9 @@ a point
 }
 
 \references{
-\url{http://williams.best.vwh.net/avform.htm#Intersection}
+\url{http://williams.best.vwh.net/avform.htm#Rhumb}
+
+\url{http://en.wikipedia.org/wiki/Rhumb_line}
 }
 
 \author{
@@ -37,7 +39,7 @@ Robert Hijmans based on code by Ed Williams
 
 
 \examples{
-radialIntersect(c(10,0), 10, c(-10,0), 10)
+rhumbIntersect(c(10,0), 10, c(-10,0), 10)
 }
 
 \keyword{ spatial }

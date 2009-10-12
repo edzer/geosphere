@@ -26,8 +26,3 @@ bearing <- function(p1, p2) {
 	names(b) <- 'bearing'
 	return( (b+360) %% 360 )
 }
-
-finalBearing <- function(p1, p2) {
-	b <- bearing(p2, p1)
-	return ( (b+180) %% 360 )
-}	

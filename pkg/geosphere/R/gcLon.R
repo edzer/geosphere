@@ -4,7 +4,7 @@
 # license GPL3
 
 
-crossingParallels <- function(p1, p2, lat) {
+gcLon <- function(p1, p2, lat) {
 # longitudes at which a given great circle crosses a given parallel
 # source: http://williams.best.vwh.net/avform.htm
 
@@ -13,8 +13,7 @@ crossingParallels <- function(p1, p2, lat) {
 	p2 <- pointsToMatrix(p2) * toRad
 
 	compareDim(p1, p2)
-	
-	
+		
 	lon1 <- p1[,1]
 	lat1 <- p1[,2]
 	lon2 <- p2[,1]

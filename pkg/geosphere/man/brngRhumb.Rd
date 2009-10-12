@@ -26,11 +26,13 @@ A bearing in degrees
 }
 
 \references{
-http://williams.best.vwh.net/avform.htm#Rhumb
+\url{http://williams.best.vwh.net/avform.htm#Rhumb}
+
+\url{http://en.wikipedia.org/wiki/Rhumb_line}
 }
 
 \author{
-Ed Williams, Chris Veness, Robert Hijmans
+Chris Veness and Robert Hijmans, based on formulae by Ed Williams
 }
 
 \note{

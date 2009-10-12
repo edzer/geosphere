@@ -1,7 +1,7 @@
 \name{greatCircleIntermediat}
 \Rdversion{1.1}
 
-\alias{greatCircleIntermediate}
+\alias{gcIntermediate}
 
 \title{
 Intermediate points on a great circle
@@ -12,7 +12,7 @@ Get intermediate points on a great circle inbetween the two points used to defin
 }
 
 \usage{
-greatCircleIntermediate(p1, p2, n=50) 
+gcIntermediate(p1, p2, n=50) 
 }
 
 \arguments{
@@ -36,7 +36,7 @@ Robert Hijmans based on code by Ed Williams
 
 
 \examples{
-greatCircleIntermediate(c(5,52), c(-120,37), n=10)
+gcIntermediate(c(5,52), c(-120,37), n=10)
 }
 
 \keyword{ spatial }

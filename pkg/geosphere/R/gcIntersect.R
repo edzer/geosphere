@@ -16,7 +16,7 @@
 #}
 
 
-greatCircleIntersect <- function(p1, p2, p3, p4) {
+gcIntersect <- function(p1, p2, p3, p4) {
 #intersection of two great circles defined by pt1 to pt2 and pt3 to pt4.
 
 	einv <- function(e) {

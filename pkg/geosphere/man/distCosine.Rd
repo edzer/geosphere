@@ -35,7 +35,6 @@ Distance value in the same unit as \code{r} (default is meters)
 Robert Hijmans
 }
 
-
 \seealso{
 \code{\link[geosphere]{distHaversine}, \link[geosphere]{distVincentySphere}, \link[geosphere]{distVincentyEllipsoid}}
 }
