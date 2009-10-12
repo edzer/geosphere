@@ -8,7 +8,7 @@ Rhumbline bearing
 }
 
 \description{
-Bearing (direction of travel) along a rhumb line. Unlike a great circle, a rhumb line is a line of constant bearing.
+Bearing (direction of travel; true course) along a rhumb line (loxodrome) between two points. 
 }
 
 \usage{
@@ -26,13 +26,17 @@ A bearing in degrees
 }
 
 \references{
-\url{http://www.movable-type.co.uk/scripts/latlong.html}
+http://williams.best.vwh.net/avform.htm#Rhumb
 }
 
 \author{
-Chris Veness; ported to R by Robert Hijmans
+Ed Williams, Chris Veness, Robert Hijmans
 }
 
+\note{
+Unlike most great circles, a rhumb line is a line of constant bearing, i.e. tracks of constant true course.
+The meridians and the equator are both rhumb lines and great circles. Rhumb lines approaching a pole becomes a tightly wound spiral.
+}
 
 \seealso{
 \code{ \link[geosphere]{bearing},  \link[geosphere]{distRhumb}  }
