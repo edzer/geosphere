@@ -1,0 +1,38 @@
+polePoint             package:geosphere             R Documentation
+
+_H_i_g_h_e_s_t _l_a_t_i_t_u_d_e _o_n _a _g_r_e_a_t _c_i_r_c_l_e
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Given a latitude and an initial bearing, what is the polar-most
+     point that will be reached when following a great circle? Computed
+     with Clairaut's formula.
+
+_U_s_a_g_e:
+
+     polePoint(lat, brng)
+
+_A_r_g_u_m_e_n_t_s:
+
+     lat: latitude of point(s)
+
+    brng: bearing
+
+_V_a_l_u_e:
+
+     A pair of coordinates (longitude/latitude)
+
+_A_u_t_h_o_r(_s):
+
+     Chris Veness; ported to R by Robert Hijmans
+
+_R_e_f_e_r_e_n_c_e_s:
+
+     <URL: http://williams.best.vwh.net/ftp/avsig/avform.txt>
+
+     <URL: http://www.movable-type.co.uk/scripts/latlong.html>
+
+_E_x_a_m_p_l_e_s:
+
+     polePoint(c(5,52),30)
+

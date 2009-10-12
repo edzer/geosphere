@@ -1,0 +1,83 @@
+<html><head><title>Destination along a rhumb line</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>destPointRhumb(geosphere)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   destPointRhumb">
+<param name="keyword" value=" Destination along a rhumb line">
+</object>
+
+
+<h2>Destination along a rhumb line</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Calculate the destination point when travelling along a 'rhumb line' (loxodrome), given a start point, bearing, and distance.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+destPointRhumb(p, brng, dist, r = 6378137)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>p</code></td>
+<td>
+longitude/latitude of point(s); can be a vector of two numbers, a matrix of 2 columns (first one is longitude, second is latitude) or a spatialPoints* object</td></tr>
+<tr valign="top"><td><code>brng</code></td>
+<td>
+bearing in degrees</td></tr>
+<tr valign="top"><td><code>dist</code></td>
+<td>
+distance; in the same unit as <code>r</code> (default is meters)</td></tr>
+<tr valign="top"><td><code>r</code></td>
+<td>
+radius of the earth; default = 6378137 m</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+Coordinates (longitude/latitude) of a point</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Chris Veness; ported to R by Robert Hijmans
+</p>
+
+
+<h3>References</h3>
+
+<p>
+<a href="http://www.movable-type.co.uk/scripts/latlong.html">http://www.movable-type.co.uk/scripts/latlong.html</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code> <a href="destPoint.html">destPoint</a>  </code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+destPointRhumb(c(0,0), 30, 100000, r = 6378137)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>geosphere</em> version 0.2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

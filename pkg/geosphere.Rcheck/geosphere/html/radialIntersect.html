@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Intersecting radials</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for radialIntersect {geosphere}"><tr><td>radialIntersect {geosphere}</td><td align="right">R Documentation</td></tr></table>
+<h2>Intersecting radials</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Intersection between two lines defined by their point of origin and true bearing
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+radialIntersect(p1, brng1, p2, brng2) 
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>p1</code></td>
+<td>
+Longitude/latitude of point(s); can be a vector of two numbers, a matrix of 2 columns (first one is longitude, second is latitude) or a spatialPoints* object</td></tr>
+<tr valign="top"><td><code>brng1</code></td>
+<td>
+True bearing from p1</td></tr>
+<tr valign="top"><td><code>p2</code></td>
+<td>
+As above. Should have same length as p1, or a single point (or vice versa when p1 is a single point</td></tr>
+<tr valign="top"><td><code>brng2</code></td>
+<td>
+True bearing from p2</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+a point</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Robert Hijmans based on code by Ed Williams
+</p>
+
+
+<h3>References</h3>
+
+<p>
+<a href="http://williams.best.vwh.net/avform.htm#Intersection">http://williams.best.vwh.net/avform.htm#Intersection</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+radialIntersect(c(10,0), 10, c(-10,0), 10)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>geosphere</em> version 0.2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

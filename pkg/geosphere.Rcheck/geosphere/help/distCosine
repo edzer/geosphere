@@ -1,0 +1,46 @@
+distCosine             package:geosphere             R Documentation
+
+'_L_a_w _o_f _c_o_s_i_n_e_s' _g_r_e_a_t _c_i_r_c_l_e _d_i_s_t_a_n_c_e
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     The shortest distance between two points (i.e., the
+     'great-circle-distance' or 'as the crow flies'), according to the
+     'law of the cosines'. This method assumes a spherical earth,
+     ignoring ellipsoidal effects.
+
+_U_s_a_g_e:
+
+     distCosine(p1, p2, r=6378137)
+
+_A_r_g_u_m_e_n_t_s:
+
+      p1: longitude/latitude of point(s); can be a vector of two
+          numbers, a matrix of 2 columns (first one is longitude,
+          second is latitude) or a spatialPoints* object
+
+      p2: as above. Should have same length as p1, or a single point
+          (or vice versa when p1 is a single point
+
+       r: radius of the earth; default = 6378137 m
+
+_V_a_l_u_e:
+
+     Distance value in the same unit as 'r' (default is meters)
+
+_A_u_t_h_o_r(_s):
+
+     Robert Hijmans
+
+_R_e_f_e_r_e_n_c_e_s:
+
+     <URL: http://en.wikipedia.org/wiki/Great_circle_distance>
+
+_S_e_e _A_l_s_o:
+
+     'distHaversine, distVincentySphere, distVincentyEllipsoid'
+
+_E_x_a_m_p_l_e_s:
+
+     distCosine(c(0,0),c(90,90))
+

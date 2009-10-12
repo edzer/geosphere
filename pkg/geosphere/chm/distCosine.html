@@ -1,0 +1,81 @@
+<html><head><title>'Law of cosines' great circle distance</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>distCosine(geosphere)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   distCosine">
+<param name="keyword" value=" 'Law of cosines' great circle distance">
+</object>
+
+
+<h2>'Law of cosines' great circle distance</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The shortest distance between two points (i.e., the 'great-circle-distance' or 'as the crow flies'), according to the 'law of the cosines'.
+This method assumes a spherical earth, ignoring ellipsoidal effects.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+distCosine(p1, p2, r=6378137)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>p1</code></td>
+<td>
+longitude/latitude of point(s); can be a vector of two numbers, a matrix of 2 columns (first one is longitude, second is latitude) or a spatialPoints* object</td></tr>
+<tr valign="top"><td><code>p2</code></td>
+<td>
+as above. Should have same length as p1, or a single point (or vice versa when p1 is a single point</td></tr>
+<tr valign="top"><td><code>r</code></td>
+<td>
+radius of the earth; default = 6378137 m</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+Distance value in the same unit as <code>r</code> (default is meters)</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Robert Hijmans
+</p>
+
+
+<h3>References</h3>
+
+<p>
+<a href="http://en.wikipedia.org/wiki/Great_circle_distance">http://en.wikipedia.org/wiki/Great_circle_distance</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="distHaversine.html">distHaversine</a>, <a href="distVincentySphere.html">distVincentySphere</a>, <a href="distVincentyEllipsoid.html">distVincentyEllipsoid</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+distCosine(c(0,0),c(90,90))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>geosphere</em> version 0.2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

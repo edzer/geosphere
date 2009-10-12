@@ -1,0 +1,32 @@
+\HeaderA{greatCircle}{Intersecting radials}{greatCircle}
+\keyword{spatial}{greatCircle}
+\begin{Description}\relax
+Get points on a great circle as defined by the shortest distance between two specified points
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+greatCircle(p1, p2, n=360) 
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{p1}] Longitude/latitude of a single point; can be a vector of two numbers, a matrix of 2 columns (first one is longitude, second is latitude) or a spatialPoints* object
+\item[\code{p2}] As above
+\item[\code{n}] The requested number of points on the Great Circle
+\end{ldescription}
+\end{Arguments}
+\begin{Value}
+a matrix of points
+\end{Value}
+\begin{Author}\relax
+Robert Hijmans based on a formula by Ed Williams
+\end{Author}
+\begin{References}\relax
+\url{http://williams.best.vwh.net/avform.htm#Int}
+\end{References}
+\begin{Examples}
+\begin{ExampleCode}
+greatCircle(c(5,52), c(-120,37), n=36)
+\end{ExampleCode}
+\end{Examples}
+

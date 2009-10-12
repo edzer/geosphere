@@ -1,0 +1,82 @@
+distVincentyEllipsoid       package:geosphere       R Documentation
+
+'_V_i_n_c_e_n_t_y' (_e_l_l_i_p_s_o_i_d) _g_r_e_a_t _c_i_r_c_l_e _d_i_s_t_a_n_c_e
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     The shortest distance between two points (i.e., the
+     'great-circle-distance' or 'as the crow flies'), according to the
+     'Vincenty (ellipsoid)' method.  This method uses an ellipsoid and
+     the results are very accurate. The method is computationally more
+     intensive than the other great-circled methods in this package.
+
+_U_s_a_g_e:
+
+     distVincentyEllipsoid(p1, p2, a=6378137, b=6356752.3142, f=1/298.257223563)
+
+_A_r_g_u_m_e_n_t_s:
+
+      p1: longitude/latitude of point(s) 1; can be a vector of two
+          numbers, a matrix of 2 columns (first one is longitude,
+          second is latitude) or a spatialPoints* object
+
+      p2: as above. Should have same length as p1, or a single point
+          (or vice versa when p1 is a single point
+
+       a: Equatorial axis of ellipsoid
+
+       b: Polar axis of ellipsoid
+
+       f: Inverse flattening of ellipsoid
+
+_D_e_t_a_i_l_s:
+
+     The WGS84 ellipsoid is used by default. It is the best available
+     global ellipsoid, but for some areas other ellipsoids could be
+     preferable, or even necessary if you work with a printed map that
+     refers to that ellipsoid. Here are parameters for some commonly
+     used ellipsoids:
+
+         ' ellipsoid          '      ' a            '  ' b              '  ' f               '
+         ' WGS84                  '  ' 6378137      '  ' 6356752.3142   '  ' 1/298.257223563 '
+         ' GRS80                  '  ' 6378137      '  ' 6356752.3141   '  ' 1/298.257222101 '
+         ' GRS67              '      ' 6378160      '  ' 6356774.719    '  ' 1/298.25        '
+         ' Airy 1830          '      ' 6377563.396  '  ' 6356256.909    '  ' 1/299.3249646   '
+         ' Bessel 1841        '      ' 6377397.155  '  ' 6356078.965    '  ' 1/299.1528434   '
+         ' Clarke 1880        '      ' 6378249.145  '  ' 6356514.86955  '  ' 1/293.465       '
+         ' Clarke 1866        '      ' 6378206.4    '  ' 6356583.8      '  ' 1/294.9786982   '
+         ' International 1924 '      ' 6378388      '  ' 6356911.946    '  ' 1/297           '
+         ' Krasovsky 1940     '      ' 6378245      '  ' 6356863        '  ' 1/298.2997381   '
+
+     more info: <URL: http://en.wikipedia.org/wiki/Reference_ellipsoid>
+
+_V_a_l_u_e:
+
+     Distance value in the same units as the ellipsoid (default is
+     meters)
+
+_A_u_t_h_o_r(_s):
+
+     Chris Veness and Robert Hijmans
+
+_R_e_f_e_r_e_n_c_e_s:
+
+     Vincenty, T. 1975. Direct and inverse solutions of geodesics on
+     the ellipsoid with application of nested equations. Survey Review
+     Vol. 23, No. 176, pp88-93. Available here: <URL:
+     http://www.movable-type.co.uk/scripts/latlong-vincenty.html>
+
+     <URL: http://www.movable-type.co.uk/scripts/latlong-vincenty.html>
+
+     <URL: http://en.wikipedia.org/wiki/Great_circle_distance>
+
+_S_e_e _A_l_s_o:
+
+     'distVincentySphere, distHaversine, distCosine'
+
+_E_x_a_m_p_l_e_s:
+
+     distVincentyEllipsoid(c(0,0),c(90,90))
+     # on a 'Clarke 1880' ellipsoid
+     distVincentyEllipsoid(c(0,0),c(90,90), a=6378249.145, b=6356514.86955, f=1/293.465)
+

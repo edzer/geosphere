@@ -1,0 +1,34 @@
+\HeaderA{greatCircleIntersect}{Intersections of two great circles}{greatCircleIntersect}
+\keyword{spatial}{greatCircleIntersect}
+\begin{Description}\relax
+Get the two points where two great cricles cross each other. Great circles are defined by two points on it.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+greatCircleIntersect(p1, p2, p3, p4) 
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{p1}] Longitude/latitude of a single point; can be a vector of two numbers, a matrix of 2 columns (first one is longitude, second is latitude) or a spatialPoints* object
+\item[\code{p2}] As above
+\item[\code{p3}] As above
+\item[\code{p4}] As above
+\end{ldescription}
+\end{Arguments}
+\begin{Value}
+two points for each pair of great circles
+\end{Value}
+\begin{Author}\relax
+Robert Hijmans, based on equations by Ed Williams (see reference)
+\end{Author}
+\begin{References}\relax
+\url{http://williams.best.vwh.net/intersect.htm}
+\end{References}
+\begin{Examples}
+\begin{ExampleCode}
+p1 <- c(5,52); p2 <- c(-120,37); p3 <- c(-60,0); p4 <- c(0,70)
+greatCircleIntersect(p1,p2,p3,p4)
+\end{ExampleCode}
+\end{Examples}
+

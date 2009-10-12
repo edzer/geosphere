@@ -1,0 +1,48 @@
+antipode              package:geosphere              R Documentation
+
+_A_n_t_i_p_o_d_e_s
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Compute an antipode, or check whether two points are antipodes.
+     Antipodes are places on Earth that are diametrically opposite to
+     one another;  and could be connected by a straight line through
+     the centre of the Earth.
+
+     Antipodal points are connected by an infinite number of great
+     circles (e.g. the meridians connecting the poles), and can
+     therefore not be used in some great circle based computations.
+
+_U_s_a_g_e:
+
+     antipode(p)
+     isAntipodal(p1, p2)
+
+_A_r_g_u_m_e_n_t_s:
+
+       p: Longitude/latitude of a single point; can be a vector of two
+          numbers, a matrix of 2 columns (first one is longitude,
+          second is latitude) or a spatialPoints* object
+
+      p1: as above. 
+
+      p2: as above. Should have same length as p1, or a single point
+          (or vice versa when p1 is a single point
+
+_V_a_l_u_e:
+
+     antipodal points or a logical value
+
+_A_u_t_h_o_r(_s):
+
+     Robert Hijmans
+
+_R_e_f_e_r_e_n_c_e_s:
+
+     <URL: http://en.wikipedia.org/wiki/Antipodes>
+
+_E_x_a_m_p_l_e_s:
+
+     antipode(rbind(c(5,52), c(-120,37), c(-60,0), c(0,70)))
+     isAntipodal(c(0,0), c(180,0))
+

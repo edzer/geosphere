@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: 'Vincenty' (sphere) great circle distance</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for distVincentySphere {geosphere}"><tr><td>distVincentySphere {geosphere}</td><td align="right">R Documentation</td></tr></table>
+<h2>'Vincenty' (sphere) great circle distance</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The shortest distance between two points (i.e., the 'great-circle-distance' or 'as the crow flies'), according to the 'Vincenty (sphere)' method. 
+This method assumes a spherical earth, ignoring ellipsoidal effects and it is less accurate then the <code>distVicentyEllipsoid</code> method.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+distVincentySphere(p1, p2, r=6378137)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>p1</code></td>
+<td>
+longitude/latitude of point(s) 1; can be a vector of two numbers, a matrix of 2 columns (first one is longitude, second is latitude) or a spatialPoints* object</td></tr>
+<tr valign="top"><td><code>p2</code></td>
+<td>
+as above. Should have same length as p1, or a single point (or vice versa when p1 is a single point</td></tr>
+<tr valign="top"><td><code>r</code></td>
+<td>
+radius of the earth; default = 6378137 m</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+Distance value in the same unit as <code>r</code> (default is meters)</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Robert Hijmans
+</p>
+
+
+<h3>References</h3>
+
+<p>
+<a href="http://en.wikipedia.org/wiki/Great_circle_distance">http://en.wikipedia.org/wiki/Great_circle_distance</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="distVincentySphere.html">distVincentySphere</a>, <a href="distHaversine.html">distHaversine</a>, <a href="distCosine.html">distCosine</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+distVincentySphere(c(0,0),c(90,90))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>geosphere</em> version 0.2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>
