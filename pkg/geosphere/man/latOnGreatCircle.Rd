@@ -1,24 +1,24 @@
-\name{greatCircle}
+\name{latOnGreatCircle}
 \Rdversion{1.1}
 
-\alias{greatCircle}
+\alias{latOnGreatCircle}
 
 \title{
-Great circle
+Latitude on a Great Circle
 }
 
 \description{
-Get points on a great circle as defined by the shortest distance between two specified points
+Get a latiude (given a longitude) on a great circle
 }
 
 \usage{
-greatCircle(p1, p2, n=360) 
+latOnGreatCircle(p1, p2, lon) 
 }
 
 \arguments{
   \item{p1}{Longitude/latitude of a single point; can be a vector of two numbers, a matrix of 2 columns (first one is longitude, second is latitude) or a spatialPoints* object}
   \item{p2}{As above}
-  \item{n}{The requested number of points on the Great Circle}
+  \item{lon}{Longitude}
 }
 
 
@@ -36,7 +36,7 @@ Robert Hijmans based on a formula by Ed Williams
 
 
 \examples{
-greatCircle(c(5,52), c(-120,37), n=36)
+latOnGreatCircle(c(5,52), c(-120,37), lon=-120)
 }
 
 \keyword{ spatial }

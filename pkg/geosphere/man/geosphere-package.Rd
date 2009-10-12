@@ -5,7 +5,7 @@
 \title{Spherical Trigonometry}
 
 \description{
-Spherical Trigonometry for geographic applications, such as great circle distance and distance along a rhumb line.
+Spherical trigonometry for geographic applications, such as great circle distance and distance along a rhumb line.
 }
 
 \details{
@@ -26,7 +26,7 @@ Maintainer: Robert J. Hijmans <r.hijmans@gmail.com>
 }
 
 \references{
-\url{http://williams.best.vwh.net/ftp/avsig/avform.txt}
+\url{http://williams.best.vwh.net/avform.htm}
 
 \url{http://www.movable-type.co.uk/scripts/latlong.html}
 
@@ -38,5 +38,3 @@ Maintainer: Robert J. Hijmans <r.hijmans@gmail.com>
 
 \keyword{ package }
 \keyword{ spatial }
-
-

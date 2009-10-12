@@ -1,7 +1,7 @@
 Package: geosphere
 Type: Package
 Title: Spherical Trigonometry
-Version: 0.2
+Version: 0.2-1
 Date: 2009-10-12
 Suggests: sp
 Author: Robert J. Hijmans
