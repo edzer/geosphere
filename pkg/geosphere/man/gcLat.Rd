@@ -8,7 +8,7 @@ Latitude on a Great Circle
 }
 
 \description{
-Get a latiude (given a longitude) on a great circle
+Latitude at which a great circle crosses a longitude
 }
 
 \usage{

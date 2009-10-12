@@ -3,12 +3,13 @@
 
 \alias{gcLon}
 
+
 \title{
-Crossing parellels
+Longitude on a Great Circle
 }
 
 \description{
-Longitudes at which a given great circle crosses a given parallel (latitude)
+Longitude at which a great circle crosses a latitude (parallel)
 }
 
 \usage{
