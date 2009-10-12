@@ -1,0 +1,73 @@
+<html><head><title>Highest latitude on a great circle</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>polePoint(geosphere)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   polePoint">
+<param name="keyword" value=" Highest latitude on a great circle">
+</object>
+
+
+<h2>Highest latitude on a great circle</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Given a latitude and an initial bearing, what is the polar-most point that will be reached when following a great circle? Computed with Clairaut's formula.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+polePoint(lat, brng)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>lat</code></td>
+<td>
+latitude of point(s)</td></tr>
+<tr valign="top"><td><code>brng</code></td>
+<td>
+bearing</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+A pair of coordinates (longitude/latitude)</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Chris Veness; ported to R by Robert Hijmans
+</p>
+
+
+<h3>References</h3>
+
+<p>
+<a href="http://williams.best.vwh.net/ftp/avsig/avform.txt">http://williams.best.vwh.net/ftp/avsig/avform.txt</a>
+</p>
+<p>
+<a href="http://www.movable-type.co.uk/scripts/latlong.html">http://www.movable-type.co.uk/scripts/latlong.html</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+polePoint(c(5,52),30)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>geosphere</em> version 0.2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

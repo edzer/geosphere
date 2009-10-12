@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HEAD></HEAD><HTML><BODY>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package geosphere:  Contents">
+<param name="Local" value="00Index.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package geosphere:  R objects">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="geosphere-package">
+<param name="Local" value="geosphere-package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="alongTrackDistance">
+<param name="Local" value="alongTrackDistance.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="antipode">
+<param name="Local" value="antipode.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="bearing">
+<param name="Local" value="bearing.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="brngRhumb">
+<param name="Local" value="brngRhumb.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="compareDim">
+<param name="Local" value="utils.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="crossingParallels">
+<param name="Local" value="crossingParallel.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="crossTrackDistance">
+<param name="Local" value="crossTrackDistance.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="destPoint">
+<param name="Local" value="destPoint.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="destPointRhumb">
+<param name="Local" value="destPointRhumb.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distCosine">
+<param name="Local" value="distCosine.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distHaversine">
+<param name="Local" value="distHaversine.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distRhumb">
+<param name="Local" value="distRhumb.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distVincentyEllipsoid">
+<param name="Local" value="distVincentyEllipsoid.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distVincentySphere">
+<param name="Local" value="distVincentySphere.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="finalBearing">
+<param name="Local" value="finalBearing.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="geosphere">
+<param name="Local" value="geosphere-package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="greatCircle">
+<param name="Local" value="greatCircle.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="greatCircleIntermediate">
+<param name="Local" value="greatCircleIntermediate.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="greatCircleIntersect">
+<param name="Local" value="greatCircleIntersect.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="isAntipodal">
+<param name="Local" value="antipode.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="midPoint">
+<param name="Local" value="midPoint.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="pointsToMatrix">
+<param name="Local" value="utils.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="polePoint">
+<param name="Local" value="polePoint.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="radialIntersect">
+<param name="Local" value="radialIntersect.html">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package geosphere:  Titles">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="'Havesine' great circle distance">
+<param name="Local" value="distHaversine.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="'Law of cosines' great circle distance">
+<param name="Local" value="distCosine.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="'Vincenty' (ellipsoid) great circle distance">
+<param name="Local" value="distVincentyEllipsoid.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="'Vincenty' (sphere) great circle distance">
+<param name="Local" value="distVincentySphere.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Along Track Distance">
+<param name="Local" value="alongTrackDistance.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Antipodes">
+<param name="Local" value="antipode.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Bearing">
+<param name="Local" value="bearing.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Cross Track Distance">
+<param name="Local" value="crossTrackDistance.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Crossing parellels">
+<param name="Local" value="crossingParallel.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Destination along a rhumb line">
+<param name="Local" value="destPointRhumb.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Destination given bearing and distance, when following a great circle">
+<param name="Local" value="destPoint.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Distance along a 'rhumb line'">
+<param name="Local" value="distRhumb.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Final bearing">
+<param name="Local" value="finalBearing.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Highest latitude on a great circle">
+<param name="Local" value="polePoint.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Intermediate points on a great circle">
+<param name="Local" value="greatCircleIntermediate.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal utility functions">
+<param name="Local" value="utils.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Intersecting radials">
+<param name="Local" value="greatCircle.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Intersections of two great circles">
+<param name="Local" value="greatCircleIntersect.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Mid-point">
+<param name="Local" value="midPoint.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Rhumbline bearing">
+<param name="Local" value="brngRhumb.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Spherical Trigonometry">
+<param name="Local" value="geosphere-package.html">
+</OBJECT>
+</UL>
+</UL>
+</BODY></HTML>

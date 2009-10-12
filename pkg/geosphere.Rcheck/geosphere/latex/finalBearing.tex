@@ -1,0 +1,37 @@
+\HeaderA{finalBearing}{Final bearing}{finalBearing}
+\keyword{spatial}{finalBearing}
+\begin{Description}\relax
+Get the final bearing when arriving at point2 after starting from p1 and following the shortest path (a great circle).
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+finalBearing(p1, p2)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{p1}] longitude/latitude of point(s); can be a vector of two numbers, a matrix of 2 columns (first one is longitude, second is latitude) or a spatialPoints* object
+\item[\code{p2}] as above. Should have same length as p1, or a single point (or vice versa when p1 is a single point
+\end{ldescription}
+\end{Arguments}
+\begin{Value}
+A bearing in degrees
+\end{Value}
+\begin{Author}\relax
+Robert Hijmans
+\end{Author}
+\begin{References}\relax
+\url{http://www.movable-type.co.uk/scripts/latlong.html}
+
+\url{http://williams.best.vwh.net/ftp/avsig/avform.txt}
+\end{References}
+\begin{SeeAlso}\relax
+\code{ \LinkA{bearing}{bearing}  }
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+bearing(c(0,0),c(90,90))
+finalBearing(c(0,0),c(90,90))
+\end{ExampleCode}
+\end{Examples}
+

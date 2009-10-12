@@ -1,0 +1,77 @@
+<html><head><title>Rhumbline bearing</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>brngRhumb(geosphere)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   brngRhumb">
+<param name="keyword" value=" Rhumbline bearing">
+</object>
+
+
+<h2>Rhumbline bearing</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Bearing (direction of travel) along a rhumb line. Unlike a great circle, a rhumb line is a line of constant bearing.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+brngRhumb(p1, p2)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>p1</code></td>
+<td>
+longitude/latitude of point(s); can be a vector of two numbers, a matrix of 2 columns (first one is longitude, second is latitude) or a spatialPoints* object</td></tr>
+<tr valign="top"><td><code>p2</code></td>
+<td>
+as above. Should have same length as p1, or a single point (or vice versa when p1 is a single point</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+A bearing in degrees</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Chris Veness; ported to R by Robert Hijmans
+</p>
+
+
+<h3>References</h3>
+
+<p>
+<a href="http://www.movable-type.co.uk/scripts/latlong.html">http://www.movable-type.co.uk/scripts/latlong.html</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code> <a href="bearing.html">bearing</a>,  <a href="distRhumb.html">distRhumb</a>  </code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+brngRhumb(c(0,0),c(90,90))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>geosphere</em> version 0.2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

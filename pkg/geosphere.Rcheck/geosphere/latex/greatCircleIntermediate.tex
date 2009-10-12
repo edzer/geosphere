@@ -1,0 +1,33 @@
+\HeaderA{greatCircleIntermediat}{Intermediate points on a great circle}{greatCircleIntermediat}
+\aliasA{greatCircleIntermediate}{greatCircleIntermediat}{greatCircleIntermediate}
+\keyword{spatial}{greatCircleIntermediat}
+\begin{Description}\relax
+Get intermediate points on a great circle inbetween the two points used to define the circle
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+greatCircleIntermediate(p1, p2, n=50) 
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{p1}] Longitude/latitude of a single point; can be a vector of two numbers, a matrix of 2 columns (first one is longitude, second is latitude) or a spatialPoints* object
+\item[\code{p2}] As above
+\item[\code{n}] The requested number of points on the Great Circle
+\end{ldescription}
+\end{Arguments}
+\begin{Value}
+a matrix of points
+\end{Value}
+\begin{Author}\relax
+Robert Hijmans based on code by Ed Williams
+\end{Author}
+\begin{References}\relax
+\url{http://williams.best.vwh.net/avform.htm#Intermediate}
+\end{References}
+\begin{Examples}
+\begin{ExampleCode}
+greatCircleIntermediate(c(5,52), c(-120,37), n=10)
+\end{ExampleCode}
+\end{Examples}
+

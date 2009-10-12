@@ -1,0 +1,32 @@
+\HeaderA{utilities}{Internal utility functions}{utilities}
+\aliasA{compareDim}{utilities}{compareDim}
+\aliasA{pointsToMatrix}{utilities}{pointsToMatrix}
+\keyword{spatial}{utilities}
+\begin{Description}\relax
+pointsToMatrix is a simple helper function. Point input to all other functions is processed by this function to coerce points into a two column matrix of longitude / latitude. 
+
+compareDim compares two or three points objects to check if they have the same length or have lenght 1 (point).
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+pointsToMatrix(p)
+compareDim(p1,p2,p3)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{p}] a vector of two numbers, a matrix of 2 columns (first one is longitude, second is latitude) or a spatialPoints* object
+\item[\code{p1}] a matrix of 2 columns
+\item[\code{p2}] a matrix of 2 columns
+\item[\code{p3}] a matrix of 2 columns
+\end{ldescription}
+\end{Arguments}
+\begin{Value}
+pointsToMatrix: a matrix with two columns representing longitude and latitude.
+
+compareDim: \code{TRUE} (invisible) or an error
+\end{Value}
+\begin{Author}\relax
+Robert Hijmans and Jacob van Etten
+\end{Author}
+

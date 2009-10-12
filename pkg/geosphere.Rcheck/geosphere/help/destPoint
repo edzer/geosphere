@@ -1,0 +1,55 @@
+destPoint             package:geosphere             R Documentation
+
+_D_e_s_t_i_n_a_t_i_o_n _g_i_v_e_n _b_e_a_r_i_n_g _a_n_d _d_i_s_t_a_n_c_e, _w_h_e_n _f_o_l_l_o_w_i_n_g _a _g_r_e_a_t _c_i_r_c_l_e
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Calculate the destination point travelling along a (shortest
+     distance) great circle arc, given a start point, initial bearing,
+     and distance.
+
+_U_s_a_g_e:
+
+     destPoint(p, brng, d, r = 6378137)
+
+_A_r_g_u_m_e_n_t_s:
+
+       p: longitude/latitude of point(s); can be a vector of two
+          numbers, a matrix of 2 columns (first one is longitude,
+          second is latitude) or a spatialPoints* object
+
+    brng: bearing
+
+       d: distance
+
+       r: radius of the earth; default = 6378137 m
+
+_V_a_l_u_e:
+
+     A pair of coordinates (longitude/latitude)
+
+_N_o_t_e:
+
+     The bearing changes continuously when traveling along a great
+     circle line. Therefore, thbe final bearing is not the same as the
+     initial bearing. You can comute the final bearing with
+     'finalBearing' (see examples, below)
+
+_A_u_t_h_o_r(_s):
+
+     Chris Veness; ported to R by Robert Hijmans
+
+_R_e_f_e_r_e_n_c_e_s:
+
+     <URL: http://www.movable-type.co.uk/scripts/latlong.html>
+
+     <URL: http://williams.best.vwh.net/ftp/avsig/avform.txt>
+
+_E_x_a_m_p_l_e_s:
+
+     p <- c(5,52)
+     d <- destPoint(p,30,10000)
+
+     #final bearing, when arriving at endpoint: 
+     finalBearing(d, p)
+

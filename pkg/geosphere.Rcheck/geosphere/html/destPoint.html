@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Destination given bearing and distance, when following a great circle</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for destPoint {geosphere}"><tr><td>destPoint {geosphere}</td><td align="right">R Documentation</td></tr></table>
+<h2>Destination given bearing and distance, when following a great circle</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Calculate the destination point travelling along a (shortest distance) great circle arc, given a start point, initial bearing, and distance.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+destPoint(p, brng, d, r = 6378137)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>p</code></td>
+<td>
+longitude/latitude of point(s); can be a vector of two numbers, a matrix of 2 columns (first one is longitude, second is latitude) or a spatialPoints* object</td></tr>
+<tr valign="top"><td><code>brng</code></td>
+<td>
+bearing</td></tr>
+<tr valign="top"><td><code>d</code></td>
+<td>
+distance</td></tr>
+<tr valign="top"><td><code>r</code></td>
+<td>
+radius of the earth; default = 6378137 m</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+A pair of coordinates (longitude/latitude)</p>
+
+<h3>Note</h3>
+
+<p>
+The bearing changes continuously when traveling along a great circle line. Therefore, thbe final bearing is not the same as the initial bearing. You can comute the final bearing with <code>finalBearing</code> (see examples, below)
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Chris Veness; ported to R by Robert Hijmans
+</p>
+
+
+<h3>References</h3>
+
+<p>
+<a href="http://www.movable-type.co.uk/scripts/latlong.html">http://www.movable-type.co.uk/scripts/latlong.html</a>
+</p>
+<p>
+<a href="http://williams.best.vwh.net/ftp/avsig/avform.txt">http://williams.best.vwh.net/ftp/avsig/avform.txt</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+p &lt;- c(5,52)
+d &lt;- destPoint(p,30,10000)
+
+#final bearing, when arriving at endpoint: 
+finalBearing(d, p)
+
+</pre>
+
+
+
+<hr><div align="center">[Package <em>geosphere</em> version 0.2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

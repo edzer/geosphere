@@ -1,0 +1,131 @@
+Entry: alongTrackDistance
+Aliases: alongTrackDistance
+Keywords: spatial
+Description: Along Track Distance
+URL: ../../../library/geosphere/html/alongTrackDistance.html
+
+Entry: antipode
+Aliases: antipode isAntipodal
+Keywords: spatial
+Description: Antipodes
+URL: ../../../library/geosphere/html/antipode.html
+
+Entry: bearing
+Aliases: bearing
+Keywords: spatial
+Description: Bearing
+URL: ../../../library/geosphere/html/bearing.html
+
+Entry: brngRhumb
+Aliases: brngRhumb
+Keywords: spatial
+Description: Rhumbline bearing
+URL: ../../../library/geosphere/html/brngRhumb.html
+
+Entry: crossTrackDistance
+Aliases: crossTrackDistance
+Keywords: spatial
+Description: Cross Track Distance
+URL: ../../../library/geosphere/html/crossTrackDistance.html
+
+Entry: crossingParallels
+Aliases: crossingParallels
+Keywords: spatial
+Description: Crossing parellels
+URL: ../../../library/geosphere/html/crossingParallel.html
+
+Entry: destPoint
+Aliases: destPoint
+Keywords: spatial
+Description: Destination given bearing and distance, when following a great circle
+URL: ../../../library/geosphere/html/destPoint.html
+
+Entry: destPointRhumb
+Aliases: destPointRhumb
+Keywords: spatial
+Description: Destination along a rhumb line
+URL: ../../../library/geosphere/html/destPointRhumb.html
+
+Entry: distCosine
+Aliases: distCosine
+Keywords: spatial
+Description: 'Law of cosines' great circle distance
+URL: ../../../library/geosphere/html/distCosine.html
+
+Entry: distHaversine
+Aliases: distHaversine
+Keywords: spatial
+Description: 'Havesine' great circle distance
+URL: ../../../library/geosphere/html/distHaversine.html
+
+Entry: distRhumb
+Aliases: distRhumb
+Keywords: spatial
+Description: Distance along a 'rhumb line'
+URL: ../../../library/geosphere/html/distRhumb.html
+
+Entry: distVincentyEllipsoid
+Aliases: distVincentyEllipsoid
+Keywords: spatial
+Description: 'Vincenty' (ellipsoid) great circle distance
+URL: ../../../library/geosphere/html/distVincentyEllipsoid.html
+
+Entry: distVincentySphere
+Aliases: distVincentySphere
+Keywords: spatial
+Description: 'Vincenty' (sphere) great circle distance
+URL: ../../../library/geosphere/html/distVincentySphere.html
+
+Entry: finalBearing
+Aliases: finalBearing
+Keywords: spatial
+Description: Final bearing
+URL: ../../../library/geosphere/html/finalBearing.html
+
+Entry: geosphere-package
+Aliases: geosphere-package geosphere
+Keywords: package spatial
+Description: Spherical Trigonometry
+URL: ../../../library/geosphere/html/geosphere-package.html
+
+Entry: greatCircle
+Aliases: greatCircle
+Keywords: spatial
+Description: Intersecting radials
+URL: ../../../library/geosphere/html/greatCircle.html
+
+Entry: greatCircleIntermediat
+Aliases: greatCircleIntermediate
+Keywords: spatial
+Description: Intermediate points on a great circle
+URL: ../../../library/geosphere/html/greatCircleIntermediate.html
+
+Entry: greatCircleIntersect
+Aliases: greatCircleIntersect
+Keywords: spatial
+Description: Intersections of two great circles
+URL: ../../../library/geosphere/html/greatCircleIntersect.html
+
+Entry: midPoint
+Aliases: midPoint
+Keywords: spatial
+Description: Mid-point
+URL: ../../../library/geosphere/html/midPoint.html
+
+Entry: polePoint
+Aliases: polePoint
+Keywords: spatial
+Description: Highest latitude on a great circle
+URL: ../../../library/geosphere/html/polePoint.html
+
+Entry: radialIntersect
+Aliases: radialIntersect
+Keywords: spatial
+Description: Intersecting radials
+URL: ../../../library/geosphere/html/radialIntersect.html
+
+Entry: utilities
+Aliases: pointsToMatrix compareDim
+Keywords: spatial
+Description: Internal utility functions
+URL: ../../../library/geosphere/html/utils.html

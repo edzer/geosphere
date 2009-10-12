@@ -1,0 +1,12 @@
+Package: geosphere
+Type: Package
+Title: Spherical Trigonometry
+Version: 0.2
+Date: 2009-10-12
+Suggests: sp
+Author: Robert J. Hijmans
+Maintainer: Robert J. Hijmans <r.hijmans@gmail.com>
+Description: Spherical trigonometry for geographic applications
+License: GPL
+LazyLoad: yes
+Built: R 2.9.2; ; 2009-10-12 16:20:07 UTC; windows
