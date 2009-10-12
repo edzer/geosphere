@@ -36,6 +36,10 @@ A pair of coordinates (longitude/latitude)
 Chris Veness; ported to R by Robert Hijmans
 }
 
+\seealso{
+\code{\link[geosphere]{gcLat}, \link[geosphere]{gcLon}}
+}
+
 
 \examples{
 polePoint(c(5,52),30)

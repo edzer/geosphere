@@ -3,7 +3,10 @@
 # version 0.1
 # license GPL3
 
-radialIntersect <- function(p1, brng1, p2, brng2) {
+# based on formulae by Ed Willians at
+# http://williams.best.vwh.net/avform.htm#Intersection
+
+rhumbIntersect <- function(p1, brng1, p2, brng2) {
 #crs13 true bearing from point 1 and the crs23 true bearing from point 2:
 	toRad <- pi / 180 
 	p1 <- pointsToMatrix(p1) * toRad
@@ -16,7 +19,6 @@ radialIntersect <- function(p1, brng1, p2, brng2) {
 	lat1 <- p1[,2]
 	lon2 <- p2[,1]
 	lat2 <- p2[,2]
-
 
 	dst12 <- 2*asin(sqrt((sin((lat1-lat2)/2))^2+ cos(lat1)*cos(lat2)*sin((lon1-lon2)/2)^2))
 	g <-  sin(lon2-lon1) < 0 
@@ -39,8 +41,8 @@ radialIntersect <- function(p1, brng1, p2, brng2) {
 
 	lon3[g] <- Inf
 	lat3[g] <- Inf
-	lon3[g] <- NA
-	lat3[g] <- NA
+	lon3[h] <- NA
+	lat3[h] <- NA
 	ang1 <- abs(ang1)
 	ang2 <- abs(ang2)
 	ang3 <- acos(-cos(ang1)*cos(ang2)+sin(ang1)*sin(ang2)*cos(dst12)) 
@@ -49,7 +51,7 @@ radialIntersect <- function(p1, brng1, p2, brng2) {
 	dlon <- atan2(sin(crs13)*sin(dst13)*cos(lat1),cos(dst13)-sin(lat1)*sin(lat3))
 	lon3[i] <- (lon1-dlon+pi %% 2*pi)-pi
 	
-	ll <- cbind(lon3, lat3)
+	ll <- cbind(lon3, lat3) / toRad
 	return(ll)
 }
 

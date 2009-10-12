@@ -1,7 +1,7 @@
-\name{greatCircleIntersect}
+\name{gcIntersect}
 \Rdversion{1.1}
 
-\alias{greatCircleIntersect}
+\alias{gcIntersect}
 
 \title{
 Intersections of two great circles
@@ -12,7 +12,7 @@ Get the two points where two great cricles cross each other. Great circles are d
 }
 
 \usage{
-greatCircleIntersect(p1, p2, p3, p4) 
+gcIntersect(p1, p2, p3, p4) 
 }
 
 \arguments{
@@ -38,7 +38,7 @@ Robert Hijmans, based on equations by Ed Williams (see reference)
 
 \examples{
 p1 <- c(5,52); p2 <- c(-120,37); p3 <- c(-60,0); p4 <- c(0,70)
-greatCircleIntersect(p1,p2,p3,p4)
+gcIntersect(p1,p2,p3,p4)
 }
 
 \keyword{ spatial }

@@ -7,7 +7,7 @@
 greatCircle <- function(p1, p2, n=360) {
 	n <- max(round(n), 2)
 	lon <- (1:n * 360 / n) - 180
-	lat <- latOnGreatCircle(p1, p2, lon) 
+	lat <- gcLat(p1, p2, lon) 
 	return( cbind(lon,lat) )
 }
 

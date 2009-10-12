@@ -3,13 +3,15 @@
 # version 0.1
 # license GPL
 
-greatCircleIntermediate <- function(p1, p2, n=50) {
+
+gcLat <- function(p1, p2, lon) {
 # Intermediate points on a great circle
 # source: http://williams.best.vwh.net/avform.htm
 	toRad <- pi / 180 
 	d <- distCosine(p1, p2)
 	p1 <- pointsToMatrix(p1)
 	p2 <- pointsToMatrix(p2)
+
 	if (nrow(p1) > 1 | nrow(p2) > 1) {
 		stop('provide single points')
 	}
@@ -22,21 +24,13 @@ greatCircleIntermediate <- function(p1, p2, n=50) {
 	lat1 <- p1[,2] * toRad
 	lon2 <- p2[,1] * toRad
 	lat2 <- p2[,2] * toRad
+	lon <- lon * toRad
+	
+	meridians <- sin(lon1-lon2)==0
+	if (! all(! meridians)) {
+		stop("cannot compute this for a meridian")
+	}
 
-	
-	n <- max(round(n), 1)
-	f <- 1:n / (n+1)
-	
-    A <- sin(1-f) / sin(d)
-    B <- sin(f) / sin(d)
-    x <- A*cos(lat1)*cos(lon1) +  B*cos(lat2)*cos(lon2)
-	y <- A*cos(lat1)*sin(lon1) +  B*cos(lat2)*sin(lon2)
-	z <- A*sin(lat1)           +  B*sin(lat2)
-    lat <- atan2(z,sqrt(x^2+y^2))
-	lon <- atan2(y,x)
-	
-	gc <- cbind(lon,lat)/toRad
-	return(gc)
-	#return( gc[order(gc[,1]),] )
+	lat <- atan((sin(lat1)*cos(lat2)*sin(lon-lon2) -sin(lat2)*cos(lat1)*sin(lon-lon1))/(cos(lat1)*cos(lat2)*sin(lon1-lon2)))
+	return(lat / toRad)
 }
-

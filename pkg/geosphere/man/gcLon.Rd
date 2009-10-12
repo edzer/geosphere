@@ -1,7 +1,7 @@
-\name{crossingParallels}
+\name{gcLon}
 \Rdversion{1.1}
 
-\alias{crossingParallels}
+\alias{gcLon}
 
 \title{
 Crossing parellels
@@ -12,7 +12,7 @@ Longitudes at which a given great circle crosses a given parallel (latitude)
 }
 
 \usage{
-crossingParallels(p1, p2, lat) 
+gcLon(p1, p2, lat) 
 }
 
 \arguments{
@@ -34,9 +34,13 @@ two points (longitudes)
 Robert Hijmans based on code by Ed Williams
 }
 
+\seealso{
+\code{\link[geosphere]{gcLat}, \link[geosphere]{polePoint}}
+}
+
 
 \examples{
-crossingParallels(c(5,52), c(-120,37), 40)
+gcLon(c(5,52), c(-120,37), 40)
 }
 
 \keyword{ spatial }
