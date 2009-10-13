@@ -22,8 +22,7 @@ distRhumb(p1, p2, r=6378137)
 }
 
 \details{
-Sailors used to (and sometimes still) navigate along rhumb lines since it is easier to follow a constant compass bearing than to continually adjust the bearing as is needed to follow a great circle, though they are normally longer than great-circle (orthodrome) routes. Rhumb lines are straight lines on a Mercator Projection map.
-If you maintain a constant bearing along a rhumb line, you will gradually spiral in towards one of the poles.
+Rhumb (from the Spanish word for course, 'rumbo') lines are straight lines on a Mercator Projection map. They were used in navigation because it is easier to follow a constant compass bearing than to continually adjust the bearing as is needed to follow a great circle, though they are normally longer than great-circle (orthodrome) routes. Most rhumb lines will gradually spiral towards one of the poles.
 }
 
 \value{
@@ -39,7 +38,7 @@ Chris Veness; ported to R by Robert Hijmans
 }
 
 \seealso{
-\code{\link[geosphere]{distCosine}, \link[geosphere]{distVincenty}, \link[geosphere]{distHaversine}}
+\code{\link[geosphere]{distCosine}, \link[geosphere]{distHaversine}, \link[geosphere]{distVincentySphere}, \link[geosphere]{distVincentyEllipsoid}}
 }
 
 \examples{
