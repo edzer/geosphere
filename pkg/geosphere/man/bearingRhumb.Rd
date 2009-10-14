@@ -1,7 +1,7 @@
-\name{brngRhumb}
+\name{bearingRhumb}
 \Rdversion{1.1}
 
-\alias{brngRhumb}
+\alias{bearingRhumb}
 
 \title{
 Rhumbline bearing
@@ -12,7 +12,7 @@ Bearing (direction of travel; true course) along a rhumb line (loxodrome) betwee
 }
 
 \usage{
-brngRhumb(p1, p2)
+bearingRhumb(p1, p2)
 }
 
 \arguments{
@@ -45,7 +45,7 @@ The meridians and the equator are both rhumb lines and great circles. Rhumb line
 }
 
 \examples{
-brngRhumb(c(0,0),c(90,90))
+bearingRhumb(c(0,0),c(90,90))
 }
 
 \keyword{ spatial }
