@@ -12,7 +12,7 @@ Spherical trigonometry for geographic applications, such as great circle distanc
 \tabular{ll}{
 Package: \tab geosphere\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
+Version: \tab 0.2\cr
 Date: \tab 2009-10-10\cr
 License: \tab GPL3\cr
 LazyLoad: \tab yes\cr
