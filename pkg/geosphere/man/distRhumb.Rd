@@ -22,7 +22,7 @@ distRhumb(p1, p2, r=6378137)
 }
 
 \details{
-Rhumb (from the Spanish word for course, 'rumbo') lines are straight lines on a Mercator Projection map. They were used in navigation because it is easier to follow a constant compass bearing than to continually adjust the bearing as is needed to follow a great circle, though they are normally longer than great-circle (orthodrome) routes. Most rhumb lines will gradually spiral towards one of the poles.
+Rhumb (from the Spanish word for course, 'rumbo') lines are straight lines on a Mercator Projection map. They were used in navigation because it is easier to follow a constant compass bearing than to continually adjust the bearing as is needed to follow a great circle, though rhumb lines are normally longer than great-circle (orthodrome) routes. Most rhumb lines will gradually spiral towards one of the poles.
 }
 
 \value{

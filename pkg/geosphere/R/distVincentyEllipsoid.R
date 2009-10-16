@@ -13,7 +13,7 @@ distVincentyEllipsoid <- function(p1, p2, a=6378137, b=6356752.3142, f=1/298.257
 #/*  Vincenty Inverse Solution of Geodesics on the Ellipsoid (c) Chris Veness 2002-2009           #*/
 #* Calculate geodesic distance (in m) between two points specified by latitude/longitude 
 #* (in numeric degrees) using Vincenty inverse formula for ellipsoids
-# source http://www.movable-type.co.uk/scripts/latlong.html
+# source http://www.movable-type.co.uk/scripts/latlong-vincenty.html
 # (c) 2002-2009 Chris Veness
 
 	toRad <- pi / 180 
@@ -54,7 +54,7 @@ distVincentyEllipsoid <- function(p1, p2, a=6378137, b=6356752.3142, f=1/298.257
 				sinLambda <- sin(lambda)
 				cosLambda <- cos(lambda)
 				sinSigma <- sqrt((cosU2*sinLambda) * (cosU2*sinLambda) + (cosU1*sinU2-sinU1*cosU2*cosLambda) * (cosU1*sinU2-sinU1*cosU2*cosLambda))
-				#if (sinSigma==0) { return(0)  #// co-incident points	}
+				
 				cosSigma <- sinU1*sinU2 + cosU1*cosU2*cosLambda
 				sigma <- atan2(sinSigma, cosSigma)
 				sinAlpha <- cosU1 * cosU2 * sinLambda / sinSigma
@@ -65,7 +65,7 @@ distVincentyEllipsoid <- function(p1, p2, a=6378137, b=6356752.3142, f=1/298.257
 				lambdaP <- lambda
 				lambda <- L + (1-C) * f * sinAlpha * (sigma + C*sinSigma*(cos2SigmaM+C*cosSigma*(-1+2*cos2SigmaM*cos2SigmaM)))
 				iterLimit <- iterLimit - 1
-				continue <- (abs(lambda-lambdaP) > 1e-12 && iterLimit < 0)
+				continue <- (abs(lambda-lambdaP) > 1e-12 && iterLimit > 0)
 			} 
 			if (iterLimit==0) {
 				res[i]  <- NA  #// formula failed to converge
