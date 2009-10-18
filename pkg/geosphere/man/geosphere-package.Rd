@@ -13,10 +13,12 @@ Spherical trigonometry for geographic applications, such as great circle distanc
 Package: \tab geosphere\cr
 Type: \tab Package\cr
 Version: \tab 0.2\cr
-Date: \tab 2009-10-10\cr
+Date: \tab 2009-10-18\cr
 License: \tab GPL3\cr
 LazyLoad: \tab yes\cr
 }
+
+The functions compute distance and bearing (course) along great circles (= shortest distance on a sphere, or "as the crow flies") and rhumb lines (lines of constant bearing). Geographic locations are always specified in degrees (NOT radians), and the default unit of distance is meter.
 }
 
 \author{
