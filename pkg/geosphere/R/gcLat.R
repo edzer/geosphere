@@ -16,7 +16,7 @@ gcLat <- function(p1, p2, lon) {
 		stop('provide single points')
 	}
 
-	if (isAntipodal(p1, p2)) {
+	if (antipodal(p1, p2)) {
 		stop('you provided antipodal points; these have an infinite number of great circles')
 	}
 

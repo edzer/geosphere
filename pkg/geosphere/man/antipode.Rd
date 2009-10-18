@@ -2,7 +2,7 @@
 \Rdversion{1.1}
 
 \alias{antipode}
-\alias{isAntipodal}
+\alias{antipodal}
 
 \title{
 Antipodes
@@ -17,7 +17,7 @@ Antipodal points are connected by an infinite number of great circles (e.g. the 
 
 \usage{
 antipode(p)
-isAntipodal(p1, p2)
+antipodal(p1, p2)
 }
 
 \arguments{
@@ -27,7 +27,7 @@ isAntipodal(p1, p2)
 }
 
 \value{
-antipodal points or a logical value
+antipodal points or a logical value (\code{TRUE} if antipodal)
 }
 
 \references{
@@ -41,7 +41,7 @@ Robert Hijmans
 
 \examples{
 antipode(rbind(c(5,52), c(-120,37), c(-60,0), c(0,70)))
-isAntipodal(c(0,0), c(180,0))
+antipodal(c(0,0), c(180,0))
 }
 
 \keyword{ spatial }

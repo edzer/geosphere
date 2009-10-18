@@ -3,6 +3,8 @@
 # version 0.1
 # license GPL3
 
+# based on
+#http://williams.best.vwh.net/avform.htm#Par
 
 gcLon <- function(p1, p2, lat) {
 # longitudes at which a given great circle crosses a given parallel
@@ -38,4 +40,3 @@ gcLon <- function(p1, p2, lat) {
 	lon3 <- lon3  / toRad
 	return(lon3)
 }
-

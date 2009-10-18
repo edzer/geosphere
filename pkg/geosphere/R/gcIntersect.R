@@ -55,9 +55,9 @@ gcIntersect <- function(p1, p2, p3, p4) {
     compareDim(p2, p4)
     compareDim(p3, p4)
 
-	anti <- isAntipodal(p1, p2)
+	anti <- antipodal(p1, p2)
 	if (! all(! anti)) { stop('p1 and p2 are antipodal -- cannot define a Great Circle') }
-	anti <- isAntipodal(p3, p4)
+	anti <- antipodal(p3, p4)
 	if (! all(! anti)) { stop('p3 and p4 are antipodal -- cannot define a Great Circle') }
 
 	toRad <- pi / 180 
