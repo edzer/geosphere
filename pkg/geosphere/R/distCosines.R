@@ -17,7 +17,12 @@ distCosine <- function(p1, p2, r=6378137) {
 	lat2 <- p2[,2]
 
 	cosd <- sin(lat1) * sin(lat2) + cos(lat1) * cos(lat2) * cos(lon1-lon2)
-	return(r * acos(cosd))
+	dist <- r * acos(cosd) 
+
+	if (is.vector(dist)) { dist <- matrix(dist) }
+	colnames(dist) <- 'distance'
+	
+	return(dist)
 }
 
 

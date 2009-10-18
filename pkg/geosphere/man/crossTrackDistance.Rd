@@ -31,7 +31,7 @@ The sign indicates which side of the path p3 is on. Positive  means right of the
 
 
 \author{
-Chris Veness and Robert Hijmans
+Ed Williams and Robert Hijmans
 }
 
 

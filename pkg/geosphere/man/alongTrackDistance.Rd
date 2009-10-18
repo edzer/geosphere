@@ -29,7 +29,7 @@ A distance in units of r (default is meters)
 }
 
 \author{
-Chris Veness and Robert Hijmans
+Ed Williams and Robert Hijmans
 }
 
 
@@ -38,7 +38,7 @@ Chris Veness and Robert Hijmans
 }
 
 \examples{
-alongTrackDistance(c(0,0),c(90,90),c(80,80))
+alongTrackDistance(c(0,0),c(60,60),c(50,40))
 }
 
 \keyword{ spatial }

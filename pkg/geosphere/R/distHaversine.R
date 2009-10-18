@@ -33,6 +33,10 @@ distHaversine <- function(p1, p2, r=6378137) {
 	dLon <- (lon2-lon1)
 	a <- sin(dLat/2) * sin(dLat/2) + cos(lat1) * cos(lat2) * sin(dLon/2) * sin(dLon/2)
 	c <- 2 * atan2(sqrt(a), sqrt(1-a))
-	d <- r * c
-	return(d)
+	dist <- r * c
+
+	if (is.vector(dist)) { dist <- matrix(dist) }
+	colnames(dist) <- 'distance'
+
+	return(dist)
 }

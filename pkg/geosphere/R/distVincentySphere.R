@@ -20,6 +20,10 @@ distVincentySphere <- function(p1, p2, r=6378137) {
 
 	x <- sqrt((cos(lat2) * sin(lon1-lon2))^2 + (cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(lon1-lon2))^2)
 	y <- sin(lat1) * sin(lat2) + cos(lat1) * cos(lat2) * cos(lon1-lon2)
-	return ( r * atan2(x, y) )
+	
+	dist <- r * atan2(x, y)
+	if (is.vector(dist)) { dist <- matrix(dist) }
+	colnames(dist) <- 'distance'
+	return ( dist )
 }
 
