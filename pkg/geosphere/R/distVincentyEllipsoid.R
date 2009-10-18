@@ -79,7 +79,8 @@ distVincentyEllipsoid <- function(p1, p2, a=6378137, b=6356752.3142, f=1/298.257
 		}
 	}
   
-    res <- round(res, digits=3) #// round to 1mm precision
+	if (is.vector(res)) { res <- matrix(res) }
+	colnames(res) <- 'distance'
 	return(res)
 }
 
