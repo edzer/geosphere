@@ -28,7 +28,7 @@ gcMaxLat <- function(p1, p2) {
 	maxlon[k] <- lon[k] + pi - atan2(cos(b[k]), sin(b[k]) * sin(lat[k]))
 	maxlon <- (maxlon+pi)%%(2*pi) - pi
  
-	res <- cbind(maxlon, maxlat)/ toRad
+	res <- cbind(-1 * maxlon, maxlat)/ toRad
 	colnames(res) <- c('lon', 'lat')
 	rownames(res) <- ''
 	return(res)

@@ -13,8 +13,8 @@
 
 
 destPoint <- function(p, brng, d, r=6378137) {
-#* calculate destination point given start point, initial bearing (deg) and distance (km)
-#*   see http:#//williams.best.vwh.net/avform.htm#LL
+# calculate destination point given start point, initial bearing (deg) and distance (km)
+# see http:#//williams.best.vwh.net/avform.htm#LL
 # source http://www.movable-type.co.uk/scripts/latlong.html
 # (c) 2002-2009 Chris Veness
 	toRad <- pi / 180 
