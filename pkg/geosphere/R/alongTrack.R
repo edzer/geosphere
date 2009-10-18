@@ -22,6 +22,8 @@ alongTrackDistance <- function(p1, p2, p3, r=6378137) {
 	dxt <- crossTrackDistance(p1, p2, p3, r)
 	
 	dat <- acos(cos(d13/r)/cos(dxt/r)) * r
+	if (is.vector(dat)) { dat <- matrix(dat) }
+	colnames(dat) <- 'distance'
 	
 # or (when?) use this:
 #	ATD=asin(sqrt( (sin(dist_AD))^2 - (sin(XTD))^2 )/cos(XTD))
