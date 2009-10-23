@@ -11,14 +11,14 @@ daylength <- function(lat, doy) {
 	if (class(doy) == 'Date' | class(doy) == 'character') { 
 		doy <- .doyFromDate(doy) 
 	}
-	if (lat > 90) { stop("lat should be <= 90") 
-	} else if (lat < -90) { stop("lat should be >= -90") }	
+	lat[lat > 90 | lat < -90] <- NA 
 
 	doy[doy==366] <- 365
 	doy[doy < 1] <- 365 + doy[doy < 1]
 	doy[doy > 365] <- doy[doy > 365] - 365 
-	if (sum(doy[doy<1]) > 0) { stop('cannot understand value for doy') }
-	if (sum(doy[doy>365]) > 0) { stop('cannot understand value for doy') }
+	if (isTRUE(any(doy<1))  | isTRUE(any(doy>365))) {
+		stop('cannot understand value for doy') 
+	}
 	
 #Forsythe, William C., Edward J. Rykiel Jr., Randal S. Stahl, Hsin-i Wu and Robert M. Schoolfield, 1995.
 #A model comparison for daylength as a function of latitude and day of the year. Ecological Modeling 80:87-95.
@@ -34,13 +34,13 @@ daylength <- function(lat, doy) {
 	if (class(doy) == 'Date' | class(doy) == 'character') { 
 		doy <- .doyFromDate(doy) 
 	}
-	if (lat > 90) { stop("lat should be <= 90")
-	} else if (lat < -90) { stop("lat should be >= -90")}	
+	lat[lat > 90 | lat < -90] <- NA 
 	doy[doy==366] <- 365
 	doy[doy < 1] <- 365 + doy[doy < 1]
 	doy[doy > 365] <- doy[doy > 365] - 365 
-	if (sum(doy[doy<1]) > 0) { stop('cannot understand value for doy') }
-	if (sum(doy[doy>365]) > 0) { stop('cannot understand value for doy') }
+	if (isTRUE(any(doy<1))  | isTRUE(any(doy>365))) {
+		stop('cannot understand value for doy') 
+	}
 
 # after Goudriaan and Van Laar
 	RAD <- pi/180
