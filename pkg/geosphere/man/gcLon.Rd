@@ -36,7 +36,7 @@ Robert Hijmans based on code by Ed Williams
 }
 
 \seealso{
-\code{\link[geosphere]{gcLat}, \link[geosphere]{polePoint}}
+\code{\link[geosphere]{gcLat}, \link[geosphere]{gcMaxLat}}
 }
 
 

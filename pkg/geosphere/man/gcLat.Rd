@@ -35,7 +35,7 @@ Robert Hijmans based on a formula by Ed Williams
 }
 
 \seealso{
-\code{\link[geosphere]{gcLon}, \link[geosphere]{polePoint}}
+\code{\link[geosphere]{gcLon}, \link[geosphere]{gcMaxLat}}
 }
 
 

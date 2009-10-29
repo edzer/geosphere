@@ -8,7 +8,7 @@ Bearing
 }
 
 \description{
-Get the initial bearing (direction to travel in) to go from point1 to point2 following the shortest path (a great circle). Note that bearings change continuously while traveling along a great circle. A route with constant bearing is a rhumb line (see \code{\link[geosphere]{brngRhumb}}.
+Get the initial bearing (direction to travel in) to go from point1 to point2 following the shortest path (a great circle). Note that bearings change continuously while traveling along a great circle. A route with constant bearing is a rhumb line (see \code{\link[geosphere]{bearingRhumb}}.
 }
 
 \usage{
@@ -32,7 +32,7 @@ Chris Veness; ported to R by Robert Hijmans;
 
 
 \seealso{
-\code{ \link[geosphere]{brngRhumb}  }
+\code{ \link[geosphere]{bearingRhumb}  }
 }
 
 \examples{
