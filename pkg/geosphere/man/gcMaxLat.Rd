@@ -9,7 +9,7 @@ Highest latitude on a great circle
 }
 
 \description{
-What is northern most point that will be reached when following a great circle? Computed with Clairaut's formula. The southern most point is the \code{[geosphere](antipode)} of the northern-most point.
+What is northern most point ('pole-point') that will be reached when following a great circle? Computed with Clairaut's formula. The southern most point is the \code{[geosphere](antipode)} of the northern-most point.
 }
 
 \usage{
