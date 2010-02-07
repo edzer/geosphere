@@ -17,10 +17,10 @@ distVincentyEllipsoid <- function(p1, p2, a=6378137, b=6356752.3142, f=1/298.257
 # (c) 2002-2009 Chris Veness
 
 	toRad <- pi / 180 
-	p1 <- pointsToMatrix(p1) * toRad
-	p2 <- pointsToMatrix(p2) * toRad
+	p1 <- .pointsToMatrix(p1) * toRad
+	p2 <- .pointsToMatrix(p2) * toRad
 	
-	compareDim(p1, p2)
+	.compareDim(p1, p2)
 	
 	maxdim <- max(dim(p1)[1], dim(p2)[1])
 	if (dim(p1)[1] == 1) {

@@ -4,7 +4,7 @@
 # license GPL3
 
 
-pointsToMatrix <- function(p) {
+.pointsToMatrix <- function(p) {
 	if (class(p) == 'SpatialPoints' | class(p) == 'SpatialPointsDataFrame') {
 		require(sp)
 		if (is.projected(p)) {

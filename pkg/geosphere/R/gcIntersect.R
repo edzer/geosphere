@@ -47,17 +47,17 @@ gcIntersect <- function(p1, p2, p3, p4) {
 	}	
 
 	
-	p1 <- pointsToMatrix(p1)
-	p2 <- pointsToMatrix(p2)
-	p3 <- pointsToMatrix(p3)
-	p4 <- pointsToMatrix(p4)
+	p1 <- .pointsToMatrix(p1)
+	p2 <- .pointsToMatrix(p2)
+	p3 <- .pointsToMatrix(p3)
+	p4 <- .pointsToMatrix(p4)
 
-    compareDim(p1, p2)
-    compareDim(p1, p3)
-    compareDim(p1, p4)
-    compareDim(p2, p3)
-    compareDim(p2, p4)
-    compareDim(p3, p4)
+    .compareDim(p1, p2)
+    .compareDim(p1, p3)
+    .compareDim(p1, p4)
+    .compareDim(p2, p3)
+    .compareDim(p2, p4)
+    .compareDim(p3, p4)
 
 	anti <- antipodal(p1, p2)
 	if (! all(! anti)) { stop('p1 and p2 are antipodal -- cannot define a Great Circle') }

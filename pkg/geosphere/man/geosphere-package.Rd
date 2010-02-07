@@ -19,6 +19,8 @@ LazyLoad: \tab yes\cr
 }
 
 The functions compute distance and bearing (course) along great circles (= shortest distance on a sphere, or "as the crow flies") and rhumb lines (lines of constant bearing). Geographic locations are always specified in degrees (NOT radians), and the default unit of distance is meter.
+
+This is the first version of this package, so please look out for bugs and let us know if you find any.
 }
 
 \author{
@@ -37,6 +39,6 @@ Maintainer: Robert J. Hijmans <r.hijmans@gmail.com>
 \url{http://mathworld.wolfram.com/SphericalTrigonometry.html}
 }
 
-
 \keyword{ package }
 \keyword{ spatial }
+

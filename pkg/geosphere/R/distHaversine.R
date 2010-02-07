@@ -19,10 +19,10 @@ distHaversine <- function(p1, p2, r=6378137) {
 # source http://www.movable-type.co.uk/scripts/latlong.html
 # (c) 2002-2009 Chris Veness
 	toRad <- pi / 180 
-	p1 <- pointsToMatrix(p1) * toRad
-	p2 <- pointsToMatrix(p2) * toRad
+	p1 <- .pointsToMatrix(p1) * toRad
+	p2 <- .pointsToMatrix(p2) * toRad
 
-	compareDim(p1, p2)
+	.compareDim(p1, p2)
 
 	lon1 <- p1[,1]
 	lat1 <- p1[,2]

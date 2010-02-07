@@ -12,7 +12,7 @@ gcMaxLat <- function(p1, p2) {
 	}
 	toRad <- pi / 180 
 	b <- bearing(p1, p2) * toRad
-	p1 <- pointsToMatrix(p1) * toRad
+	p1 <- .pointsToMatrix(p1) * toRad
 	lat <- p1[,2] 
 	lon <- p1[,1] * -1
 	

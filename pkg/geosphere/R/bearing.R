@@ -11,9 +11,9 @@
 bearing <- function(p1, p2) {
 #calculate (initial) bearing between two points
 	toRad <- pi / 180 
-	p1 <- pointsToMatrix(p1) * toRad
-	p2 <- pointsToMatrix(p2) * toRad
-    compareDim(p1, p2)
+	p1 <- .pointsToMatrix(p1) * toRad
+	p2 <- .pointsToMatrix(p2) * toRad
+    .compareDim(p1, p2)
 	lon1 <- p1[,1]
 	lat1 <- p1[,2]
 	lon2 <- p2[,1]

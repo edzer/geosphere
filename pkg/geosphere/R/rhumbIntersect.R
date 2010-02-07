@@ -9,9 +9,9 @@
 rhumbIntersect <- function(p1, brng1, p2, brng2) {
 #crs13 true bearing from point 1 and the crs23 true bearing from point 2:
 	toRad <- pi / 180 
-	p1 <- pointsToMatrix(p1) * toRad
-	p2 <- pointsToMatrix(p2) * toRad
-    compareDim(p1, p2)
+	p1 <- .pointsToMatrix(p1) * toRad
+	p2 <- .pointsToMatrix(p2) * toRad
+    .compareDim(p1, p2)
 	crs13 <- brng1 * toRad
 	crs23 <- brng2 * toRad
 	

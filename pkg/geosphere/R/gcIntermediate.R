@@ -8,8 +8,8 @@ gcIntermediate <- function(p1, p2, n=50) {
 # source: http://williams.best.vwh.net/avform.htm
 	toRad <- pi / 180 
 	d <- distCosine(p1, p2)
-	p1 <- pointsToMatrix(p1)
-	p2 <- pointsToMatrix(p2)
+	p1 <- .pointsToMatrix(p1)
+	p2 <- .pointsToMatrix(p2)
 	if (nrow(p1) > 1 | nrow(p2) > 1) {
 		stop('provide single points')
 	}
