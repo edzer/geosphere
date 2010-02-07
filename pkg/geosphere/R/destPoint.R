@@ -19,7 +19,7 @@ destPoint <- function(p, brng, d, r=6378137) {
 # (c) 2002-2009 Chris Veness
 	toRad <- pi / 180 
 
-	p <- pointsToMatrix(p) * toRad
+	p <- .pointsToMatrix(p) * toRad
 	lon1 <- p[,1] 
 	lat1 <- p[,2]
 

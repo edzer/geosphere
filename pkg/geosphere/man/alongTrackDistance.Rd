@@ -34,7 +34,7 @@ Ed Williams and Robert Hijmans
 
 
 \seealso{
-\code{ \link[geosphere]{alongTrackDistance}  }
+\code{ \link[geosphere]{crossTrackDistance}  }
 }
 
 \examples{

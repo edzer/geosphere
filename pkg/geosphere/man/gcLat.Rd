@@ -23,7 +23,7 @@ gcLat(p1, p2, lon)
 
 
 \value{
-a matrix of points
+A numeric (latitude)
 }
 
 \references{

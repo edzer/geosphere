@@ -9,7 +9,7 @@ Longitude on a Great Circle
 }
 
 \description{
-Longitude at which a great circle crosses a latitude (parallel)
+Longitudes at which a great circle crosses a latitude (parallel)
 }
 
 \usage{
@@ -24,7 +24,7 @@ gcLon(p1, p2, lat)
 
 
 \value{
-two points (longitudes) 
+vector of two numbers (longitudes) 
 }
 
 \references{

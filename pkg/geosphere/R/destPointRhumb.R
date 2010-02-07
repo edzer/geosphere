@@ -15,7 +15,7 @@
 
 destPointRhumb <- function(p, brng, dist, r=6378137) {
 
-	p <- pointsToMatrix(p)
+	p <- .pointsToMatrix(p)
 	lon <- p[,1]
 	lat <- p[,2]
 
