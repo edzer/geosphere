@@ -19,27 +19,15 @@ destPoint <- function(p, brng, d, r=6378137) {
 # (c) 2002-2009 Chris Veness
 	toRad <- pi / 180 
 
-	p <- .pointsToMatrix(p) * toRad
-
-	if (length(d) > 1) {
-		if (length(brng) > 1) {
-			warning('multiple distances, only first bearing used')
-			brng = brng[1]
-		}
-		if (nrow(p) > 1) {
-			warning('multiple distances, only first point used')
-			p = p[1, ,drop=FALSE]
-		}
-	} else if (length(brng) > 1) {
-		if (nrow(p) > 1) {
-			warning('multiple bearings, only first point used')
-			p = p[1, ,drop=FALSE]
-		}
-	}
-
-	lon1 <- p[,1] 
-	lat1 <- p[,2]
-	brng <- brng * toRad
+	brng = as.vector(brng)
+	d = as.vector(d)
+	p <- .pointsToMatrix(p)
+	p = cbind(p[,1], p[,2], brng, d)
+	
+	lon1 <- p[,1] * toRad
+	lat1 <- p[,2] * toRad
+	brng <- p[,3] * toRad
+	d = p[,4]
 
 	lat2 <- asin( sin(lat1)*cos(d/r) + cos(lat1)*sin(d/r)*cos(brng) )
 	lon2 <- lon1 + atan2(sin(brng)*sin(d/r)*cos(lat1), cos(d/r)-sin(lat1)*sin(lat2))
