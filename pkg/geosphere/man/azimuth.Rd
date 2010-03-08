@@ -1,0 +1,39 @@
+\name{azimuth}
+
+\Rdversion{1.1}
+
+\alias{azimuth}
+
+\title{
+Azimuth
+}
+
+\description{
+Azimuth (direction) between two points.
+}
+
+\usage{
+azimuth(p1, p2)
+}
+
+\arguments{
+  \item{p1}{longitude/latitude of point(s), in degrees; can be a vector of two numbers, a matrix of 2 columns (first one is longitude, second is latitude) or a spatialPoints* object}
+  \item{p2}{as above. Should have same length as p1, or a single point (or vice versa when p1 is a single point}
+}
+
+
+\value{
+Azimuth in degrees
+}
+
+
+\author{
+Robert J. Hijmans
+}
+
+\examples{
+azimuth(c(0,0),c(90,90))
+}
+
+\keyword{ spatial }
+
