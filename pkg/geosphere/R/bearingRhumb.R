@@ -18,11 +18,12 @@ bearingRhumb <- function(p1, p2) {
 	p1 <- .pointsToMatrix(p1) * toRad
 	p2 <- .pointsToMatrix(p2) * toRad
     .compareDim(p1, p2)
-  
-	lon1 <- p1[,1]
-	lat1 <- p1[,2]
-	lon2 <- p2[,1]
-	lat2 <- p2[,2]
+ 
+	p <- cbind(p1[,1], p1[,2], p2[,1], p2[,2])	
+	lon1 <- p[,1]
+	lat1 <- p[,2]
+	lon2 <- p[,1]
+	lat2 <- p[,2]
 
 	dLon <- (lon2-lon1)
 	dPhi <- log(tan(lat2/2 + pi/4)/tan(lat1/2+pi/4))
