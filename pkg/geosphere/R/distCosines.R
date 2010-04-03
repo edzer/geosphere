@@ -11,7 +11,7 @@ distCosine <- function(p1, p2, r=6378137) {
 	p1 <- .pointsToMatrix(p1) * toRad
 	p2 <- .pointsToMatrix(p2) * toRad
 	
-	p = cbind(p1, p2[,1], p2[,2])
+	p = cbind(p1[,1], p1[,2], p2[,1], p2[,2])	
 
 	lon1 <- p[,1]
 	lat1 <- p[,2]
