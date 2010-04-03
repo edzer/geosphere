@@ -12,17 +12,22 @@
 # license GPL3
 
 
+destPointRhumb <- function(p, brng, d, r=6378137) {
 
-destPointRhumb <- function(p, brng, dist, r=6378137) {
-
+	brng <- as.vector(brng)
+	d <- as.vector(d)
 	p <- .pointsToMatrix(p)
+	p <- cbind(p, brng, d)
+	
 	lon <- p[,1]
 	lat <- p[,2]
-
+	brng <- p[,3]
+	d <- p[,4]
+	
 	toRad <- pi / 180 
 	toDeg <- 1 / toRad
 
-	d <- dist/r  #// d <- angular distance covered on earth's surface
+	d <- d/r  #// d <- angular distance covered on earth's surface
 	lat1 <- lat * toRad
 	lon1 <- lon * toRad
 	brng <- brng * toRad
@@ -32,14 +37,12 @@ destPointRhumb <- function(p, brng, dist, r=6378137) {
 	dPhi <- log(tan(lat2/2+pi/4)/tan(lat1/2+pi/4))
 	if(abs(dLat) > 1e-10) { q <- dLat/dPhi } else { q <- cos(lat1) }
 	dLon <- d*sin(brng)/q
+	
   #// check for some daft bugger going past the pole
-	if (abs(lat2) > pi/2) {
-		if (lat2 >0) {
-			lat2 <- pi-lat2
-		} else {
-			lat2 <- -(pi-lat2)
-		}
-	}
+	i <- (abs(lat2) > pi/2) & lat2 > 0
+	lat2[i] <- pi-lat2[i]
+	i <- (abs(lat2) > pi/2) & lat2 <= 0
+	lat2[i] <- -1*(pi-lat2[i])
   
 	lon2 <- (lon1+dLon+pi)%%(2*pi - pi)
  
@@ -48,3 +51,4 @@ destPointRhumb <- function(p, brng, dist, r=6378137) {
 	colnames(res) <- c('lon', 'lat')
 	return(res)
 }
+
