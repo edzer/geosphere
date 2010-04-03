@@ -11,14 +11,14 @@ rhumbIntersect <- function(p1, brng1, p2, brng2) {
 	toRad <- pi / 180 
 	p1 <- .pointsToMatrix(p1) * toRad
 	p2 <- .pointsToMatrix(p2) * toRad
-    .compareDim(p1, p2)
-	crs13 <- brng1 * toRad
-	crs23 <- brng2 * toRad
-	
+
+	p <- cbind(p1[,1], p1[,2], p2[,1], p2[,2], as.vector(brng1), as.vector(brng2))
 	lon1 <- p1[,1]
 	lat1 <- p1[,2]
 	lon2 <- p2[,1]
 	lat2 <- p2[,2]
+	crs13 <- p[,5] * toRad
+	crs23 <- p[,6] * toRad
 
 	dst12 <- 2*asin(sqrt((sin((lat1-lat2)/2))^2+ cos(lat1)*cos(lat2)*sin((lon1-lon2)/2)^2))
 	g <-  sin(lon2-lon1) < 0 
