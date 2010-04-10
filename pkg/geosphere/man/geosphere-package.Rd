@@ -7,7 +7,7 @@
 \description{
 Spherical trigonometry for geographic applications.
 
-The functions in this package compute distance and bearing (course) along great circles (= shortest distance on a sphere, or "as the crow flies") and rhumb lines (lines of constant bearing). Geographic locations are always specified in degrees (NOT radians), and the default unit of distance is meter.
+The functions in this package compute distance and bearing (course) along Great Circles (= shortest distance on a sphere, or "as the crow flies") and rhumb lines (lines of constant bearing). Geographic locations are always specified in degrees (NOT radians), and the default unit of distance is meter. 
 
 This is the first version of this package, so please look out for bugs and let us know if you find any.
 }
@@ -29,7 +29,7 @@ Maintainer: Robert J. Hijmans <r.hijmans@gmail.com>
 }
 
 \section{Acknowledgements}{
-We thank the David Purdy for suggestions to improve the package.
+David Purdy for suggestions to improve the package.
 }
 
 
