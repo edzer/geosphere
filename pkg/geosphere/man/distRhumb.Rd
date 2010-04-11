@@ -1,14 +1,15 @@
 \name{distRhumb}
+
 \Rdversion{1.1}
 
 \alias{distRhumb}
 
 \title{
-Distance along a 'rhumb line'
+Distance along a rhumb line
 }
 
 \description{
-A 'rhumb line' (or loxodrome) is a path of constant bearing, which crosses all meridians at the same angle.
+A rhumb line (loxodrome) is a path of constant direction (bearing), which crosses all meridians at the same angle.
 }
 
 \usage{
@@ -22,11 +23,11 @@ distRhumb(p1, p2, r=6378137)
 }
 
 \details{
-Rhumb (from the Spanish word for course, 'rumbo') lines are straight lines on a Mercator Projection map. They were used in navigation because it is easier to follow a constant compass bearing than to continually adjust the bearing as is needed to follow a great circle, though rhumb lines are normally longer than great-circle (orthodrome) routes. Most rhumb lines will gradually spiral towards one of the poles.
+Rhumb (from the Spanish word for course, 'rumbo') lines are straight lines on a Mercator projection map. They were used in navigation because it is easier to follow a constant compass bearing than to continually adjust the bearing as is needed to follow a great circle, even though rhumb lines are normally longer than great-circle (orthodrome) routes. Most rhumb lines will gradually spiral towards one of the poles.
 }
 
 \value{
-distance value in units of r (default=meters)
+distance in units of r (default=meters)
 }
 
 \references{
@@ -34,7 +35,7 @@ distance value in units of r (default=meters)
 }
 
 \author{
-Chris Veness; ported to R by Robert Hijmans
+Robert Hijmans and Chris Veness
 }
 
 \seealso{
@@ -42,8 +43,8 @@ Chris Veness; ported to R by Robert Hijmans
 }
 
 \examples{
-distRhumb(c(0,0),c(90,90))
+distRhumb(c(10,10),c(20,20))
 }
 
-\keyword{ spatial  }
+\keyword{ spatial }
 

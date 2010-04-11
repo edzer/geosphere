@@ -7,7 +7,7 @@
 # http://williams.best.vwh.net/avform.htm#Intersection
 
 rhumbIntersect <- function(p1, brng1, p2, brng2) {
-#crs13 true bearing from point 1 and the crs23 true bearing from point 2:
+#crs13 true direction from point 1 and the crs23 true direction from point 2:
 	toRad <- pi / 180 
 	p1 <- .pointsToMatrix(p1) * toRad
 	p2 <- .pointsToMatrix(p2) * toRad
