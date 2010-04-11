@@ -12,7 +12,8 @@ crossTrackDistance <- function(p1, p2, p3, r=6378137) {
 	p1 <- .pointsToMatrix(p1)
 	p2 <- .pointsToMatrix(p2)
 	p3 <- .pointsToMatrix(p3)
-	p <- cbind(p1[,1], p1[,2], p2[,1], p2[,2], p3[,1], p3[,2], as.vector(r))
+	r <- as.vector(r)
+	p <- cbind(p1[,1], p1[,2], p2[,1], p2[,2], p3[,1], p3[,2], r)
 	p1 <- p[,1:2]
 	p2 <- p[,3:4]
 	p3 <- p[,5:6]
@@ -23,9 +24,6 @@ crossTrackDistance <- function(p1, p2, p3, r=6378137) {
     dp <- distCosine(p1, p3, r=1)
 	xtr <- asin(sin(tcp-tc) * sin(dp)) * r
 
-	if (is.vector(xtr)) { xtr <- matrix(xtr) }
-	colnames(xtr) <- 'distance'
-	
 	return(xtr)
 }
 
