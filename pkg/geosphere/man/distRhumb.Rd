@@ -16,8 +16,8 @@ distRhumb(p1, p2, r=6378137)
 }
 
 \arguments{
-  \item{p1}{longitude/latitude of point(s), in degrees; can be a vector of two numbers, a matrix of 2 columns (first one is longitude, second is latitude) or a SpatialPoints* object}
-  \item{p2}{as above. Should be of same length of p1, or a single point (or vice versa when p1 is a single point}
+  \item{p1}{longitude/latitude of point(s). Can be a vector of two numbers, a matrix of 2 columns (first one is longitude, second is latitude) or a SpatialPoints* object}
+  \item{p2}{as above}
   \item{r}{radius of the earth; default = 6378137 m}
 }
 
