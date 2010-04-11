@@ -1,18 +1,18 @@
-\name{bearing}
+\name{direction}
 \Rdversion{1.1}
 
-\alias{bearing}
+\alias{direction}
 
 \title{
-Bearing (direction of travel; azimiuth)
+Direction of travel
 }
 
 \description{
-Get the initial bearing (direction to travel in) to go from point1 to point2 following the shortest path (a Great Circle). Note that bearings change continuously while traveling along a great circle. A route with constant bearing is a rhumb line (see \code{\link[geosphere]{bearingRhumb}}).
+Get the initial direction (bearing; azimuth) to go from \code{p1} to \code{p2} following the shortest path (a Great Circle). Note that the direction of travel changes continuously while going along a great circle. A route with constant direction is a rhumb line (see  \code{\link[geosphere]{directionRhumb}}).
 }
 
 \usage{
-bearing(p1, p2)
+direction(p1, p2)
 }
 
 \arguments{
@@ -22,21 +22,21 @@ bearing(p1, p2)
 
 
 \value{
-A bearing in degrees
+A direction in degrees
 }
 
 
 \author{
-Robert Hijmans;
+Robert Hijmans
 }
 
 
 \seealso{
-\code{ \link[geosphere]{bearingRhumb}  }
+\code{ \link[geosphere]{directionRhumb}  }
 }
 
 \examples{
-bearing(c(10,10),c(20,20))
+direction(c(10,10),c(20,20))
 }
 
 \references{

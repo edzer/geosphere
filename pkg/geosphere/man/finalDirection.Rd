@@ -1,18 +1,18 @@
-\name{finalBearing}
+\name{finalDirection}
 \Rdversion{1.1}
 
-\alias{finalBearing}
+\alias{finalDirection}
 
 \title{
-Final bearing
+Final direction
 }
 
 \description{
-Get the final bearing when arriving at point2 after starting from p1 and following the shortest path (a great circle).
+Get the final direction (bearing) when arriving at \code{p2} after starting from \code{p1} and following the shortest path (a great circle).
 }
 
 \usage{
-finalBearing(p1, p2)
+finalDirection(p1, p2)
 }
 
 \arguments{
@@ -22,7 +22,7 @@ finalBearing(p1, p2)
 
 
 \value{
-A bearing in degrees
+A direction (bearing) in degrees
 }
 
 
@@ -32,12 +32,12 @@ Robert Hijmans
 
 
 \seealso{
-\code{ \link[geosphere]{bearing}  }
+\code{ \link[geosphere]{direction}  }
 }
 
 \examples{
-bearing(c(0,0),c(90,90))
-finalBearing(c(0,0),c(90,90))
+direction(c(10,10),c(20,20))
+finalDirection(c(10,10),c(20,20))
 }
 
 \references{

@@ -1,0 +1,31 @@
+\documentclass{article}
+
+\usepackage{natbib}
+\usepackage{graphics}
+\usepackage{amsmath}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+
+%\VignetteIndexEntry{The geosphere package}
+
+\SweaveOpts{keep.source=TRUE}
+
+\begin{document}
+
+<<foo,include=FALSE,echo=FALSE>>=
+options(keep.source = TRUE, width = 60)
+foo <- packageDescription("geosphere")
+@
+
+\title{The "geosphere" package (Version \Sexpr{foo$Version})}
+\author{Robert J. Hijmans}
+\maketitle
+
+
+\section{Introduction}
+
+This vignette describes the R package '\verb@geosphere@'. 
+
+
+\end{document}

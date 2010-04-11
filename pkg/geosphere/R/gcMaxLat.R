@@ -28,11 +28,11 @@ gcMaxLat <- function(p1, p2) {
 	pp1 = p1[use, , drop=FALSE]
 	pp2 = p2[use, , drop=FALSE]
 	
-	b <- bearing(pp1, pp2) * toRad
+	b <- direction(pp1, pp2) * toRad
 	lat <- pp1[,2] 
 	lon <- pp1[,1] * -1
 	
-# ‘Clairaut’s formula’ : the maximum latitude of a great circle path, given a bearing and latitude on the great circle
+# ‘Clairaut’s formula’ : the maximum latitude of a great circle path, given a direction and latitude on the great circle
 	maxlat <- acos(abs(sin(b) * cos(lat)))
 	maxlon <- maxlat
 	maxlon[] <- NA

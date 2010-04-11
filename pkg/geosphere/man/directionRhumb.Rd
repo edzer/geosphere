@@ -1,10 +1,11 @@
 \name{bearingRhumb}
+
 \Rdversion{1.1}
 
-\alias{bearingRhumb}
+\alias{directionRhumb}
 
 \title{
-Rhumbline bearing
+Rhumbline direction
 }
 
 \description{
@@ -12,7 +13,7 @@ Bearing (direction of travel; true course) along a rhumb line (loxodrome) betwee
 }
 
 \usage{
-bearingRhumb(p1, p2)
+directionRhumb(p1, p2)
 }
 
 \arguments{
@@ -22,7 +23,7 @@ bearingRhumb(p1, p2)
 
 
 \value{
-A bearing in degrees
+A direction (bearing) in degrees
 }
 
 \references{
@@ -36,16 +37,16 @@ Chris Veness and Robert Hijmans, based on formulae by Ed Williams
 }
 
 \note{
-Unlike most great circles, a rhumb line is a line of constant bearing, i.e. tracks of constant true course.
-The meridians and the equator are both rhumb lines and great circles. Rhumb lines approaching a pole becomes a tightly wound spiral.
+Unlike most great circles, a rhumb line is a line of constant direction (bearing), i.e. tracks of constant true course.
+The meridians and the equator are both rhumb lines and great circles. Rhumb lines approaching a pole become a tightly wound spiral.
 }
 
 \seealso{
-\code{ \link[geosphere]{bearing},  \link[geosphere]{distRhumb}  }
+\code{ \link[geosphere]{direction},  \link[geosphere]{distRhumb}  }
 }
 
 \examples{
-bearingRhumb(c(0,0),c(90,90))
+directionRhumb(c(10,10),c(20,20))
 }
 
 \keyword{ spatial }
