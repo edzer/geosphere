@@ -6,7 +6,6 @@
 
 .pointsToMatrix <- function(p) {
 	if (inherits(p, 'SpatialPoints')) {
-		require(sp)
 		if (isTRUE (is.projected(p)) ) {
 			stop('data points should be in degrees (longitude / latitude), and not be projected')  
 			# or rather transform them ....?

@@ -3,7 +3,7 @@
 # http://www.movable-type.co.uk/scripts/latlong.html
 # Licence: LGPL, without any warranty express or implied
 
-# Much of the above is based on formulae by Ed Williams
+# Based on formulae by Ed Williams
 # http://williams.best.vwh.net/avform.htm
 
 # Port to R by Robert Hijmans
