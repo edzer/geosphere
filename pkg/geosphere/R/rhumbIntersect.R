@@ -40,7 +40,7 @@ rhumbIntersect <- function(p1, brng1, p2, brng2) {
 	lat3 <- lon3
 	g <- sin(ang1)==0 & sin(ang2)==0 
 	h <- (sin(ang1) * sin(ang2)) < 0
-	i <- !g && !h
+	i <- !g & !h
 
 	lon3[g] <- Inf
 	lat3[g] <- Inf
@@ -55,6 +55,7 @@ rhumbIntersect <- function(p1, brng1, p2, brng2) {
 	lon3[i] <- (lon1[i]-dlon[i]+pi %% 2*pi)-pi
 	
 	ll <- cbind(lon3, lat3) / toRad
+	colnames(ll) = c('lon', 'lat')
 	return(ll)
 }
 
