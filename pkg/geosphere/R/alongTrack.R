@@ -9,9 +9,9 @@
 
 alongTrackDistance <- function(p1, p2, p3, r=6378137) {
 	toRad <- pi / 180 
-	p1 <- .pointsToMatrix(p1) * toRad
-	p2 <- .pointsToMatrix(p2) * toRad
-	p3 <- .pointsToMatrix(p3) * toRad
+	p1 <- .pointsToMatrix(p1)
+	p2 <- .pointsToMatrix(p2)
+	p3 <- .pointsToMatrix(p3)
 	p <- cbind(p1[,1], p1[,2], p2[,1], p2[,2], p3[,1], p3[,2], as.vector(r))
 	p1 <- p[,1:2,drop=FALSE]
 	p2 <- p[,3:4,drop=FALSE]

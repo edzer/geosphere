@@ -4,11 +4,11 @@
 \alias{bearing}
 
 \title{
-Bearing
+Bearing (direction of travel; azimiuth)
 }
 
 \description{
-Get the initial bearing (direction to travel in) to go from point1 to point2 following the shortest path (a great circle). Note that bearings change continuously while traveling along a great circle. A route with constant bearing is a rhumb line (see \code{\link[geosphere]{bearingRhumb}}).
+Get the initial bearing (direction to travel in) to go from point1 to point2 following the shortest path (a Great Circle). Note that bearings change continuously while traveling along a great circle. A route with constant bearing is a rhumb line (see \code{\link[geosphere]{bearingRhumb}}).
 }
 
 \usage{
@@ -27,7 +27,7 @@ A bearing in degrees
 
 
 \author{
-Chris Veness; ported to R by Robert Hijmans;
+Robert Hijmans;
 }
 
 
@@ -36,13 +36,12 @@ Chris Veness; ported to R by Robert Hijmans;
 }
 
 \examples{
-bearing(c(0,0),c(90,90))
+bearing(c(10,10),c(20,20))
 }
 
 \references{
-\url{http://www.movable-type.co.uk/scripts/latlong.html}
-
 \url{http://williams.best.vwh.net/ftp/avsig/avform.txt}
+\url{http://www.movable-type.co.uk/scripts/latlong.html}
 }
 
 
