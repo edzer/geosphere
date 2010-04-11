@@ -28,10 +28,10 @@ distRhumb <- function(p1, p2, r=6378137) {
 	dLon <- abs(lon2-lon1)
 	dPhi <- log(tan(lat2/2 + pi/4)/tan(lat1/2 + pi/4))
 
-	q <- vector(length=length(dLat))
 	i <- abs(dLat) > 1e-10 
-	q[i] <- dLat/dPhi
-	q[-i]  <- cos(lat1) 
+	q <- vector(length=length(i))
+	q[i] <- dLat[i]/dPhi[i]
+	q[!i]  <- cos(lat1[!i]) 
 	
   #// if dLon over 180° take shorter rhumb across 180° meridian:
 	dLon[dLon > pi] <- 2*pi - dLon[dLon > pi]  
