@@ -13,17 +13,24 @@ bearing <- function(p1, p2) {
 	toRad <- pi / 180 
 	p1 <- .pointsToMatrix(p1) * toRad
 	p2 <- .pointsToMatrix(p2) * toRad
-	
 	p <- cbind(p1[,1], p1[,2], p2[,1], p2[,2])	
-	lon1 <- p[,1]
-	lat1 <- p[,2]
-	lon2 <- p[,3]
-	lat2 <- p[,4]
+	p1 <- p[, 1:2, drop=FALSE]
+	p2 <- p[, 3:4, drop=FALSE]
+	
+	keep <- ! apply(p1 == p2, 1, sum) == 2
+	res <- rep(NA, length=nrow(p1))
+	if (sum(keep) == 0) { return(res) }
+
+	lon1 <- p1[keep, 1, drop=FALSE]
+	lat1 <- p1[keep, 2, drop=FALSE]
+	lon2 <- p2[keep, 1, drop=FALSE]
+	lat2 <- p2[keep, 2, drop=FALSE]
 
 	dLon <- (lon2-lon1)
 	y <- sin(dLon) * cos(lat2)
 	x <- cos(lat1)*sin(lat2) - sin(lat1)*cos(lat2)*cos(dLon)
 	b <- atan2(y, x) / toRad
-	names(b) <- 'bearing'
-	return( (b+360) %% 360 )
+	res[keep] = (b+360) %% 360 
+	return(res)
 }
+

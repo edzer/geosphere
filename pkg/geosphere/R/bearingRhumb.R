@@ -19,10 +19,17 @@ bearingRhumb <- function(p1, p2) {
 	p2 <- .pointsToMatrix(p2) * toRad
  
 	p <- cbind(p1[,1], p1[,2], p2[,1], p2[,2])	
-	lon1 <- p[,1]
-	lat1 <- p[,2]
-	lon2 <- p[,1]
-	lat2 <- p[,2]
+	p1 <- p[, 1:2, drop=FALSE]
+	p2 <- p[, 3:4, drop=FALSE]
+	
+	keep <- ! apply(p1 == p2, 1, sum) == 2
+	res <- rep(NA, length=nrow(p1))
+	if (sum(keep) == 0) { return(res) }
+
+	lon1 <- p1[keep, 1, drop=FALSE]
+	lat1 <- p1[keep, 2, drop=FALSE]
+	lon2 <- p2[keep, 1, drop=FALSE]
+	lat2 <- p2[keep, 2, drop=FALSE]
 
 	dLon <- (lon2-lon1)
 	dPhi <- log(tan(lat2/2 + pi/4)/tan(lat1/2+pi/4))
@@ -35,6 +42,7 @@ bearingRhumb <- function(p1, p2) {
 	b <- atan2(dLon, dPhi)
 	b <- b / toRad
 	b <- (b+360) %% 360
-	names(b) <- NULL
-	return(b)
+	res[keep] = b
+	return(res)
 }
+

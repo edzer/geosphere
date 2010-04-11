@@ -12,12 +12,21 @@ azimuth <- function(p1, p2) {
 	p1 <- p[, 1:2, drop=FALSE]
 	p2 <- p[, 3:4, drop=FALSE]
 
+	keep <- ! apply(p1 == p2, 1, sum) == 2
+	res <- rep(NA, length=nrow(p1))
+	if (sum(keep) == 0) { return(res) }
+
+	p1 <- p1[keep, , drop=FALSE]
+	p2 <- p2[keep, , drop=FALSE]
+	
 	dLon = p2[,1] - p1[,1] 
     y = sin(dLon)  * cos(p2[,2]) 
     x = cos(p1[,2]) * sin(p2[,2]) - sin(p1[,2]) * cos(p2[,2]) * cos(dLon) 
     azm = atan2(y, x) / toRad
     azm[azm < 0] <-  360 + azm[azm < 0] 
-	return(azm)
+	
+	res[keep] <- azm
+	return(res)
 }
 
 

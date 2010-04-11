@@ -22,10 +22,13 @@ midPoint <- function(p1, p2) {
 	p1 <- .pointsToMatrix(p1) * toRad
 	p2 <- .pointsToMatrix(p2) * toRad
 	p <- cbind(p1[,1], p1[,2], p2[,1], p2[,2])	
-	lon1 <- p[,1]
-	lat1 <- p[,2]
-	lon2 <- p[,3]
-	lat2 <- p[,4]
+	p1 <- p[, 1:2, drop=FALSE]
+	p2 <- p[, 3:4, drop=FALSE]
+	
+	lon1 <- p1[,1]
+	lat1 <- p1[,2]
+	lon2 <- p2[,1]
+	lat2 <- p2[,2]
 
 	dLon <- (lon2-lon1)
 
@@ -40,5 +43,6 @@ midPoint <- function(p1, p2) {
 	
 	res <- cbind(lon3, lat3) / toRad
 	colnames(res) <- c('lon', 'lat')
+	
 	return(res)
 }
