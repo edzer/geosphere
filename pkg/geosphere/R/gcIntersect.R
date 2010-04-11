@@ -6,7 +6,6 @@
 # based on an alogrithm described by Ed Williams
 # http://williams.best.vwh.net/intersect.htm
 
-
 # Not used
 #gete <- function(lon, lat) {
 #	ex <- cos(lat)*cos(lon)
@@ -62,18 +61,16 @@ gcIntersect <- function(p1, p2, p3, p4) {
 	res <- matrix(NA, nrow=nrow(p1), ncol=4)
 	colnames(res) <- c('lon1', 'lat1', 'lon2', 'lat2')
 
-	anti <- ! antipodal(p1, p2) | antipodal(p3, p4)
+	keep <- ! antipodal(p1, p2) | antipodal(p3, p4)
+	keep <- keep & ! apply(p1 == p2, 1, sum) == 2
 	
-	if (sum(anti) == 0) {
-		return(res)
-	}
-
+	if (sum(keep) == 0) { return(res) }
 
 	toRad <- pi / 180 
-	p1 <- p1[anti, , drop=FALSE] * toRad
-	p2 <- p2[anti, , drop=FALSE] * toRad
-	p3 <- p3[anti, , drop=FALSE] * toRad
-	p4 <- p4[anti, , drop=FALSE] * toRad
+	p1 <- p1[keep, , drop=FALSE] * toRad
+	p2 <- p2[keep, , drop=FALSE] * toRad
+	p3 <- p3[keep, , drop=FALSE] * toRad
+	p4 <- p4[keep, , drop=FALSE] * toRad
 
 	e1Xe2 <- eXe5(p1[,1], p1[,2], p2[,1], p2[,2])
 	e3Xe4 <- eXe5(p3[,1], p3[,2], p4[,1], p4[,2])
@@ -89,7 +86,7 @@ gcIntersect <- function(p1, p2, p3, p4) {
 	pts[,1] <- modlon(pts[,1])
 	pts[,3] <- modlon(pts[,3])
 	
-	res[anti,] <- pts / toRad
+	res[keep,] <- pts / toRad
 	
 	return(res)
  }
