@@ -21,13 +21,15 @@ destPoint <- function(p, brng, d, r=6378137) {
 
 	brng = as.vector(brng)
 	d = as.vector(d)
+	r =	as.vector(r)
 	p <- .pointsToMatrix(p)
-	p = cbind(p[,1], p[,2], brng, d)
+	p = cbind(p[,1], p[,2], brng, d, r)
 	
 	lon1 <- p[,1] * toRad
 	lat1 <- p[,2] * toRad
 	brng <- p[,3] * toRad
 	d = p[,4]
+	r = p[,5]
 
 	lat2 <- asin( sin(lat1)*cos(d/r) + cos(lat1)*sin(d/r)*cos(brng) )
 	lon2 <- lon1 + atan2(sin(brng)*sin(d/r)*cos(lat1), cos(d/r)-sin(lat1)*sin(lat2))

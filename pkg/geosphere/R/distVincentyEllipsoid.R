@@ -16,13 +16,17 @@ distVincentyEllipsoid <- function(p1, p2, a=6378137, b=6356752.3142, f=1/298.257
 # source http://www.movable-type.co.uk/scripts/latlong-vincenty.html
 # (c) 2002-2009 Chris Veness
 
+
 	toRad <- pi / 180 
 	p1 <- .pointsToMatrix(p1) * toRad
 	p2 <- .pointsToMatrix(p2) * toRad
 	
-	p1 = cbind(p1[,1], p1[,2], p2[,1], p2[,2])
-	p2 = p1[,3:4,drop=FALSE] 
-	p1 = p1[,1:2,drop=FALSE] 
+	p = cbind(p1[,1], p1[,2], p2[,1], p2[,2], as.vector(a), as.vector(b), as.vector(f))
+	p1 = p[,1:2,drop=FALSE] 
+	p2 = p[,3:4,drop=FALSE] 
+	a = p[,5]
+	b = p[,6]
+	f = p[,7]
 	  
 	res <- vector(length=dim(p1)[1])
     for (i in 1:dim(p1)[1]) {

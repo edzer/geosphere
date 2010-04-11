@@ -21,7 +21,6 @@ gcIntersect <- function(p1, p2, p3, p4) {
 
 	modlon <- function(lon) { ((lon + pi) %% (2*pi)) - pi  }
 
-
 	einv <- function(e) {
 		lat <- atan2(e[,3], sqrt(e[,1]^2 + e[,2]^2))
 		lon <- atan2(-e[,2], e[,1]) 
@@ -45,7 +44,6 @@ gcIntersect <- function(p1, p2, p3, p4) {
 	eSQRT <- function(e) {
 		return(sqrt(e[,1]^2 + e[,2]^2 + e[,3]^2))
 	}	
-
 	
 	p1 <- .pointsToMatrix(p1)
 	p2 <- .pointsToMatrix(p2)
@@ -59,19 +57,24 @@ gcIntersect <- function(p1, p2, p3, p4) {
 	p1 <- p[,1:2,drop=FALSE]
 	p2 <- p[,3:4,drop=FALSE]
 	p3 <- p[,5:6,drop=FALSE]
-	p4 <- p[,5:6,drop=FALSE]
+	p4 <- p[,7:8,drop=FALSE]
 	
-	anti <- antipodal(p1, p2)
-	if (! all(! anti)) { stop('p1 and p2 are antipodal -- cannot define a Great Circle') }
-	anti <- antipodal(p3, p4)
-	if (! all(! anti)) { stop('p3 and p4 are antipodal -- cannot define a Great Circle') }
+	res <- matrix(NA, nrow=nrow(p1), ncol=4)
+	colnames(res) <- c('lon1', 'lat1', 'lon2', 'lat2')
+
+	anti <- ! antipodal(p1, p2) | antipodal(p3, p4)
+	
+	if (sum(anti) == 0) {
+		return(res)
+	}
+
 
 	toRad <- pi / 180 
-	p1 <- p1 * toRad
-	p2 <- p2 * toRad
-	p3 <- p3 * toRad
-	p4 <- p4 * toRad
-	
+	p1 <- p1[anti, , drop=FALSE] * toRad
+	p2 <- p2[anti, , drop=FALSE] * toRad
+	p3 <- p3[anti, , drop=FALSE] * toRad
+	p4 <- p4[anti, , drop=FALSE] * toRad
+
 	e1Xe2 <- eXe5(p1[,1], p1[,2], p2[,1], p2[,2])
 	e3Xe4 <- eXe5(p3[,1], p3[,2], p4[,1], p4[,2])
 
@@ -86,10 +89,10 @@ gcIntersect <- function(p1, p2, p3, p4) {
 	pts[,1] <- modlon(pts[,1])
 	pts[,3] <- modlon(pts[,3])
 	
-	pts <- pts / toRad
-	colnames(pts) <- c('lon1', 'lat1', 'lon2', 'lat2')
-	rownames(pts) <- NULL
-	return(pts)
+	res[anti,] <- pts / toRad
+	
+	return(res)
  }
+ 
  
  
