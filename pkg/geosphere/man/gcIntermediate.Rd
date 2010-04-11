@@ -8,7 +8,7 @@ Intermediate points on a great circle
 }
 
 \description{
-Get intermediate points on a great circle inbetween the two points used to define the circle 
+Get intermediate points on a Great Circle inbetween the two points used to define the Great Circle 
 }
 
 \usage{

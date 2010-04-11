@@ -12,9 +12,11 @@ gcLat <- function(p1, p2, lon) {
 	p1 <- .pointsToMatrix(p1)
 	p2 <- .pointsToMatrix(p2)
 
-	if (nrow(p1) > 1 | nrow(p2) > 1) {
-		stop('provide single points')
-	}
+	p <- cbind(p1[,1], p1[,2], p2[,1], p2[,2], as.vector(lon))	
+	p1 <- p[,1:2,drop=FALSE]
+	p2 <- p[,3:4,drop=FALSE]
+	lon <- p[,5]
+	
 
 	if (antipodal(p1, p2)) {
 		stop('you provided antipodal points; these have an infinite number of great circles')

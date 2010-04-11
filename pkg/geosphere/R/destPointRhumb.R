@@ -16,13 +16,16 @@ destPointRhumb <- function(p, brng, d, r=6378137) {
 
 	brng <- as.vector(brng)
 	d <- as.vector(d)
+	r <- as.vector(r)
+	
 	p <- .pointsToMatrix(p)
-	p <- cbind(p, brng, d)
+	p <- cbind(p, brng, d, r)
 	
 	lon <- p[,1]
 	lat <- p[,2]
 	brng <- p[,3]
 	d <- p[,4]
+	r <- p[,5]
 	
 	toRad <- pi / 180 
 	toDeg <- 1 / toRad

@@ -16,7 +16,7 @@ distHorizon(h, r=6378137)
 
 \arguments{
   \item{h}{altitude, numeric >= 0. Should have the same unit as r}
-  \item{r}{radius of the earth; default = 6378137m} 
+  \item{r}{radius of the earth; default value is 6378137 m} 
 }
 
 \value{
