@@ -81,78 +81,80 @@ plot(dvsp/1000, (dvsp-dvse)/1000, col='blue', xlab='Vincenty Sphere Distance (km
 Great Circles can be defined with the function 'greatCircle', using two points on the Great Circle to define it, and an additional argument to indicate how many points on the great circle should be returned. gcIntermediate only returns points on the great circle that are on the track of shortest distance between the two points defining the great circle.
 
 <<fig=TRUE , echo=TRUE>>=
-LAX <- c(-118.40, 33.95)
-JFK <- c(-73.78333,  40.63333)
+LA <- c(-118.40, 33.95)
+NY <- c(-73.78,  40.63)
 data(wrld)
 plot(wrld, type='l')
-gc <- greatCircle(LAX, JFK)
+gc <- greatCircle(LA, NY)
 lines(gc, lwd=2, col='blue')
-gci <- gcIntermediate(LAX, JFK)
+gci <- gcIntermediate(LA, NY)
 lines(gci, lwd=4, col='green')
-points(rbind(LAX, JFK), col='red', pch=20, cex=2)
+points(rbind(LA, NY), col='red', pch=20, cex=2)
 @
 
 You can use the functions illustrated below to find out what the maximum latitude is that a great circle will reach; at what latitude it crosses a specified longitude; or at what longitude it crosses a specified latitude. From the map below it appears that Clairaut's formula, used in gcMaxLat is not very accurate. Through optimization, and using greatCircle, a more accurate value was found. The southern-most point is the antipode of the northern-most point.
 
 <<fig=TRUE , echo=TRUE>>=
-ml <- gcMaxLat(LAX, JFK)
-lat0 <- gcLat(LAX, JFK, lon=0)
-lon0 <- gcLon(LAX, JFK, lat=0)
+ml <- gcMaxLat(LA, NY)
+lat0 <- gcLat(LA, NY, lon=0)
+lon0 <- gcLon(LA, NY, lat=0)
 plot(wrld, type='l')
 lines(gc, lwd=2, col='blue')
 points(ml, col='red', pch=20, cex=2)
 points(cbind(0, lat0), pch=20, cex=2, col='yellow') 
 points(t(rbind(lon0, 0)), pch=20, cex=2, col='green' )
 
-f <- function(lon){gcLat(LAX, JFK, lon)}
+f <- function(lon){gcLat(LA, NY, lon)}
 opt <- optimize(f, interval=c(-180, 180), maximum=TRUE)
 points(opt$maximum, opt$objective, pch=20, cex=2, col='dark green' )
 anti <- antipode(c(opt$maximum, opt$objective)) 
 points(anti, pch=20, cex=2, col='dark blue' )
 @
 
-Points of intersection of two Great Circles:
+Points of intersection of two Great Circles. Our second great circle is the one that connects San Francisco with Amsterdam. The two points where the Great Circles cross are antipodes. Antipodes are connected with an infinite number of Great Circles.
 
 <<fig=TRUE , echo=TRUE>>=
-SFO <- c(-118, 36)
-AMS <- c(4.75, 52.31)
-gc2 <- greatCircle(AMS, SFO)
+SF <- c(-122.44, 37.74)
+AM <- c(4.75, 52.31)
+gc2 <- greatCircle(AM, SF)
 plot(wrld, type='l')
 lines(gc, lwd=2, col='blue')
 lines(gc2, lwd=2, col='green')
-int <- gcIntersect(LAX, JFK, SFO, AMS)
+int <- gcIntersect(LA, NY, SF, AM)
 points(rbind(int[,1:2], int[,3:4]), col='red', pch=20, cex=2)
+antipodal(int[,1:2], int[,3:4])
 @
+
 
 \section{Great Circle Tracks}
 
-Below we first compute the distance and direction from LAX to JFK. These are then used to compute the point from LAX at that distance in that (initial) direction. Direction changes continuously when traveling along a Great Circle. The final direction, when approaching JFK, is also given.  
+Below we first compute the distance and direction from Los Angeles (LA) to New York (NY). These are then used to compute the point from LA at that distance in that (initial) direction. Direction changes continuously when traveling along a Great Circle. The final direction, when approaching NY, is also given.  
 
 <<geo5>>=
-d <- distCosine(LAX, JFK)
+d <- distCosine(LA, NY)
 d
-b <- direction(LAX, JFK)
+b <- direction(LA, NY)
 b
-destPoint(LAX, b, d)
-JFK
-finalDirection(LAX, JFK)
+destPoint(LA, b, d)
+NY
+finalDirection(LA, NY)
 @
 
-What if we went off-course and were flying over OFF? The closest point on the planned route (p) can be computed with the alongTrackDistance and destPoint functions. The distance from 'p' to OFF can be computed with the crossTrackDistance function. The light green line represents the along-track distance, and the dark green line represents the cross-track distance.
+What if we went off-course and were flying over Minneapolis (MS)? The closest point on the planned route (p) can be computed with the alongTrackDistance and destPoint functions. The distance from 'p' to MS can be computed with the crossTrackDistance function. The light green line represents the along-track distance, and the dark green line represents the cross-track distance.
 
 <<fig=TRUE , echo=TRUE>>=
-OFF <- c(-101.18, 42.94)
-atd <- alongTrackDistance(LAX, JFK, OFF)
-p <- destPoint(LAX, b, atd)
+MS <- c(-93.26, 44.98)
+atd <- alongTrackDistance(LA, NY, MS)
+p <- destPoint(LA, b, atd)
 plot(wrld, type='l', xlim=c(-130,-60), ylim=c(22,52))
 lines(gci, col='blue', lwd=2)
-points(rbind(LAX, JFK), col='red', pch=20, cex=2)
-points(OFF[1], OFF[2], pch=20, col='blue', cex=2)
-lines(gcIntermediate(LAX, p), col='green', lwd=3)
-lines(gcIntermediate(OFF, p), col='dark green', lwd=3)
+points(rbind(LA, NY), col='red', pch=20, cex=2)
+points(MS[1], MS[2], pch=20, col='blue', cex=2)
+lines(gcIntermediate(LA, p), col='green', lwd=3)
+lines(gcIntermediate(MS, p), col='dark green', lwd=3)
 points(p, pch=20, col='red', cex=2)
-crossTrackDistance(LAX, JFK, OFF)
-distCosine(p, OFF)
+crossTrackDistance(LA, NY, MS)
+distCosine(p, MS)
 @
 
 
@@ -161,10 +163,14 @@ distCosine(p, OFF)
 
 Rhumb (from the Spanish word for course, 'rumbo') lines are straight lines on a Mercator projection map. They were used in navigation because it is easier to follow a constant compass bearing than to continually adjust direction as is needed to follow a great circle, even though rhumb lines are normally longer than great-circle (orthodrome) routes. Most rhumb lines will gradually spiral towards one of the poles. 
 
+- to be continued -
+
 <<fig=TRUE , echo=TRUE>>=
 data(merc)
 plot(merc, type='l')
 @
+
+
 
 
 \section{References}
