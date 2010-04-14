@@ -128,16 +128,16 @@ antipodal(int[,1:2], int[,3:4])
 
 \section{Great Circle Tracks}
 
-Below we first compute the distance and direction from Los Angeles (LA) to New York (NY). These are then used to compute the point from LA at that distance in that (initial) direction. Direction changes continuously when traveling along a Great Circle. The final direction, when approaching NY, is also given.  
+Below we first compute the distance and direction from Los Angeles (LA) to New York (NY). These are then used to compute the point from LA at that distance in that (initial) bearing (direction). Bearing changes continuously when traveling along a Great Circle. The final bearing, when approaching NY, is also given.  
 
 <<geo5>>=
 d <- distCosine(LA, NY)
 d
-b <- direction(LA, NY)
+b <- bearing(LA, NY)
 b
 destPoint(LA, b, d)
 NY
-finalDirection(LA, NY)
+finalBearing(LA, NY)
 @
 
 What if we went off-course and were flying over Minneapolis (MS)? The closest point on the planned route (p) can be computed with the alongTrackDistance and destPoint functions. The distance from 'p' to MS can be computed with the crossTrackDistance function. The light green line represents the along-track distance, and the dark green line represents the cross-track distance.

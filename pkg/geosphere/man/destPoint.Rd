@@ -5,7 +5,7 @@
 \alias{destPoint}
 
 \title{
-Destination given direction and distance, when following a Great Circle
+Destination given bearing (direction) and distance, when following a Great Circle
 }
 
 \description{
@@ -25,7 +25,7 @@ destPoint(p, b, d, r = 6378137)
 
 
 \note{
-Direction changes continuously when traveling along a Great Circle. Therefore, thbe final direction is not the same as the initial direction. You can compute the final direction with \code{\link[geosphere]{finalDirection}} (see examples, below)
+Direction changes continuously when traveling along a Great Circle. Therefore, thbe final direction is not the same as the initial direction. You can compute the final direction with \code{\link[geosphere]{finalBearing}} (see examples, below)
 }
 
 
@@ -49,7 +49,7 @@ p <- c(5,52)
 d <- destPoint(p,30,10000)
 
 #final direction, when arriving at endpoint: 
-finalDirection(d, p)
+finalBearing(d, p)
 }
 
 \keyword{ spatial  }

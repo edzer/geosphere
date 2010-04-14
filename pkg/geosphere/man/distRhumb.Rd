@@ -9,7 +9,7 @@ Distance along a rhumb line
 }
 
 \description{
-A rhumb line (loxodrome) is a path of constant direction (bearing), which crosses all meridians at the same angle.
+A rhumb line (loxodrome) is a path of constant bearing (direction), which crosses all meridians at the same angle.
 }
 
 \usage{
