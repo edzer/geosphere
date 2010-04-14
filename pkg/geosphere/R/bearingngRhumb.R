@@ -12,7 +12,7 @@
 # license GPL3
 
 
-directionRhumb <- function(p1, p2) {
+bearingRhumb <- function(p1, p2) {
 
 	toRad <- pi / 180 
 	p1 <- .pointsToMatrix(p1) * toRad

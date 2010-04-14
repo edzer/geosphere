@@ -1,7 +1,7 @@
-\name{finalDirection}
+\name{finalBearing}
 \Rdversion{1.1}
 
-\alias{finalDirection}
+\alias{finalBearing}
 
 \title{
 Final direction
@@ -12,7 +12,7 @@ Get the final direction (bearing) when arriving at \code{p2} after starting from
 }
 
 \usage{
-finalDirection(p1, p2)
+finalBearing(p1, p2)
 }
 
 \arguments{
@@ -32,12 +32,12 @@ Robert Hijmans
 
 
 \seealso{
-\code{ \link[geosphere]{direction}  }
+\code{ \link[geosphere]{bearing}  }
 }
 
 \examples{
-direction(c(10,10),c(20,20))
-finalDirection(c(10,10),c(20,20))
+bearing(c(10,10),c(20,20))
+finalBearing(c(10,10),c(20,20))
 }
 
 \references{

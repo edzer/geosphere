@@ -2,7 +2,7 @@
 
 \Rdversion{1.1}
 
-\alias{directionRhumb}
+\alias{bearingRhumb}
 
 \title{
 Rhumbline direction
@@ -13,7 +13,7 @@ Bearing (direction of travel; true course) along a rhumb line (loxodrome) betwee
 }
 
 \usage{
-directionRhumb(p1, p2)
+bearingRhumb(p1, p2)
 }
 
 \arguments{
@@ -42,11 +42,11 @@ The meridians and the equator are both rhumb lines and great circles. Rhumb line
 }
 
 \seealso{
-\code{ \link[geosphere]{direction},  \link[geosphere]{distRhumb}  }
+\code{ \link[geosphere]{bearing},  \link[geosphere]{distRhumb}  }
 }
 
 \examples{
-directionRhumb(c(10,10),c(20,20))
+bearingRhumb(c(10,10),c(20,20))
 }
 
 \keyword{ spatial }

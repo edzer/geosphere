@@ -4,7 +4,7 @@
 # Licence GPL v3
 
 
-direction <- function(p1, p2) {
+bearing <- function(p1, p2) {
 	toRad <- pi / 180 
 	p1 <- .pointsToMatrix(p1) * toRad
 	p2 <- .pointsToMatrix(p2) * toRad
