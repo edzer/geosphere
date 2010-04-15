@@ -37,7 +37,7 @@ Chris Veness and Robert Hijmans, based on formulae by Ed Williams
 }
 
 \note{
-Unlike most great circles, a rhumb line is a line of constant direction (bearing), i.e. tracks of constant true course.
+Unlike most great circles, a rhumb line is a line of constant bearing (direction), i.e. tracks of constant true course.
 The meridians and the equator are both rhumb lines and great circles. Rhumb lines approaching a pole become a tightly wound spiral.
 }
 

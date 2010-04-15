@@ -52,7 +52,9 @@ rhumbIntersect <- function(p1, brng1, p2, brng2) {
 	dst13 <- atan2(sin(dst12)*sin(ang1)*sin(ang2),cos(ang2)+cos(ang1)*cos(ang3))
 	lat3[i] <- asin(sin(lat1[i])*cos(dst13[i])+cos(lat1[i])*sin(dst13[i])*cos(crs13[i]))
 	dlon <- atan2(sin(crs13)*sin(dst13)*cos(lat1),cos(dst13)-sin(lat1)*sin(lat3))
-	lon3[i] <- (lon1[i]-dlon[i]+pi %% 2*pi)-pi
+	lon3[i] <- lon1[i]-dlon[i]
+	
+	lon3 <- (lon3+pi)%%(2*pi) - pi  #// normalise to -180...+180
 	
 	ll <- cbind(lon3, lat3) / toRad
 	colnames(ll) = c('lon', 'lat')
