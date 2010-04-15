@@ -38,10 +38,10 @@
 		stop('points should be vectors of length 2, matrices with 2 columns, or a SpatialPoints* object')
 	}
 
-	if (min(p[,1]) < -720) { stop('longitude < -720') }
-	if (max(p[,1]) > 720) {  stop('longitude > 720')  }
-	if (min(p[,2]) < -90) {  stop('latitude < -90')  }
-	if (max(p[,2]) > 90) {  stop('latitude > 90')  }
+	if (min(p[,1], na.rm=TRUE) < -720) { stop('longitude < -720') }
+	if (max(p[,1], na.rm=TRUE) > 720) {  stop('longitude > 720')  }
+	if (min(p[,2], na.rm=TRUE) < -90) {  stop('latitude < -90')  }
+	if (max(p[,2], na.rm=TRUE) > 90) {  stop('latitude > 90')  }
 	
 	if (! is.numeric(p) ) { p[] <- as.numeric(p) }
 	return(p)

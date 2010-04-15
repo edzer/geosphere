@@ -18,7 +18,7 @@ destPointRhumb <- function(p, b, d, r=6378137) {
 	d <- as.vector(d)
 	r <- as.vector(r)
 	p <- .pointsToMatrix(p)
-	p <- cbind(p, b, d, r)
+	p <- cbind(p[,1], p[,2], b, d, r)
 	
 	r <- p[,5]
 	d <- p[,4] / r  #angular distance in radians
