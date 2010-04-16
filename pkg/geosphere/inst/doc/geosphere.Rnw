@@ -166,8 +166,29 @@ Rhumb (from the Spanish word for course, 'rumbo') lines are straight lines on a 
 - to be continued -
 
 <<fig=TRUE , echo=TRUE>>=
+b = bearingRhumb(SF, AM)
+b
+d = distRhumb(SF, AM)
+d
+p = destPointRhumb(SF, b, d=1:round(d/100) * 100)
+plot(wrld)
+lines(p, col='blue')
+@
+
+
+
+<<fig=TRUE , echo=TRUE>>=
+VA <- c(-121.73, 46.78)
+SY <- c(148.04, -34.48)
+b1 <- bearingRhumb(LA, AM)
+b2 <- bearingRhumb(VA, SY)
+int <- rhumbIntersect(LA, b1, VA, b2)
+r1 <- mercator(rbind(LA, AM))
+r2 <- mercator(rbind(VA, SY))
 data(merc)
 plot(merc, type='l')
+lines(r1, col='red')
+lines(r2, col='blue')
 @
 
 
