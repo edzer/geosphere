@@ -8,7 +8,7 @@
 	n = length(p)
 	res = vector(length=n)
 	for (i in 1:n) {
-		parts = length(p[[i]])
+		parts = length( p[[i]]@Polygons )
 		area = 0
 		for (j in 1:parts) {
 			crd = p[[i]]@Polygons[[j]]@coords
