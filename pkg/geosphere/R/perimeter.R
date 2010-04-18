@@ -9,7 +9,7 @@
 	n = length(p)
 	res = vector(length=n)
 	for (i in 1:n) {
-		parts = length(p[[i]])
+		parts = length( p[[i]]@Polygons )
 		perim = 0
 		for (j in 1:parts) {
 			if (p[[i]]@Polygons[[j]]@hole) {
@@ -29,7 +29,7 @@
 	n = length(p)
 	res = vector(length=n)
 	for (i in 1:n) {
-		parts = length(p[[i]])
+		parts = length( p[[i]]@Lines )
 		lng = 0
 		for (j in 1:parts) {
 			crd = p[[i]]@Lines[[j]]@coords
