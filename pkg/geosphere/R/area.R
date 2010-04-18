@@ -3,8 +3,33 @@
 
 # R implementation by Robert Hijmans
 
+.areaFromSpatial <- function(xy, r) {
+	p = xy@polygons
+	n = length(p)
+	res = vector(length=n)
+	for (i in 1:n) {
+		parts = length(p[[i]])
+		area = 0
+		for (j in 1:parts) {
+			crd = p[[i]]@Polygons[[j]]@coords
+			ar = areaPolygon(crd, r)
+			if (p[[i]]@Polygons[[j]]@hole) {
+				area = area - ar
+			} else {
+				area = area + ar
+			}
+		}
+		res[i] = area
+	}
+	return(res)
+}
+
 
 areaPolygon <- function(xy, r=6378137) {
+
+	if (inherits(xy, 'SpatialPolygons')) {
+		return(.areaFromSpatial(xy, r))
+	}
 
 	haversine <- function(x) (1-cos(x))/2
 
