@@ -2,11 +2,12 @@
 
 \alias{centroid}
 \alias{centroid,matrix-method}
+\alias{centroid,SpatialPolygons-method}
   
 \title{centroid of polygons}
 
 \description{
-Compute the centroid of longitude/latitude polygons. The centroid is computed by first projecting the polygon to the (conformal) Mercator coordinate reference system, computing the centroid, and then inversely projecting to geographic coordinates.
+Compute the centroid of longitude/latitude polygons. Unlike other functions in this package, there is no spherical trigonomery involved in the implementation of this function. Instead, yhe function projects the polygon to the (conformal) Mercator coordinate reference system, computes the centroid, and then inversely projects it to longitude and latitude. This approach fails for polygons that include one of the poles. The function should work for polygons that cross the -180/180 meridian (date line), as long as they do not also cross the zero (Greenwich) meridian.
 }
 
 \usage{
@@ -18,6 +19,9 @@ centroid(x, ...)
 \item{...}{Additional arguments. None implemented}
 }
 
+\note{
+For multi-part polygons, the centroid of the largest part is returned.
+}	
 
 \value{
 A matrix (longitude/latitude)
