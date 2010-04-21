@@ -1,4 +1,4 @@
-\name{span}
+\name{centroid}
 
 \alias{centroid}
 \alias{centroid,matrix-method}
