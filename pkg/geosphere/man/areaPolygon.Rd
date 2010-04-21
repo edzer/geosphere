@@ -12,11 +12,11 @@ Compute the area of a polygon on a sphere
 }
 
 \usage{
-areaPolygon(xy, r=6378137)
+areaPolygon(p, r=6378137)
 }
 
 \arguments{
-  \item{xy}{Longitude/latitude of the points forming a polygon; Must be a matrix of 2 columns (first one is longitude, second is latitude) or a SpatialPolygons* object}
+ \item{p}{Longitude/latitude of the points forming a polygon; Must be a matrix of 2 columns (first one is longitude, second is latitude) or a SpatialPolygons* object}
  \item{r}{radius of the earth; default = 6378137 m}  
 }
 

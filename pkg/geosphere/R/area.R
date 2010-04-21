@@ -25,17 +25,17 @@
 }
 
 
-areaPolygon <- function(xy, r=6378137) {
+areaPolygon <- function(p, r=6378137) {
 
-	if (inherits(xy, 'SpatialPolygons')) {
-		return(.areaFromSpatial(xy, r))
+	if (inherits(p, 'SpatialPolygons')) {
+		return(.areaFromSpatial(p, r))
 	}
 
 	haversine <- function(x) (1-cos(x))/2
 
 	toRad <- pi / 180 
 	r = r[1]
-	xy = xy * toRad
+	xy = p * toRad
 	lon=xy[,1]
 	lat=xy[,2]
     
