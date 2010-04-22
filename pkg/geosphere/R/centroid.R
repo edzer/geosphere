@@ -19,27 +19,42 @@ if (!isGeneric("centroid")) {
 		standardGeneric("centroid"))
 }	
 
+
+setMethod("centroid", signature(x='data.frame'), 
+function(x) {
+	centroid(as.matrix(x))
+})
+
+
 setMethod("centroid", signature(x='matrix'), 
 function(x) {
 	x <- .pointsToMatrix(x)
-	dif1 = max(x[,1]) - min(x[,1])
-	x2 = x
-	x2[x2[,1] < 0, 1] <- x2[x2[,1] < 0, 1] + 360
-	dif2 = max(x2[,1]) - min(x2[,1]) + 0.1
-	rotate = FALSE
-	if (dif2 < dif1) {
-		rotate = TRUE
-		x2[,1] = x2[,1] - 180
-		x = x2
+	.isPolygon(x)
+
+	
+	dif1 <- max(x[,1]) - min(x[,1])
+	rotated <- FALSE
+	
+	if (dif1 > 180) {
+		x1 <- x * pi / 180
+		x2 <- x1
+		shift <- max(x1[,1]) 
+		x2[,1] <- (x2[,1]-shift+pi)%%(2*pi) - pi 
+		dif1 <- max(x1[,1]) - min(x1[,1])
+		dif2 <- max(x2[,1]) - min(x2[,1]) + 0.001
+		if (dif2 < dif1) {
+			rotated <- TRUE
+			x <- x2 * 180 / pi
+		}
 	}
 	x <- mercator(x, r=1)
 	cenM <- .basiccentroid(x)
 	cenG <- mercator(cenM, r=1, inverse=TRUE)
-	if (rotate) {
-		cenG[,1] = cenG[,1] + 180
-		cenG[cenG[,1] > 180,1] = cenG[cenG[,1] > 180,1] - 360
+	if (rotated) {
+		cenG[,1] <- cenG[,1] + shift * 180 / pi
+		cenG[,1] <- .normalizeLon(cenG[,1])
 	}
-	rownames(cenG) = NULL
+	rownames(cenG) <- NULL
 	return(cenG)
 }
 )

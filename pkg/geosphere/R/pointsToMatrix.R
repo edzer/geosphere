@@ -4,6 +4,27 @@
 # license GPL3
 
 
+.normalizeLon <- function(x) {
+	x <- x * pi / 180
+	x <- (x+pi)%%(2*pi) - pi 
+	return(x * 180 / pi )
+}
+
+
+.isPolygon <- function(x) {
+	if (nrow(x) < 4) {
+		stop('this is not a polygon (insufficent number of vertices)')
+	}
+	if (! isTRUE(all.equal(x[1,], x[nrow(x),]))) {
+		stop('this is not a valid (closed) polygon (first vertix must be equal to the last vertex)')
+	}
+	if (! all(!(is.na(x))) ) {
+		stop('polygon has NA values)')
+	}
+	return(TRUE)
+}
+
+
 .pointsToMatrix <- function(p, checkLonLat=TRUE) {
 	if (inherits(p, 'SpatialPoints')) {
 		if (isTRUE (is.projected(p)) ) {

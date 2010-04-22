@@ -3,82 +3,77 @@
 
 # R implementation by Robert Hijmans
 
-.areaFromSpatial <- function(xy, r) {
+if (!isGeneric("area")) {
+	setGeneric("area", function(x, ...)
+		standardGeneric("area"))
+}	
+
+setMethod('area', signature(x='data.frame'), 
+	function(x, r=6378137, ...) {
+		area(as.matrix(x), r=r, ...)
+} )
+
+
+setMethod('area', signature(x='SpatialPolygons'), 
+function(x, r=6378137, ...) {
 	p = xy@polygons
 	n = length(p)
 	res = vector(length=n)
 	for (i in 1:n) {
 		parts = length( p[[i]]@Polygons )
-		area = 0
+		sumarea = 0
 		for (j in 1:parts) {
 			crd = p[[i]]@Polygons[[j]]@coords
-			ar = areaPolygon(crd, r)
+			ar = area(crd, r)
 			if (p[[i]]@Polygons[[j]]@hole) {
-				area = area - ar
+				sumarea = sumarea - ar
 			} else {
-				area = area + ar
+				sumarea = sumarea + ar
 			}
 		}
-		res[i] = area
+		res[i] = sumarea
 	}
 	return(res)
-}
+} )
 
 
-areaPolygon <- function(p, r=6378137) {
 
-	if (inherits(p, 'SpatialPolygons')) {
-		return(.areaFromSpatial(p, r))
-	}
+setMethod('area', signature(x='matrix'), 
+function(x, r=6378137, ...) {
+	haversine <- function(y) { (1-cos(y))/2 }
 
-	haversine <- function(x) (1-cos(x))/2
+	x <- .pointsToMatrix(x) * pi / 180 
+	.isPolygon(x)
+	
+	r <- r[1]
+    halfPi <- pi / 2
+	j <- 1:nrow(xy)
+	k <- c(2:nrow(xy), 1)
+	lam1 <- x[j,1]
+	lam2 <- x[k,1]
+	i <- ! lam1 == lam2
+	j <- j[i]
+	k <- k[i]
+	lam1 <- x[j,1]
+	lam2 <- x[k,1]
+	beta1 <- x[j,2]
+	beta2 <- x[k,2]
+	cosB1 <- cos( beta1 )
+	cosB2 <- cos( beta2 )
 
-	toRad <- pi / 180 
-	r = r[1]
-	xy = p * toRad
-	lon=xy[,1]
-	lat=xy[,2]
-    
-	lam1 = 0
-	lam2 = 0
-	beta1 =0
-	beta2 = 0
-	cosB1 =0
-	cosB2 = 0
-	hav = 0
-    sum = 0
+	hav <- haversine( beta2 - beta1 ) + cosB1 * cosB2 * haversine( lam2 - lam1 )
+	a <- 2 * asin( sqrt( hav ) )
+	b <- halfPi - beta2
+	c <- halfPi - beta1
+	s <- 0.5 * ( a + b + c )
+	t <- tan( s / 2 ) * tan( ( s - a ) / 2 ) *  tan( ( s - b ) / 2 ) * tan( ( s - c ) / 2 )
+	
+	excess <- abs( 4 * atan( sqrt( abs( t ) ) ) )
+	excess[lam2 < lam1] <- -excess[lam2 < lam1]
+	
+	arsum <- abs( sum( excess ) ) * r * r
+    return(arsum )
+} )
 
-    for (j in 1:length(lat)) {
-		if( j == 1 ) {
-			lam1 = lon[j];
-			beta1 = lat[j];
-			lam2 = lon[j + 1];
-			beta2 = lat[j + 1];
-			cosB1 = cos( beta1 );
-			cosB2 = cos( beta2 );
-        } else {
-			k = j %% length(lat) + 1;
-			lam1 = lam2;
-			beta1 = beta2;
-			lam2 = lon[k];
-            beta2 = lat[k];
-			cosB1 = cosB2;
-			cosB2 = cos( beta2 );
-		}
-		if ( lam1 != lam2 ) {
-			hav = haversine( beta2 - beta1 ) + cosB1 * cosB2 * haversine( lam2 - lam1 );
-			a = 2 * asin( sqrt( hav ) );
-			b = pi / 2 - beta2;
-			c = pi / 2 - beta1;
-			s = 0.5 * ( a + b + c );
-			t = tan( s / 2 ) * tan( ( s - a ) / 2 ) *  tan( ( s - b ) / 2 ) * tan( ( s - c ) / 2 );
-			excess = abs( 4 * atan( sqrt( abs( t ) ) ) );
-			if( lam2 < lam1 ) {
-				excess = -excess;
-			}
-			sum = sum + excess;
-		}
-    }
-    return(abs( sum ) * r * r);
-}
+
 
