@@ -22,11 +22,11 @@ area(x, ...)
 
 \arguments{
  \item{x}{Longitude/latitude of the points forming a polygon; Must be a matrix of 2 columns (first one is longitude, second is latitude) or a SpatialPolygons* object}
- \item{...}{Additional arguemnts. One implemented \code{r=6378137}, the radius of the earth; default = 6378137 m}  
+ \item{...}{Additional arguments. One implemented \code{r=6378137}, the radius of the earth; default = 6378137 m}  
 }
 
 \value{
-Area. Unit is the square of the unit of r.
+Area. Unit is the square of the unit of r (default is square meter).
 }
 
 \author{
@@ -34,7 +34,12 @@ Robert J. Hijmans. Based on code by Jason_Steven (\url{http://forum.worldwindcen
 }
 
 \references{
-Bevis, M. and G. Cambareri, 1987. Computing the Area of a Spherical Polygon of Arbitrary Shape. Mathematical Geology 19: 335-346
+Bevis, M. and G. Cambareri, 1987. Computing the area of a spherical polygon of arbitrary shape. Mathematical Geology 19: 335-346
+}
+
+
+\seealso{
+\code{ \link[geosphere]{centroid}, \link[geosphere]{perimeter}  }
 }
 
 
