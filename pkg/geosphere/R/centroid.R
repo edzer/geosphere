@@ -52,7 +52,7 @@ function(x) {
 	cenG <- mercator(cenM, r=1, inverse=TRUE)
 	if (rotated) {
 		cenG[,1] <- cenG[,1] + shift * 180 / pi
-		cenG[,1] <- .normalizeLon(cenG[,1])
+		cenG[,1] <- .normalizeLonDeg(cenG[,1])
 	}
 	rownames(cenG) <- NULL
 	return(cenG)

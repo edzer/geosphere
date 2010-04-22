@@ -1,28 +1,8 @@
-# Author: Robert J. Hijmans and Jacob van Etten
+# Author: Robert J. Hijmans & Jacob van Etten
 # October 2009
-# version 0.1
+# version 1
 # license GPL3
 
-
-.normalizeLon <- function(x) {
-	x <- x * pi / 180
-	x <- (x+pi)%%(2*pi) - pi 
-	return(x * 180 / pi )
-}
-
-
-.isPolygon <- function(x) {
-	if (nrow(x) < 4) {
-		stop('this is not a polygon (insufficent number of vertices)')
-	}
-	if (! isTRUE(all.equal(x[1,], x[nrow(x),]))) {
-		stop('this is not a valid (closed) polygon (first vertix must be equal to the last vertex)')
-	}
-	if (! all(!(is.na(x))) ) {
-		stop('polygon has NA values)')
-	}
-	return(TRUE)
-}
 
 
 .pointsToMatrix <- function(p, checkLonLat=TRUE) {
@@ -49,10 +29,10 @@
 		cn <- colnames(p)
 		if (length(cn) == 2) {
 			if (toupper(cn[1]) == 'Y' | toupper(cn[2]) == 'X')  {
-				stop('Suspect column names (x and y reversed?)')
+				warning('Suspect column names (x and y reversed?)')
 			}
 			if (toupper(substr(cn[1],1,3) == 'LAT' | toupper(substr(cn[2],1,3)) == 'LON'))  {
-				stop('Suspect column names (longitude and latitude reversed?)')
+				warning('Suspect column names (longitude and latitude reversed?)')
 			}
 		}		
 	} else {

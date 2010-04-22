@@ -2,6 +2,10 @@
 # http://forum.worldwindcentral.com/showthread.php?p=69704
 
 # R implementation by Robert Hijmans
+# April 2010
+# version 1
+# license GPL3
+
 
 if (!isGeneric("area")) {
 	setGeneric("area", function(x, ...)
@@ -24,7 +28,7 @@ function(x, r=6378137, ...) {
 		sumarea = 0
 		for (j in 1:parts) {
 			crd = p[[i]]@Polygons[[j]]@coords
-			ar = area(crd, r)
+			ar = area(crd, r=r, ...)
 			if (p[[i]]@Polygons[[j]]@hole) {
 				sumarea = sumarea - ar
 			} else {
@@ -40,13 +44,14 @@ function(x, r=6378137, ...) {
 
 setMethod('area', signature(x='matrix'), 
 function(x, r=6378137, ...) {
+
 	haversine <- function(y) { (1-cos(y))/2 }
 
 	x <- .pointsToMatrix(x) * pi / 180 
 	.isPolygon(x)
 	
 	r <- r[1]
-    halfPi <- pi / 2
+
 	j <- 1:nrow(xy)
 	k <- c(2:nrow(xy), 1)
 	lam1 <- x[j,1]
@@ -63,8 +68,8 @@ function(x, r=6378137, ...) {
 
 	hav <- haversine( beta2 - beta1 ) + cosB1 * cosB2 * haversine( lam2 - lam1 )
 	a <- 2 * asin( sqrt( hav ) )
-	b <- halfPi - beta2
-	c <- halfPi - beta1
+	b <- pi / 2 - beta2
+	c <- pi / 2 - beta1
 	s <- 0.5 * ( a + b + c )
 	t <- tan( s / 2 ) * tan( ( s - a ) / 2 ) *  tan( ( s - b ) / 2 ) * tan( ( s - c ) / 2 )
 	
