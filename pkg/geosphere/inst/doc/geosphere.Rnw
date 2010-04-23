@@ -111,7 +111,7 @@ anti <- antipode(c(opt$maximum, opt$objective))
 points(anti, pch=20, cex=2, col='dark blue' )
 @
 
-Points of intersection of two Great Circles. Our second great circle is the one that connects San Francisco with Amsterdam. The two points where the Great Circles cross are antipodes. Antipodes are connected with an infinite number of Great Circles.
+Points of intersection of two great circles can be computed in two ways. We use a second great circle that connects San Francisco with Amsterdam. We first compute where they cross by defining the great circles using two points on it (gcIntersect). After that, we compute the same points using a start point and initial bearing (gcIntersectBearing). The two points where the great circles cross are antipodes (at the opposite side of the earth). Antipodes are connected with an infinite number of great circles.
 
 <<fig=TRUE , echo=TRUE>>=
 SF <- c(-122.44, 37.74)
@@ -121,12 +121,42 @@ plot(wrld, type='l')
 lines(gc, lwd=2, col='blue')
 lines(gc2, lwd=2, col='green')
 int <- gcIntersect(LA, NY, SF, AM)
-points(rbind(int[,1:2], int[,3:4]), col='red', pch=20, cex=2)
+int
 antipodal(int[,1:2], int[,3:4])
+points(rbind(int[,1:2], int[,3:4]), col='red', pch=20, cex=2)
+bearing1 <- bearing(LA, NY)
+bearing2 <- bearing(SF, AM)
+bearing1
+bearing2
+gcIntersectBearing(LA, bearing1, SF, bearing2)
 @
 
 
-\section{Great Circle Tracks}
+Here is triangulation example. We have three locations (NY, LA, MS) and three directions (281, 60, 195) towards a target. Because we are on a sphere, there are two (antipodal) results. We only show one here (by only using int[,1:2]). We compute the centroid from the polygon defined with the three points. But to accurately draw a spherical polygon, we can use makePoly. This function inserts intermediate points along the paths between the vertices proviced (default is one point every 10 km).
+<<fig=TRUE , echo=TRUE>>=
+MS <- c(-93.26, 44.98)
+gc1 <- greatCircleBearing(NY, 281)
+gc2 <- greatCircleBearing(MS, 195)
+gc3 <- greatCircleBearing(LA, 55)
+plot(wrld, type='l', xlim=c(-125, -70), ylim=c(20, 60))
+lines(gc1, col='green')
+lines(gc2, col='blue')
+lines(gc3, col='red')
+
+int <- gcIntersectBearing(rbind(NY, NY, MS), c(281, 281, 195), rbind(MS, LA, LA), c(195, 55, 55))
+int
+distm(rbind(int[,1:2], int[,3:4]))
+int <- int[,1:2]
+points(int)
+poly <- rbind(int, int[1,])
+centr <- centroid(poly)
+poly2 <- makePoly(int)
+polygon(poly2, col='yellow')
+points(centr, pch='*', col='dark red', cex=2)
+@
+
+
+\section{Great circle tracks}
 
 Below we first compute the distance and direction from Los Angeles (LA) to New York (NY). These are then used to compute the point from LA at that distance in that (initial) bearing (direction). Bearing changes continuously when traveling along a Great Circle. The final bearing, when approaching NY, is also given.  
 
@@ -143,7 +173,6 @@ finalBearing(LA, NY)
 What if we went off-course and were flying over Minneapolis (MS)? The closest point on the planned route (p) can be computed with the alongTrackDistance and destPoint functions. The distance from 'p' to MS can be computed with the crossTrackDistance function. The light green line represents the along-track distance, and the dark green line represents the cross-track distance.
 
 <<fig=TRUE , echo=TRUE>>=
-MS <- c(-93.26, 44.98)
 atd <- alongTrackDistance(LA, NY, MS)
 p <- destPoint(LA, b, atd)
 plot(wrld, type='l', xlim=c(-130,-60), ylim=c(22,52))
