@@ -1,31 +1,37 @@
 \name{rhumbIntersect}
 \Rdversion{1.1}
 
-\alias{rhumbIntersect}
+\alias{gcIntersectBearing}
 
 \title{
 Intersecting radials
 }
 
 \description{
-Intersection between two rhumb lines defined by their point of origin and true bearing
+Get the two points where two great cricles cross each other. Great circles are defined by a points and an initial bearing.
 }
 
 \usage{
-rhumbIntersect(p1, brng1, p2, brng2) 
+gcIntersectBearing(p1, brng1, p2, brng2) 
 }
 
 \arguments{
   \item{p1}{longitude/latitude of point(s). Can be a vector of two numbers, a matrix of 2 columns (first one is longitude, second is latitude) or a SpatialPoints* object}
-  \item{brng1}{True bearing from p1}
+  \item{brng1}{Bearing from p1}
   \item{p2}{As above. Should have same length as p1, or a single point (or vice versa when p1 is a single point}
-  \item{brng2}{True bearing from p2}
+  \item{brng2}{Bearing from p2}
 }
 
 
 \value{
-a point
+a matrix with four columns (two points)
 }
+
+
+\seealso{
+\code{ \link[geosphere]{gcIntersect}  }
+}
+
 
 \references{
 \url{http://williams.best.vwh.net/avform.htm#Rhumb}
@@ -39,7 +45,7 @@ Robert Hijmans based on code by Ed Williams
 
 
 \examples{
-rhumbIntersect(c(10,0), 10, c(-10,0), 10)
+gcIntersectBearing(c(10,0), 10, c(-10,0), 10)
 }
 
 \keyword{ spatial }

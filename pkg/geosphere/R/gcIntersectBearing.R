@@ -6,7 +6,7 @@
 # based on formulae by Ed Willians at
 # http://williams.best.vwh.net/avform.htm#Intersection
 
-rhumbIntersect <- function(p1, brng1, p2, brng2) {
+gcIntersectBearing <- function(p1, brng1, p2, brng2) {
 #crs13 true bearing from point 1 and the crs23 true bearing from point 2:
 	toRad <- pi / 180 
 	p1 <- .pointsToMatrix(p1) * toRad
