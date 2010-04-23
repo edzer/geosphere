@@ -1,13 +1,15 @@
-# author Robert Hijmans
+# author Chris Veness, Robert Hijmans
+# based on formulae by Ed Willians at
+# http://williams.best.vwh.net/avform.htm#Intersection
+
 # October 2009
 # version 0.1
 # license GPL3
 
-# based on formulae by Ed Willians at
-# http://williams.best.vwh.net/avform.htm#Intersection
 
 gcIntersectBearing <- function(p1, brng1, p2, brng2) {
 #crs13 true bearing from point 1 and the crs23 true bearing from point 2:
+ 
 	toRad <- pi / 180 
 	p1 <- .pointsToMatrix(p1) * toRad
 	p2 <- .pointsToMatrix(p2) * toRad
@@ -20,44 +22,55 @@ gcIntersectBearing <- function(p1, brng1, p2, brng2) {
 	lat1[lat1==90|lat1==-90] <- NA
 	lat2[lat2==90|lat2==-90] <- NA
 
-	crs13 <- p[,5] * toRad
-	crs23 <- p[,6] * toRad
+	brng13 <- p[,5] * toRad
+	brng23 <- p[,6] * toRad
+	
+	dLat = lat2-lat1
+	dLon = lon2-lon1
+  
+	dist12 = 2*asin( sqrt( sin(dLat/2)*sin(dLat/2) +  cos(lat1)*cos(lat2)*sin(dLon/2)*sin(dLon/2) ) )
 
-	dst12 <- 2*asin(sqrt((sin((lat1-lat2)/2))^2+ cos(lat1)*cos(lat2)*sin((lon1-lon2)/2)^2))
-	g <- sin(lon2-lon1) < 0 
-	crs12 <- vector(length=g)
-	crs21 <- crs12
+	lat3 <- lon3 <- vector(length=length(nrow(lon1)))
 	
-	crs12[g] <- acos((sin(lat2[g])-sin(lat1[g])*cos(dst12[g]))/(sin(dst12[g])*cos(lat1[g])))
-	crs21[g] <- 2*pi - acos((sin(lat1[g])-sin(lat2[g])*cos(dst12[g]))/(sin(dst12[g])*cos(lat2[g])))
-	crs12[!g] <- 2*pi-acos((sin(lat2[!g])-sin(lat1[!g])*cos(dst12[!g]))/(sin(dst12[!g])*cos(lat1[!g])))
-	crs21[!g] <- acos((sin(lat1[!g])-sin(lat2[!g])*cos(dst12[!g]))/(sin(dst12[!g])*cos(lat2[!g])))
-	
-	ang1 <- (crs13-crs12+pi %% 2*pi) - pi
-	ang2 <- (crs21-crs23+pi %% 2*pi) - pi
+	i = rep(TRUE, length(dist12))
+	i[dist12 == 0] <- FALSE
 
-	lon3 <- vector(length=length(crs12))
-	lat3 <- lon3
-	g <- sin(ang1)==0 & sin(ang2)==0 
-	h <- (sin(ang1) * sin(ang2)) < 0
-	i <- !g & !h
+	brngA = acos( ( sin(lat2) - sin(lat1)*cos(dist12) ) / ( sin(dist12)*cos(lat1) ) )
+	if (is.na(brngA)) brngA = 0  # protect against rounding
+	brngB = acos( ( sin(lat1) - sin(lat2)*cos(dist12) ) / ( sin(dist12)*cos(lat2) ) )
 
-	lon3[g] <- Inf
-	lat3[g] <- Inf
-	lon3[h] <- NA
-	lat3[h] <- NA
-	ang1 <- abs(ang1)
-	ang2 <- abs(ang2)
-	ang3 <- acos(-cos(ang1)*cos(ang2)+sin(ang1)*sin(ang2)*cos(dst12)) 
-	dst13 <- atan2(sin(dst12)*sin(ang1)*sin(ang2),cos(ang2)+cos(ang1)*cos(ang3))
-	lat3[i] <- asin(sin(lat1[i])*cos(dst13[i])+cos(lat1[i])*sin(dst13[i])*cos(crs13[i]))
-	dlon <- atan2(sin(crs13)*sin(dst13)*cos(lat1),cos(dst13)-sin(lat1)*sin(lat3))
-	lon3[i] <- lon1[i]-dlon[i]
+    g <- (sin(lon2-lon1) > 0)
+	brng12 <- vector(length=g)
+	brng21 <- brng12
 	
-	lon3 <- (lon3+pi)%%(2*pi) - pi  #// normalise to -180...+180
-	
-	ll <- cbind(lon3, lat3) / toRad
-	colnames(ll) = c('lon', 'lat')
-	return(ll)
+	brng12[g] = brngA[g]
+	brng21[g] = 2*pi - brngB[g]
+	brng12[!g] = 2*pi - brngA[!g]
+	brng21[!g] = brngB[!g]
+  
+	alpha1 = (brng13 - brng12 + pi) %% (2*pi) - pi  #// angle 2-1-3
+	alpha2 = (brng21 - brng23 + pi) %% (2*pi) - pi  #// angle 1-2-3
+
+	g <- sin(alpha1) == 0 & sin(alpha2) == 0 
+	h <- (sin(alpha1) * sin(alpha2)) < 0
+	i <- !(g | h) & i
+
+	lon3[!i] <- lat3[!i] <- NA
+	alpha1 <- abs(alpha1)
+	alpha2 <- abs(alpha2)
+  
+	alpha3 = acos( -cos(alpha1)*cos(alpha2) +  sin(alpha1)*sin(alpha2)*cos(dist12) )
+	dist13 = atan2( sin(dist12)*sin(alpha1)*sin(alpha2), cos(alpha2)+cos(alpha1)*cos(alpha3) )
+	lat3[i] = asin( sin(lat1[i])*cos(dist13[i]) +  cos(lat1[i]) * sin(dist13[i]) * cos(brng13[i]) )
+	dLon13 = atan2( sin(brng13)*sin(dist13)*cos(lat1), cos(dist13)-sin(lat1)*sin(lat3) )
+	lon3[i] = lon1[i]+dLon13[i]
+	lon3 = (lon3+pi) %% (2*pi) - pi # // normalise to -180..180º
+
+	int <- cbind(lon3, lat3) / toRad
+	colnames(int) = c('lon', 'lat')
+	int <- cbind(int, antipode(int))
+	rownames(int) = NULL
+
+	return(int)
 }
-
+  

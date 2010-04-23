@@ -1,4 +1,4 @@
-\name{rhumbIntersect}
+\name{gcIntersectBearing}
 \Rdversion{1.1}
 
 \alias{gcIntersectBearing}
@@ -34,13 +34,12 @@ a matrix with four columns (two points)
 
 
 \references{
-\url{http://williams.best.vwh.net/avform.htm#Rhumb}
-
-\url{http://en.wikipedia.org/wiki/Rhumb_line}
+\url{http://williams.best.vwh.net/avform.htm#Intersection}
+\url{http://www.movable-type.co.uk/scripts/latlong.html}
 }
 
 \author{
-Robert Hijmans based on code by Ed Williams
+Chris Veness and Robert Hijmans based on code by Ed Williams
 }
 
 
