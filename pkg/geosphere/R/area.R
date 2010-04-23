@@ -7,18 +7,18 @@
 # license GPL3
 
 
-if (!isGeneric("area")) {
-	setGeneric("area", function(x, ...)
-		standardGeneric("area"))
+if (!isGeneric("areaPolygon")) {
+	setGeneric("areaPolygon", function(x, ...)
+		standardGeneric("areaPolygon"))
 }	
 
-setMethod('area', signature(x='data.frame'), 
+setMethod('areaPolygon', signature(x='data.frame'), 
 	function(x, r=6378137, ...) {
-		area(as.matrix(x), r=r, ...)
+		areaPolygon(as.matrix(x), r=r, ...)
 } )
 
 
-setMethod('area', signature(x='SpatialPolygons'), 
+setMethod('areaPolygon', signature(x='SpatialPolygons'), 
 function(x, r=6378137, ...) {
 	p = xy@polygons
 	n = length(p)
@@ -28,7 +28,7 @@ function(x, r=6378137, ...) {
 		sumarea = 0
 		for (j in 1:parts) {
 			crd = p[[i]]@Polygons[[j]]@coords
-			ar = area(crd, r=r, ...)
+			ar = areaPolygon(crd, r=r, ...)
 			if (p[[i]]@Polygons[[j]]@hole) {
 				sumarea = sumarea - ar
 			} else {
@@ -42,7 +42,7 @@ function(x, r=6378137, ...) {
 
 
 
-setMethod('area', signature(x='matrix'), 
+setMethod('areaPolygon', signature(x='matrix'), 
 function(x, r=6378137, ...) {
 
 	haversine <- function(y) { (1-cos(y))/2 }

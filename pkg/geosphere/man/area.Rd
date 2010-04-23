@@ -1,15 +1,15 @@
-\name{area}
+\name{areaPolygon}
 \Rdversion{1.1}
 
  
-\alias{area}
-\alias{area,matrix-method}
-\alias{area,data.frame-method}
-\alias{area,SpatialPolygons-method}
+\alias{areaPolygon}
+\alias{areaPolygon,matrix-method}
+\alias{areaPolygon,data.frame-method}
+\alias{areaPolygon,SpatialPolygons-method}
 
 
 \title{
-Compute the area of a polygon
+Compute the areaPolygon of a polygon
 }
 
 \description{
@@ -17,7 +17,7 @@ Compute the area of a polygon on a sphere. Polygons should not self-intersect.
 }
 
 \usage{
-area(x, ...)
+areaPolygon(x, ...)
 }
 
 \arguments{
@@ -26,7 +26,7 @@ area(x, ...)
 }
 
 \value{
-Area. Unit is the square of the unit of r (default is square meter).
+area. Unit is the square of the unit of r (default is square meter).
 }
 
 \author{
@@ -45,7 +45,7 @@ Bevis, M. and G. Cambareri, 1987. Computing the area of a spherical polygon of a
 
 \examples{
 xy <- rbind(c(-180,-20), c(-140,55), c(10, 0), c(-140,-60), c(-180,-20))
-area(xy)
+areaPolygon(xy)
 }
 
 \keyword{ spatial }
