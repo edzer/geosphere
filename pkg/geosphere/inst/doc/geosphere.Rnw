@@ -92,6 +92,8 @@ lines(gci, lwd=4, col='green')
 points(rbind(LA, NY), col='red', pch=20, cex=2)
 @
 
+\section{Maximum latitude on a great circle}
+
 You can use the functions illustrated below to find out what the maximum latitude is that a great circle will reach; at what latitude it crosses a specified longitude; or at what longitude it crosses a specified latitude. From the map below it appears that Clairaut's formula, used in gcMaxLat is not very accurate. Through optimization, and using greatCircle, a more accurate value was found. The southern-most point is the antipode of the northern-most point.
 
 <<fig=TRUE , echo=TRUE>>=
@@ -110,6 +112,8 @@ points(opt$maximum, opt$objective, pch=20, cex=2, col='dark green' )
 anti <- antipode(c(opt$maximum, opt$objective)) 
 points(anti, pch=20, cex=2, col='dark blue' )
 @
+
+\section{Great circle intersections}
 
 Points of intersection of two great circles can be computed in two ways. We use a second great circle that connects San Francisco with Amsterdam. We first compute where they cross by defining the great circles using two points on it (gcIntersect). After that, we compute the same points using a start point and initial bearing (gcIntersectBearing). The two points where the great circles cross are antipodes (at the opposite side of the earth). Antipodes are connected with an infinite number of great circles.
 
@@ -131,8 +135,10 @@ bearing2
 gcIntersectBearing(LA, bearing1, SF, bearing2)
 @
 
+\section{Triangulation}
 
 Here is triangulation example. We have three locations (NY, LA, MS) and three directions (281, 60, 195) towards a target. Because we are on a sphere, there are two (antipodal) results. We only show one here (by only using int[,1:2]). We compute the centroid from the polygon defined with the three points. But to accurately draw a spherical polygon, we can use makePoly. This function inserts intermediate points along the paths between the vertices proviced (default is one point every 10 km).
+
 <<fig=TRUE , echo=TRUE>>=
 MS <- c(-93.26, 44.98)
 gc1 <- greatCircleBearing(NY, 281)
@@ -200,10 +206,10 @@ b
 d = distRhumb(SF, AM)
 d
 p = destPointRhumb(SF, b, d=1:round(d/100) * 100)
-plot(wrld)
+data(merc)
+plot(merc, type='l')
 lines(p, col='blue')
 @
-
 
 
 <<fig=TRUE , echo=TRUE>>=
@@ -213,7 +219,6 @@ b1 <- bearingRhumb(LA, AM)
 b2 <- bearingRhumb(VA, SY)
 r1 <- mercator(rbind(LA, AM))
 r2 <- mercator(rbind(VA, SY))
-data(merc)
 plot(merc, type='l')
 lines(r1, col='red')
 lines(r2, col='blue')
