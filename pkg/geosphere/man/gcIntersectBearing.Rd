@@ -4,11 +4,11 @@
 \alias{gcIntersectBearing}
 
 \title{
-Intersecting radials
+Intersections of two great circles
 }
 
 \description{
-Get the two points where two great cricles cross each other. Great circles are defined by a points and an initial bearing.
+Get the two points where two great cricles cross each other. In this function, great circles are defined by a points and an initial bearing. In function \code{ \link[geosphere]{gcIntersect}} they are defined by two sets of points.
 }
 
 \usage{
