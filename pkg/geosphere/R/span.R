@@ -15,11 +15,27 @@ setMethod("span", signature(x='matrix'),
 function(x, nbands='fixed', n=100, res=0.1, fun, r=6378137, ...) {
 	if (!require(sp)) {stop('you need to install the "sp" package to use this function')}
 
+	dif1 <- max(x[,1]) - min(x[,1])
+	rotated <- FALSE
+	if (dif1 > 180) {
+		x2 <- x
+		x2[,1] <- x2[,1] %% 360 - 180
+		dif1 <- max(x[,1]) - min(x[,1])
+		dif2 <- max(x2[,1]) - min(x2[,1]) 
+		if (dif2 < dif1) {
+			rotated <- TRUE
+			x <- x2 
+		}
+	}
+	
 	x <- SpatialPolygons(list(Polygons(list(Polygon(x)), 1)))
 	if (missing(fun)) {
 		x <- span(x, nbands=nbands, n=n, res=res, r=r, ...) 
 	} else {	
 		x <- span(x, nbands=nbands, n=n, res=res, fun=fun, r=r, ...) 
+	}
+	if (rotated & missing(fun)) {
+		x$longitude = x$longitude + 180
 	}
 	return(x)
 } )

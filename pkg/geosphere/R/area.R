@@ -47,11 +47,25 @@ function(x, r=6378137, ...) {
 
 	haversine <- function(y) { (1-cos(y))/2 }
 
-	x <- .pointsToMatrix(x) * pi / 180 
+	x <- .pointsToMatrix(x) 
 	.isPolygon(x)
+
+
+	# rotate?
+	dif1 <- max(x[,1]) - min(x[,1])
+	if (dif1 > 180) {
+		x2 <- x
+		x2[,1] <- x2[,1] %% 360 - 180
+		dif1 <- max(x[,1]) - min(x[,1])
+		dif2 <- max(x2[,1]) - min(x2[,1]) 
+		if (dif2 < dif1) {
+			x <- x2 
+		}
+	}
+
+	x <- x * pi / 180 
 	
 	r <- r[1]
-
 	j <- 1:nrow(x)
 	k <- c(2:nrow(x), 1)
 	lam1 <- x[j,1]
