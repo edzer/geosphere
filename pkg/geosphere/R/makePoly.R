@@ -12,13 +12,15 @@ makePoly <- function(p, interval=10000, r=6378137, sp=FALSE) {
 	if (! isTRUE(all.equal(p[1,], p[nrow(p),]))) {
 		p <- rbind(p, p[1,])
 	}
-	res <-NULL
+	res <- p[1,]
 	for (i in 1:(nrow(p)-1)) {
 		d <- distCosine(p[i,], p[i+1,], r=r)
-		n <- ceiling(d / interval)
-		pts <- gcIntermediate(p[i,],p[i+1,], n)
-		pts <- rbind(p[i,], pts, p[i+1,])
-		res <- rbind(res, pts)
+		n <- floor(d / interval)
+		if (n > 0) {
+			pts <- gcIntermediate(p[i,],p[i+1,], n)
+			pts <- rbind(p[i,], pts, p[i+1,])
+			res <- rbind(res, pts, p[i+1,])
+		}
 	}
 	if (sp) {
 		if (! require(sp) ) {

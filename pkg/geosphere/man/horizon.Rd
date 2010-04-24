@@ -5,9 +5,7 @@
 \title{distance to horizon}
 
 \description{
-Compute distance to the horizon at a given altitude. 
-
-The earth is assumed to be smooth, i.e. mountains and other obstacles are ignored. 
+Partly empirical function to compute the distance to the horizon from a given altitude.  The earth is assumed to be smooth, i.e. mountains and other obstacles are ignored. 
 }
 
 \usage{

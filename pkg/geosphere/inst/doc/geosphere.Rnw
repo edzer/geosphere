@@ -196,34 +196,35 @@ distCosine(p, MS)
 
 \section{Rhumb lines}
 
-Rhumb (from the Spanish word for course, 'rumbo') lines are straight lines on a Mercator projection map. They were used in navigation because it is easier to follow a constant compass bearing than to continually adjust direction as is needed to follow a great circle, even though rhumb lines are normally longer than great-circle (orthodrome) routes. Most rhumb lines will gradually spiral towards one of the poles. 
-
-- to be continued -
+Rhumb (from the Spanish word for course, 'rumbo') lines are straight lines on a Mercator projection map (and at most latitudes pretty straight on an equirectangular projection (=unprojected lon/lat) map). They were used in navigation because it is easier to follow a constant compass bearing than to continually adjust direction as is needed to follow a great circle, even though rhumb lines are normally longer than great-circle (orthodrome) routes. Most rhumb lines will gradually spiral towards one of the poles. 
 
 <<fig=TRUE , echo=TRUE>>=
-b = bearingRhumb(SF, AM)
+NP <- c(0, 85)
+bearing(SF, NP)
+b <- bearingRhumb(SF, NP)
 b
-d = distRhumb(SF, AM)
-d
-p = destPointRhumb(SF, b, d=1:round(d/100) * 100)
+dc <- distCosine(SF, NP)
+dr <- distRhumb(SF, NP)
+dc / dr
+
+pr <- destPointRhumb(SF, b, d=round(dr/100) * 1:100)
+pc <- rbind(SF, gcIntermediate(SF, NP), NP)
+data(wrld)
+plot(wrld, type='l', xlim=c(-140,10), ylim=c(0,90))
+lines(pr, col='blue')
+lines(pc, col='red')
+x11()
 data(merc)
-plot(merc, type='l')
-lines(p, col='blue')
+plot(merc, type='l', xlim=c(-15584729, 1113195), ylim=c(2500000, 22500000))
+lines(mercator(pr), col='blue')
+lines(mercator(pc), col='red')
+  
 @
 
 
-<<fig=TRUE , echo=TRUE>>=
-VA <- c(-121.73, 46.78)
-SY <- c(148.04, -34.48)
-b1 <- bearingRhumb(LA, AM)
-b2 <- bearingRhumb(VA, SY)
-r1 <- mercator(rbind(LA, AM))
-r2 <- mercator(rbind(VA, SY))
-plot(merc, type='l')
-lines(r1, col='red')
-lines(r2, col='blue')
-@
+\Characterizing polygons
 
+The package has functions to compute the area, perimeter, centroid, and 'span' of a spherical polygon.
 
 
 
