@@ -209,24 +209,34 @@ dc / dr
 
 pr <- destPointRhumb(SF, b, d=round(dr/100) * 1:100)
 pc <- rbind(SF, gcIntermediate(SF, NP), NP)
+par(mfrow=c(1,2))
 data(wrld)
 plot(wrld, type='l', xlim=c(-140,10), ylim=c(0,90))
 lines(pr, col='blue')
 lines(pc, col='red')
-x11()
 data(merc)
 plot(merc, type='l', xlim=c(-15584729, 1113195), ylim=c(2500000, 22500000))
 lines(mercator(pr), col='blue')
 lines(mercator(pc), col='red')
-  
 @
 
 
-\Characterizing polygons
+\section{Characterizing polygons}
 
 The package has functions to compute the area, perimeter, centroid, and 'span' of a spherical polygon.
 
-
+<<fig=TRUE , echo=TRUE>>=
+pol <- rbind(c(-180,-20), c(-160,5), c(-60, 0), c(-160,-60), c(-180,-20))
+areaPolygon(pol)
+perimeter(pol)
+centroid(pol)
+span(pol, fun=max)
+nicepoly = makePoly(pol)
+plot(pol)
+lines(pol, col='red', lwd=2)
+lines(nicepoly, col='blue', lwd=2)
+points(centroid(pol), pch='*', cex=3)
+@
 
 \section{References}
 \begin{hangparas}{3em}{1}
