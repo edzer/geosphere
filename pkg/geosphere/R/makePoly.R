@@ -28,13 +28,13 @@ makePoly <- function(p, interval=10000, r=6378137, sp=FALSE) {
 		for (i in 1:n) {
 			parts = length(x[[i]]@Polygons )
 			sumarea = 0
-			parts = list()
+			partlist = list()
 			for (j in 1:parts) {
 				crd = x[[i]]@Polygons[[j]]@coords
 				crd = .makeSinglePoly(crd, interval=interval, r=r, sp=FALSE)
-				parts[[j]] = list(Polygon(crd))
+				partlist[[j]] = Polygon(crd)
 			}
-			polys[[i]] = Polygons(parts, i)
+			polys[[i]] = Polygons(partlist, i)
 		}
 		polys <- SpatialPolygons(polys)
 		if (inherits(p, 'SpatialPolygonsDataFrame')) {
@@ -60,4 +60,3 @@ makePoly <- function(p, interval=10000, r=6378137, sp=FALSE) {
 	}
 } 
 
- 
