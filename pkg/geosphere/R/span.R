@@ -17,11 +17,11 @@ function(x, nbands='fixed', n=100, res=0.1, fun, r=6378137, ...) {
 
 	x <- SpatialPolygons(list(Polygons(list(Polygon(x)), 1)))
 	if (missing(fun)) {
-		p <- span(x, nbands=nbands, n=n, res=res, r=r, ...) 
+		x <- span(x, nbands=nbands, n=n, res=res, r=r, ...) 
 	} else {	
-		p <- span(x, nbands=nbands, n=n, res=res, fun=fun, r=r, ...) 
+		x <- span(x, nbands=nbands, n=n, res=res, fun=fun, r=r, ...) 
 	}
-	return(p)
+	return(x)
 } )
 
 
@@ -45,6 +45,8 @@ function(x, nbands='fixed', n=100, res=0.1, fun, r=6378137, ...) {
 	}
 
 	npol <- length(x@polygons)
+	lonspan <- list()
+	latspan <- list()
 	lon <- list()
 	lat <- list()
 	
@@ -57,22 +59,25 @@ function(x, nbands='fixed', n=100, res=0.1, fun, r=6378137, ...) {
 			res(rs) <- res
 		}
 				
-		yfr <- yFromRow(rs, 1:nrow(rs))
-		xd <- distHaversine(cbind(0,yfr), cbind(xres(rs),yfr), r=r)
-		yd <- distHaversine(cbind(0,0), cbind(0,yres(rs)), r=r)
+		latitude <- yFromRow(rs, 1:nrow(rs))
+		longitude <- xFromCol(rs, 1:ncol(rs))
+		xd <- distHaversine(cbind(0,latitude), cbind(xres(rs),latitude), r=r)
+		yd <- distHaversine(cbind(0,0),   cbind(0,yres(rs)), r=r)
 		
 		rs <- polygonsToRaster(pp, rs, silent=TRUE)
 		rs <- getValues(rs, format='matrix')
-		lat[[i]] <- as.vector(apply(rs, 1, sum, na.rm=TRUE) * yd)
-		lon[[i]] <- as.vector(apply(rs, 2, sum, na.rm=TRUE) * xd)
+		latspan[[i]] <- as.vector(apply(rs, 1, sum, na.rm=TRUE) * yd)
+		lonspan[[i]] <- as.vector(apply(rs, 2, sum, na.rm=TRUE) * xd)
+		lat[[i]] <- latitude
+		lon[[i]] <- longitude
 	}
 
 	if (! missing(fun)) {
-		lon = sapply(lon, fun)
-		lat = sapply(lat, fun)
+		lon = sapply(lonspan, fun)
+		lat = sapply(latspan, fun)
 		return(cbind(lon, lat))
 	} else {
-		return(c(lon=lon, lat=lat))
+		return(c(lonspan=lonspan, latspan=latspan, lon=lon, lat=lat))
 	}
 }
 )

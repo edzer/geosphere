@@ -32,7 +32,6 @@ The following additional arguments can be passed, to replace default values for 
 }
 
 
-
 \value{
 A list, or a matrix if a function \code{fun} is specified. Values are in the units of \code{r} (default is meter)
 }
@@ -41,8 +40,14 @@ A list, or a matrix if a function \code{fun} is specified. Values are in the uni
 
 \examples{
 pol <- rbind(c(-180,-20), c(-160,5), c(-60, 0), c(-160,-60), c(-180,-20))
+plot(pol)
+lines(pol)
 # lon and lat span in m
 span(pol, fun=max) 
+x <- span(pol) 
+plot(x$lon, x$lonspan)
+max(x$latspan)
+mean(x$latspan)
 }
 
 \keyword{methods}

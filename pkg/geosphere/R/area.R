@@ -20,16 +20,16 @@ setMethod('areaPolygon', signature(x='data.frame'),
 
 setMethod('areaPolygon', signature(x='SpatialPolygons'), 
 function(x, r=6378137, ...) {
-	p = xy@polygons
-	n = length(p)
+	x = x@polygons
+	n = length(x)
 	res = vector(length=n)
 	for (i in 1:n) {
-		parts = length( p[[i]]@Polygons )
+		parts = length(x[[i]]@Polygons )
 		sumarea = 0
 		for (j in 1:parts) {
-			crd = p[[i]]@Polygons[[j]]@coords
+			crd = x[[i]]@Polygons[[j]]@coords
 			ar = areaPolygon(crd, r=r, ...)
-			if (p[[i]]@Polygons[[j]]@hole) {
+			if (x[[i]]@Polygons[[j]]@hole) {
 				sumarea = sumarea - ar
 			} else {
 				sumarea = sumarea + ar
@@ -52,8 +52,8 @@ function(x, r=6378137, ...) {
 	
 	r <- r[1]
 
-	j <- 1:nrow(xy)
-	k <- c(2:nrow(xy), 1)
+	j <- 1:nrow(x)
+	k <- c(2:nrow(x), 1)
 	lam1 <- x[j,1]
 	lam2 <- x[k,1]
 	i <- ! lam1 == lam2
