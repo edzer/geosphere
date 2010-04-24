@@ -77,7 +77,7 @@ function(x, nbands='fixed', n=100, res=0.1, fun, r=6378137, ...) {
 		lat = sapply(latspan, fun)
 		return(cbind(lon, lat))
 	} else {
-		return(c(lonspan=lonspan, latspan=latspan, lon=lon, lat=lat))
+		return(c(lonspan=lonspan, latspan=latspan, longitude=lon, latitude=lat))
 	}
 }
 )

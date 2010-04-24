@@ -44,8 +44,8 @@ Bevis, M. and G. Cambareri, 1987. Computing the area of a spherical polygon of a
 
 
 \examples{
-xy <- rbind(c(-180,-20), c(-140,55), c(10, 0), c(-140,-60), c(-180,-20))
-areaPolygon(xy)
+p <- rbind(c(-180,-20), c(-140,55), c(10, 0), c(-140,-60), c(-180,-20))
+areaPolygon(p)
 }
 
 \keyword{ spatial }
