@@ -223,7 +223,7 @@ lines(mercator(pc), col='red')
 
 \section{Characterizing polygons}
 
-The package has functions to compute the area, perimeter, centroid, and 'span' of a spherical polygon.
+The package has functions to compute the area, perimeter, centroid, and 'span' of a spherical polygon. One approach to compute these measures is to project the polygons first. Here we directly compute them based on sperhical coordiantes (longitude / latitude), except for centroid, which is computed by projecting the data to the Mercator projection (and inversely projecting the result). 
 
 <<fig=TRUE , echo=TRUE>>=
 pol <- rbind(c(-180,-20), c(-160,5), c(-60, 0), c(-160,-60), c(-180,-20))
@@ -243,7 +243,7 @@ points(centroid(pol), pch='*', cex=3)
 
 \noindent Vincenty, T. 1975. Direct and inverse solutions of geodesics on the ellipsoid with application of nested equations. Survey Review 23(176): 88-93. Available here: \url{http://www.movable-type.co.uk/scripts/latlong-vincenty.html} 
 
-\end{hangparas}
 
+\end{hangparas}
 
 \end{document}
