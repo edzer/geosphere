@@ -55,6 +55,10 @@ function(x, r=6378137, ...) {
 
 setMethod("perimeter", signature(x='matrix'), 
 function(x, r=6378137, ...) {
+	x <- x[,1:2]
+	if (all.equal(x[1,], x[nrow(x),])) {
+		x <- x[-nrow(x), ]
+	}
 	y = rbind(x[-1,], x[1,])
 	d = distCosine(x, y, r=r)
 	return(sum(d))
