@@ -45,9 +45,9 @@ lines(pol)
 # lon and lat span in m
 span(pol, fun=max) 
 x <- span(pol) 
-plot(x$lon, x$lonspan)
 max(x$latspan)
 mean(x$latspan)
+plot(x$longitude, x$lonspan)
 }
 
 \keyword{methods}
