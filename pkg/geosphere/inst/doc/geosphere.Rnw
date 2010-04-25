@@ -262,8 +262,27 @@ lines(nicepoly, col='blue', lwd=2)
 points(centroid(pol), pch='*', cex=3)
 @
 
+
+\section{Daylength}
+
+You can compute daylenght according to the formula by (Forsythe et al, 1995). For any day of the year (an integer between 1 and 365; or a 'Date' object.
+
+<<fig=TRUE , echo=TRUE>>=
+as.Date(80, origin='2009-12-31')
+as.Date(172, origin='2009-12-31')
+plot(0:90, daylength(lat=0:90, doy=1), ylim=c(0,24), type='l', xlab='Latitude', 
+        ylab='Daylength', main='Daylength by latitude and day of year', lwd=2)
+lines(0:90, daylength(lat=0:90, doy=80), col='green', lwd=2)
+lines(0:90, daylength(lat=0:90, doy=172), col='blue', lwd=2)
+legend(0,24, c('1','80','172'), lty=1, lwd=2, col=c('black', 'green', 'blue'), 
+        title='Day of year')
+@
+
+
 \section{References}
 \begin{hangparas}{3em}{1}
+
+\noindent Forsythe, W.C., E.J. Rykiel Jr., R.S. Stahl, H. Wu and R.M. Schoolfield, 1995. A model comparison for daylength as a function of latitude and day of the year. Ecological Modeling 80:87-95.
 
 \noindent Sinnott, R.W, 1984. Virtues of the Haversine. Sky and Telescope 68(2): 159 
 
