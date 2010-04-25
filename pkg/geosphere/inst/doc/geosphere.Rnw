@@ -77,7 +77,7 @@ plot(dvsp/1000, (dvsp-dvse)/1000, col='blue', xlab='Vincenty Sphere Distance (km
 
 \section{Points on great circles}
 
-Points on a great circle are returned by the function 'greatCircle', using two points on the great circle to define it, and an additional argument to indicate how many points should be returned. You can also use greatCircleBearing, and provide starting points and bearing as arguments. gcIntermediate only returns points on the great circle that are on the track of shortest distance between the two points defining the great circle.
+Points on a great circle are returned by the function 'greatCircle', using two points on the great circle to define it, and an additional argument to indicate how many points should be returned. You can also use greatCircleBearing, and provide starting points and bearing as arguments. gcIntermediate only returns points on the great circle that are on the track of shortest distance between the two points defining the great circle; and midPoint computes the point half-way between the two points.
 
 <<fig=TRUE , echo=TRUE>>=
 LA <- c(-118.40, 33.95)
@@ -89,6 +89,8 @@ lines(gc, lwd=2, col='blue')
 gci <- gcIntermediate(LA, NY)
 lines(gci, lwd=4, col='green')
 points(rbind(LA, NY), col='red', pch=20, cex=2)
+mp <- midPoint(LA, NY)
+points(mp, pch='*', cex=3, col='orange')
 greatCircleBearing(LA, brng=270, n=10)
 @
 
