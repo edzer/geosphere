@@ -12,6 +12,8 @@ distCosine <- function(p1, p2, r=6378137) {
 	p2 <- .pointsToMatrix(p2) * toRad
 	
 	p = cbind(p1[,1], p1[,2], p2[,1], p2[,2], as.vector(r))
+	
+	z <- isTRUE(p1[,1] == p2[,1] &  p1[,2] == p2[,2]) # distance is zero
 
 	lon1 <- p[,1]
 	lat1 <- p[,2]
@@ -20,7 +22,9 @@ distCosine <- function(p1, p2, r=6378137) {
 	r <- p[,5]
 
 	cosd <- sin(lat1) * sin(lat2) + cos(lat1) * cos(lat2) * cos(lon1-lon2)
-	dist <- r * acos(cosd) 
+	dist <- matrix(nrow=nrow(p), ncol=1)
+	dist[z] <- 0
+	dist[!z] <- r[!z] * acos(cosd[!z]) 
 
 	if (is.vector(dist)) { dist <- matrix(dist) }
 	colnames(dist) <- 'distance'
