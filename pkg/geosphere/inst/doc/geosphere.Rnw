@@ -102,9 +102,11 @@ Function destPoint returns the location of point given a point of origin, and a 
 destPoint(LA, b=65, d=100000)
 circle=destPoint(c(0,80), b=1:365, d=1000000)
 circle2=destPoint(c(0,80), b=1:365, d=500000)
-plot(circle)
+circle3=destPoint(c(0,80), b=1:365, d=100000)
+plot(circle, type='l')
 polygon(circle, col='blue', border='black', lwd=4)
 polygon(circle2, col='red', lwd=4, border='orange')
+polygon(circle3, col='white', lwd=4, border='black')
 @
 
 
@@ -166,7 +168,8 @@ lines(gc1, col='green')
 lines(gc2, col='blue')
 lines(gc3, col='red')
 
-int <- gcIntersectBearing(rbind(NY, NY, MS), c(281, 281, 195), rbind(MS, LA, LA), c(195, 55, 55))
+int <- gcIntersectBearing(rbind(NY, NY, MS), 
+            c(281, 281, 195), rbind(MS, LA, LA), c(195, 55, 55))
 int
 distm(rbind(int[,1:2], int[,3:4]))
 int <- int[,1:2]
@@ -232,11 +235,11 @@ pr <- destPointRhumb(SF, b, d=round(dr/100) * 1:100)
 pc <- rbind(SF, gcIntermediate(SF, NP), NP)
 par(mfrow=c(1,2))
 data(wrld)
-plot(wrld, type='l', xlim=c(-140,10), ylim=c(0,90))
+plot(wrld, type='l', xlim=c(-140,10), ylim=c(15,90), main='Equirectangular')
 lines(pr, col='blue')
 lines(pc, col='red')
 data(merc)
-plot(merc, type='l', xlim=c(-15584729, 1113195), ylim=c(2500000, 22500000))
+plot(merc, type='l', xlim=c(-15584729, 1113195), ylim=c(2500000, 22500000), main='Mercator')
 lines(mercator(pr), col='blue')
 lines(mercator(pc), col='red')
 @
