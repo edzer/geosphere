@@ -1,6 +1,5 @@
 # Author: Robert J. Hijmans
 # Date :  June 2008
-# Version 0.8 (taken from Raster package)
 # Licence GPL v3
 
 # distance based on law of cosines
@@ -8,6 +7,7 @@
 
 distCosine <- function(p1, p2, r=6378137) {
 	toRad <- pi / 180 
+	
 	p1 <- .pointsToMatrix(p1) * toRad
 	p2 <- .pointsToMatrix(p2) * toRad
 	
@@ -26,10 +26,7 @@ distCosine <- function(p1, p2, r=6378137) {
 	dist[z] <- 0
 	dist[!z] <- r[!z] * acos(cosd[!z]) 
 
-	if (is.vector(dist)) { dist <- matrix(dist) }
 	colnames(dist) <- 'distance'
-	
 	return(dist)
 }
-
 
