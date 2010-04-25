@@ -18,7 +18,7 @@
 		stop('this is not a polygon (insufficent number of vertices)')
 	}
 	if (! isTRUE(all.equal(x[1,], x[nrow(x),]))) {
-		stop('this is not a valid (closed) polygon (first vertix must be equal to the last vertex)')
+		stop('this is not a valid (closed) polygon (first vertex must be equal to the last vertex)')
 	}
 	if (! all(!(is.na(x))) ) {
 		stop('polygon has NA values)')
