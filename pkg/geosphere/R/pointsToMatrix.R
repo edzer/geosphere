@@ -5,7 +5,7 @@
 
 
 
-.pointsToMatrix <- function(p, checkLonLat=TRUE) {
+.pointsToMatrix <- function(p, checkLonLat=TRUE, poly=FALSE) {
 	if (inherits(p, 'SpatialPoints')) {
 		if (isTRUE (is.projected(p)) ) {
 			stop('data points should be in degrees (longitude / latitude), and not be projected')  
@@ -47,6 +47,14 @@
 	}
 	
 	if (! is.numeric(p) ) { p[] <- as.numeric(p) }
+	
+	if (poly) {
+		if (! isTRUE(all.equal(p[1,], p[nrow(p),]))) {
+			p <- rbind(p, p[1,])
+		} 
+		.isPolygon(p)
+	}
+	
 	return(p)
 }
 

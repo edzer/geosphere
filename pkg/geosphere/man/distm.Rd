@@ -12,12 +12,12 @@ Distance matrix of a set of points
 }
 
 \usage{
-distm(x, fun=distCosine)
+distm(x, fun=distHaversine)
 }
 
 \arguments{
   \item{x}{longitude/latitude of point(s). Can be a vector of two numbers, a matrix of 2 columns (first one is longitude, second is latitude) or a SpatialPoints* object}
-  \item{fun}{A function to compute distances}  
+  \item{fun}{A function to compute distances (e.g., distCosine, distHaversine, distVincenty*)}  
 }
 
 
