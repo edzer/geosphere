@@ -8,7 +8,7 @@
 .makeSinglePoly <- function(p, interval=10000, r=6378137, sp=FALSE) {
 	res <- p[1,]
 	for (i in 1:(nrow(p)-1)) {
-		d <- distCosine(p[i,], p[i+1,], r=r)
+		d <- distHaversine(p[i,], p[i+1,], r=r)
 		n <- floor(d / interval)
 		if (n > 0) {
 			pts <- gcIntermediate(p[i,],p[i+1,], n)
