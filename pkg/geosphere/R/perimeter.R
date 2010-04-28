@@ -49,8 +49,8 @@ function(x, r=6378137, ...) {
 
 setMethod("perimeter", signature(x='data.frame'), 
 function(x, r=6378137, ...) {
-	perimter(as.matrix(x), r, ...)
-}  )
+	perimeter(as.matrix(x), r, ...)
+} )
 
 
 setMethod("perimeter", signature(x='matrix'), 
