@@ -47,9 +47,7 @@ function(x, r=6378137, ...) {
 
 	haversine <- function(y) { (1-cos(y))/2 }
 
-	x <- .pointsToMatrix(x) 
-	.isPolygon(x)
-
+	x <- .pointsToMatrix(x, poly=TRUE) 
 
 	# rotate?
 	dif1 <- max(x[,1]) - min(x[,1])

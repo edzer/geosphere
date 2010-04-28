@@ -4,7 +4,7 @@
 # License GPL3
 
 
-distm <- function(x, fun=distCosine) {
+distm <- function(x, fun=distHaversine) {
 	x <- .pointsToMatrix(x)
 	n = nrow(x)
 	dm = matrix(ncol=n, nrow=n)

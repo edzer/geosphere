@@ -14,13 +14,6 @@
 
 .isPolygon <- function(x, fix=FALSE) {
 	x <- na.omit(x)
-	if (! isTRUE(all.equal(x[1,], x[nrow(x),]))) {
-		if (fix) {
-			x <- rbind(x, x[1,])
-		} else {
-			stop('this is not a valid (closed) polygon. The first vertex is not equal to the last vertex')	
-		}
-	}
 	if (nrow(x) < 4) {
 		stop('this is not a polygon (insufficent number of vertices)')
 	}
@@ -33,6 +26,9 @@
 	if (! all(!(is.na(x))) ) {
 		stop('polygon has NA values)')
 	}
-	return(TRUE)
+	if (! isTRUE(all.equal(x[1,], x[nrow(x),]))) {
+		stop('this is not a valid (closed) polygon. The first vertex is not equal to the last vertex')	
+	}
+	return(x)
 }
 
