@@ -239,7 +239,8 @@ plot(wrld, type='l', xlim=c(-140,10), ylim=c(15,90), main='Equirectangular')
 lines(pr, col='blue')
 lines(pc, col='red')
 data(merc)
-plot(merc, type='l', xlim=c(-15584729, 1113195), ylim=c(2500000, 22500000), main='Mercator')
+plot(merc, type='l', xlim=c(-15584729, 1113195), 
+                     ylim=c(2500000, 22500000), main='Mercator')
 lines(mercator(pr), col='blue')
 lines(mercator(pc), col='red')
 @
@@ -262,7 +263,8 @@ lines(pol, col='red', lwd=2)
 lines(nicepoly, col='blue', lwd=2)
 points(centroid(pol), pch='*', cex=3, col='dark green')
 text(centroid(pol)-c(0,2.5), 'centroid')
-legend(-140, -48, c('planar','spherical'), lty=1, lwd=2, col=c('red', 'blue'), title='polygon type')
+legend(-140, -48, c('planar','spherical'), lty=1, lwd=2, 
+                 col=c('red', 'blue'), title='polygon type')
 @
 
 
