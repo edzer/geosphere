@@ -17,3 +17,19 @@ distm <- function(x, fun=distHaversine) {
 	return(dm)
 }
 
+
+distm2 <- function(x, y, fun=distHaversine) {
+	x <- .pointsToMatrix(x)
+	y <- .pointsToMatrix(y)
+	n = nrow(x)
+	m = nrow(y)
+	
+	dm = matrix(ncol=m, nrow=n)
+	for (i in 1:n) {
+		for (j in 1:m) {
+			dm[i,j] = fun(x[i,], y[j,])
+		}
+	}
+	return(dm)
+}
+
