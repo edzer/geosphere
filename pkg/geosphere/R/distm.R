@@ -26,9 +26,7 @@ distm2 <- function(x, y, fun=distHaversine) {
 	
 	dm = matrix(ncol=m, nrow=n)
 	for (i in 1:n) {
-		for (j in 1:m) {
-			dm[i,j] = fun(x[i,], y[j,])
-		}
+		dm[i,] = fun(x[i,], y)
 	}
 	return(dm)
 }
