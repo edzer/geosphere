@@ -36,7 +36,7 @@ makePoly <- function(p, interval=10000, r=6378137, sp=FALSE) {
 			partlist = list()
 			for (j in 1:parts) {
 				crd = x[[i]]@Polygons[[j]]@coords
-				crd = .makeSinglePoly(crd, interval=interval, r=r, sp=FALSE)
+				crd = .makeSinglePoly(crd, interval=interval, r=r)
 				partlist[[j]] = Polygon(crd)
 			}
 			polys[[i]] = Polygons(partlist, i)
