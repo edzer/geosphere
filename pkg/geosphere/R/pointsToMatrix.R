@@ -7,8 +7,13 @@
 
 .pointsToMatrix <- function(p, checkLonLat=TRUE, poly=FALSE) {
 	if (inherits(p, 'SpatialPoints')) {
-		if (isTRUE (is.projected(p)) ) {
-			stop('Points are projected. They should be in degrees (longitude/latitude)')  
+		test <- !is.projected(p)
+		if (! isTRUE (test) ) {
+			if (is.na(test)) {
+				warning('Coordinate reference system of SpatialPoints object is not set. Assuming it is degrees (longitude/latitude)!')  			
+			} else {
+				stop('Points are projected. They should be in degrees (longitude/latitude)')  
+			}
 			# or rather transform them ....?
 		}
 		p <- coordinates(p)
