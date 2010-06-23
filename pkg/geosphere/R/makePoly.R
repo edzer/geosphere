@@ -24,10 +24,17 @@
  
 makePoly <- function(p, interval=10000, r=6378137, sp=FALSE) {
 	if (inherits(p, 'SpatialPolygons')) {
-		if (isTRUE (is.projected(p)) ) {
-			stop('polygon coordinates are projected. They should be in degrees (longitude/latitude)')  
+		test <- !is.projected(p)
+		if (! isTRUE (test) ) {
+			if (is.na(test)) {
+				warning('Coordinate reference system of SpatialPolygons object is not set. Assuming it is degrees (longitude/latitude)!')  			
+			} else {
+				stop('Points are projected. They should be in degrees (longitude/latitude)')  
+			}
 			# or rather transform them ....?
 		}
+	
+	
 		x = p@polygons
 		n = length(x)
 		polys = list()
