@@ -22,12 +22,15 @@
  
 makePoly <- function(p, interval=10000, r=6378137, sp=FALSE) {
 	if (inherits(p, 'SpatialPolygons')) {
+		if (isTRUE (is.projected(p)) ) {
+			stop('polygon coordinates are projected. They should be in degrees (longitude/latitude)')  
+			# or rather transform them ....?
+		}
 		x = p@polygons
 		n = length(x)
 		polys = list()
 		for (i in 1:n) {
 			parts = length(x[[i]]@Polygons )
-			sumarea = 0
 			partlist = list()
 			for (j in 1:parts) {
 				crd = x[[i]]@Polygons[[j]]@coords
