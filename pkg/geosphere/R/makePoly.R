@@ -5,7 +5,7 @@
 
 
 
-.makeSinglePoly <- function(p, interval=10000, r=6378137, sp=FALSE) {
+.makeSinglePoly <- function(p, interval=10000, r=6378137) {
 	res <- p[1,]
 	for (i in 1:(nrow(p)-1)) {
 		d <- distHaversine(p[i,], p[i+1,], r=r)
@@ -14,6 +14,8 @@
 			pts <- gcIntermediate(p[i,],p[i+1,], n)
 			pts <- rbind(p[i,], pts, p[i+1,])
 			res <- rbind(res, pts, p[i+1,])
+		} else {
+			res <- rbind(res, p[i+1,])
 		}
 	}
 	return(res)
@@ -52,12 +54,12 @@ makePoly <- function(p, interval=10000, r=6378137, sp=FALSE) {
 		if (! isTRUE(all.equal(p[1,], p[nrow(p),]))) {
 			p <- rbind(p, p[1,])
 		}
-		res <- .makeSinglePoly(p, interval=interval, r=r, sp=sp) 
+		res <- .makeSinglePoly(p, interval=interval, r=r) 
 		if (sp) {
 			if (! require(sp) ) {
 				stop("you need to install the 'sp' package to have the result returned as an sp object (or use sp=FALSE)")
 			}
-			res <- SpatialPolygons(list(Polygons(list(Polygon(res)), 1)))		
+			res <- SpatialPolygons(list(Polygons(list(Polygon(res)), 1)))
 		}
 		return(res)
 	}
