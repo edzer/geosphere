@@ -21,19 +21,19 @@ regularCoordinates(N)
 
 \arguments{
   \item{n}{Sample size (number of points (coordinate pairs)) }
-  \item{N}{Number of parts in which the earth is subdived ) }
+  \item{N}{Number of 'parts' in which the earth is subdived ) }
 }
 
 \value{
 Matrix of lon/lat coordiantes
 }
 
-\references{
-based on suggstions by Michael Orion, \url{http://sci.tech-archive.net/Archive/sci.math/2005-09/msg04691.html}
-}
 
 \author{
-Robert Hijmans
+Robert Hijmans, 
+based on code by Nils Haeck (regularCoordinates), \url{http://mathforum.org/kb/message.jspa?messageID=3985660&tstart=0}
+
+and suggstions by Michael Orion (randomCoordinates), \url{http://sci.tech-archive.net/Archive/sci.math/2005-09/msg04691.html}
 }
 
 \examples{
