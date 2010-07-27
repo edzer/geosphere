@@ -31,7 +31,7 @@ This vignette describes the R package '\verb@geosphere@'. The package implements
 
 There are a number of functions to compute distance and direction (= bearing, azimuth, course) along great circles (= shortest distance on a sphere, or "as the crow flies") and along rhumb lines (lines of constant bearing). 
 
-Other functions include the computation of the location of an object at a given direction and distance; and the area, perimiter, and centroid of a spherial polygon. 
+Other functions include the computation of the location of an object at a given direction and distance; and the area, perimeter, and centroid of a spherical polygon. 
 
 Geographic locations must be specified in longitude and latitude (and in that order!) in degrees (i.e., NOT in radians). Degrees are (obviously) in decimal notation. Thus 12 degrees, 30 minutes, 10 seconds = 12 + 10/60 + 30/3600 =  12.175 degrees. The southern and western hemispheres have a negative sign.
 
@@ -155,7 +155,7 @@ gcIntersectBearing(LA, bearing1, SF, bearing2)
 
 \section{Triangulation}
 
-Below is triangulation example. We have three locations (NY, LA, MS) and three directions (281, 60, 195) towards a target. Because we are on a sphere, there are two (antipodal) results. We only show one here (by only using int[,1:2]). We compute the centroid from the polygon defined with the three points. To accurately draw a spherical polygon, we can use makePoly. This function inserts intermediate points along the paths between the vertices proviced (default is one point every 10 km).
+Below is triangulation example. We have three locations (NY, LA, MS) and three directions (281, 60, 195) towards a target. Because we are on a sphere, there are two (antipodal) results. We only show one here (by only using int[,1:2]). We compute the centroid from the polygon defined with the three points. To accurately draw a spherical polygon, we can use makePoly. This function inserts intermediate points along the paths between the vertices provided (default is one point every 10 km).
 
 <<fig=TRUE , echo=TRUE>>=
 MS <- c(-93.26, 44.98)
@@ -247,7 +247,7 @@ lines(mercator(pc), col='red')
 
 \section{Characterizing polygons}
 
-The package has functions to compute the area, perimeter, centroid, and 'span' of a spherical polygon. One approach to compute these measures is to project the polygons first. Here we directly compute them based on sperhical coordiantes (longitude / latitude), except for centroid, which is computed by projecting the data to the Mercator projection (and inversely projecting the result). The function makePoly inserts additional vertices into a spherical polygon such that it can be plotted (perhaps after first projecting it) more correctly in a plane. Vertices are inserted, where necessary, at a speficief distance. The function is only beneficial for polygons with large inter-vertex distances (in terms of longitude), particularly at high latitudes.
+The package has functions to compute the area, perimeter, centroid, and 'span' of a spherical polygon. One approach to compute these measures is to project the polygons first. Here we directly compute them based on spherical coordinates (longitude / latitude), except for centroid, which is computed by projecting the data to the Mercator projection (and inversely projecting the result). The function makePoly inserts additional vertices into a spherical polygon such that it can be plotted (perhaps after first projecting it) more correctly in a plane. Vertices are inserted, where necessary, at a specified distance. The function is only beneficial for polygons with large inter-vertex distances (in terms of longitude), particularly at high latitudes.
 
 <<fig=TRUE , echo=TRUE>>=
 pol <- rbind(c(-120,-20), c(-80,5), c(0, -20), c(-40,-60), c(-120,-20))
@@ -269,7 +269,7 @@ legend(-140, -48, c('planar','spherical'), lty=1, lwd=2,
 
 \section{Sampling}
 
-Random or regular sampling of longitude/latitude values on the globe needs to condsider that the globe is spherical. That is, if you would take random points for latitude between -90 and 90 and for longitude between -180 and 180, the density of points would be higher near the poles than near the equator.
+Random or regular sampling of longitude/latitude values on the globe needs to consider that the globe is spherical. That is, if you would take random points for latitude between -90 and 90 and for longitude between -180 and 180, the density of points would be higher near the poles than near the equator.
 In contrast, functions 'randomCoordinates' and 'randomCoordinates' return samples that are spatially balanced.
 <<fig=TRUE , echo=TRUE>>=
 plot(wrld, type='l', col='grey')
