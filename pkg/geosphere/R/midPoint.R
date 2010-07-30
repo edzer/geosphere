@@ -15,7 +15,7 @@
 midPoint <- function(p1, p2) {
 # calculate midpoint of great circle line between p1 & p2.
 # see http:#//mathforum.org/library/drmath/view/51822.html for derivation
-# source http://www.movable-type.co.uk/scripts/latlong.html
+#  based on  http://www.movable-type.co.uk/scripts/latlong.html
 # (c) 2002-2009 Chris Veness
 	toRad <- pi / 180 
 
