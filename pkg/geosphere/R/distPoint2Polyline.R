@@ -4,9 +4,9 @@
 # license GPL3
 
 
-distPoint2Polyline <- function(xy, pline, distfun=distHaversine, ispoly=FALSE) {
+distPoint2Polyline <- function(p, pline, distfun=distHaversine, ispoly=FALSE) {
 
-	xy <- geosphere:::.pointsToMatrix(xy)
+	xy <- geosphere:::.pointsToMatrix(p)
 	pline <- geosphere:::.pointsToMatrix(pline, poly=ispoly) 
 	
 	# find the closest node 
@@ -69,7 +69,6 @@ distPoint2Polyline <- function(xy, pline, distfun=distHaversine, ispoly=FALSE) {
 	
     tpdist1 <- distfun(trackpoint1, xy)
     tpdist2 <- distfun(trackpoint2, xy)
-
     
 	dist <- c(d[near], tpdist1, tpdist2)
 	segmins <- which.min(dist)
@@ -82,7 +81,6 @@ distPoint2Polyline <- function(xy, pline, distfun=distHaversine, ispoly=FALSE) {
  #poly <- rbind(c(-180,-20), c(-140,55), c(10, 0), c(-140,-60), c(-180,-20))
  #pnt <- cbind(-150,0)
  #d = point2PolyLine(pnt, poly)
- # point2PolyLine(pnt, poly)
  #plot( makePoly(poly), type='l')
  #points(poly)
  #points(pnt, col='blue', pch=20)
