@@ -64,6 +64,12 @@
 		if (! isTRUE(all.equal(p[1,], p[nrow(p),]))) {
 			p <- rbind(p, p[1,])
 		} 
+
+		i <- which(p[-nrow(p),] == p[-1,])
+		if (length(i) > 0) {
+			p <- p[-i, ,drop=FALSE]
+		}
+	
 		.isPolygon(p)
 	}
 	

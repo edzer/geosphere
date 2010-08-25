@@ -51,8 +51,8 @@ distPoint2Polyline <- function(xy, pline, distfun=distHaversine, ispoly=FALSE) {
 		}
 	}
 	
-	seg1length  <- distfun(seg1[1,], seg1[2,])
-	seg2length  <- distfun(seg2[1,], seg2[2,])
+	seg1length  <- distfun(seg1[1,], seg1[2,])
+	seg2length  <- distfun(seg2[1,], seg2[2,])
 	
 	trackdist1 <- alongTrackDistance(seg1[1,], seg1[2,], xy)
 	trackdist2 <- alongTrackDistance(seg2[1,], seg2[2,], xy)
@@ -61,16 +61,16 @@ distPoint2Polyline <- function(xy, pline, distfun=distHaversine, ispoly=FALSE) {
 	trackdist1[which(trackdist1 >= seg1length)] <- NA 
 	trackdist2[which(trackdist2 >= seg2length)] <- NA 
 
-	bear1 <- bearing(seg1[1,], seg1[2,])
-	bear2 <- bearing(seg2[1,], seg2[2,])
+	bear1 <- bearing(seg1[1,], seg1[2,])
+	bear2 <- bearing(seg2[1,], seg2[2,])
 	
-	trackpoint1  <- destPoint(seg1[1,], bear1, trackdist1)
-	trackpoint2  <- destPoint(seg2[1,], bear2, trackdist2)
+	trackpoint1  <- destPoint(seg1[1,], bear1, trackdist1)
+	trackpoint2  <- destPoint(seg2[1,], bear2, trackdist2)
 	
-    tpdist1 <- distfun(trackpoint1, xy)
-    tpdist2 <- distfun(trackpoint2, xy)
+    tpdist1 <- distfun(trackpoint1, xy)
+    tpdist2 <- distfun(trackpoint2, xy)
 
-    
+    
 	dist <- c(d[near], tpdist1, tpdist2)
 	segmins <- which.min(dist)
 	nearpoint <- rbind(pline[near,], trackpoint1, trackpoint2)[segmins,]

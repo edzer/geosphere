@@ -8,16 +8,19 @@
 .makeSinglePoly <- function(p, interval=10000, r=6378137) {
 	res <- p[1,]
 	for (i in 1:(nrow(p)-1)) {
-		d <- distHaversine(p[i,], p[i+1,], r=r)
-		n <- floor(d / interval)
-		if (n > 0) {
-			pts <- gcIntermediate(p[i,],p[i+1,], n)
-			pts <- rbind(p[i,], pts, p[i+1,])
-			res <- rbind(res, pts, p[i+1,])
-		} else {
-			res <- rbind(res, p[i+1,])
+		if (p[i,] != p[i+1,]) {
+			d <- distHaversine(p[i,], p[i+1,], r=r)
+			n <- floor(d / interval)
+			if (n > 0) {
+				pts <- gcIntermediate(p[i,],p[i+1,], n)
+				pts <- rbind(p[i,], pts, p[i+1,])
+				res <- rbind(res, pts, p[i+1,])
+			} else {
+				res <- rbind(res, p[i+1,])
+			}
 		}
 	}
+	if (nrow(res) < 3) stop('cannot make a valid polygon')
 	return(res)
 }
  
