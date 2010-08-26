@@ -10,9 +10,9 @@ onGreatCircle <- function(p1, p2, p3) {
 # is p3 an intermediate points on a great circle defined by p1 and p2?
 	toRad <- pi / 180 
 
-	p1 <- geosphere:::.pointsToMatrix(p1)
-	p2 <- geosphere:::.pointsToMatrix(p2)
-	p3 <- geosphere:::.pointsToMatrix(p3)
+	p1 <- .pointsToMatrix(p1)
+	p2 <- .pointsToMatrix(p2)
+	p3 <- .pointsToMatrix(p3)
 	p <- cbind(p1[,1], p1[,2], p2[,1], p2[,2], p3[,1], p3[,2])
 	p1 <- p[,1:2, drop=FALSE] * toRad
 	p2 <- p[,3:4, drop=FALSE] * toRad
