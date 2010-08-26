@@ -1,4 +1,4 @@
-# Author: George Want & Robert J. Hijmans
+# Author: George Wang & Robert J. Hijmans
 # August 2010
 # version 1
 # license GPL3
