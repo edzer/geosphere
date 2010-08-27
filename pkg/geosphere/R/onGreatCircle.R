@@ -31,7 +31,7 @@ onGreatCircle <- function(p1, p2, p3) {
 
 	meridian <- p1[,1] == p2[,1] & p1[,1]  == p3[,1]
 	res[meridian] <- TRUE
-	
+	names(res) <- ''
 	return(res)
 }
 

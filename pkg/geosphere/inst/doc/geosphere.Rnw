@@ -76,7 +76,7 @@ plot(dvsp/1000, (dvsp-dvse)/1000, col='blue', xlab='Vincenty Sphere Distance (km
 
 \section{Points on great circles}
 
-Points on a great circle are returned by the function 'greatCircle', using two points on the great circle to define it, and an additional argument to indicate how many points should be returned. You can also use greatCircleBearing, and provide starting points and bearing as arguments. gcIntermediate only returns points on the great circle that are on the track of shortest distance between the two points defining the great circle; and midPoint computes the point half-way between the two points.
+Points on a great circle are returned by the function 'greatCircle', using two points on the great circle to define it, and an additional argument to indicate how many points should be returned. You can also use greatCircleBearing, and provide starting points and bearing as arguments. gcIntermediate only returns points on the great circle that are on the track of shortest distance between the two points defining the great circle; and midPoint computes the point half-way between the two points. You can use onGreatCircle to test whether a point is on a great circle between two other points.
 
 <<fig=TRUE , echo=TRUE>>=
 LA <- c(-118.40, 33.95)
@@ -89,6 +89,7 @@ gci <- gcIntermediate(LA, NY)
 lines(gci, lwd=4, col='green')
 points(rbind(LA, NY), col='red', pch=20, cex=2)
 mp <- midPoint(LA, NY)
+onGreatCircle(LA,NY, rbind(mp,c(0,0)))
 points(mp, pch='*', cex=3, col='orange')
 greatCircleBearing(LA, brng=270, n=10)
 @
@@ -215,6 +216,21 @@ crossTrackDistance(LA, NY, MS)
 distCosine(p, MS)
 @
 
+
+\section{Distance to a polyline}
+
+The two function describe above are used in the distPoint2Lines function that computes the shortest distance between a set of points and a set of spherical polylines (or polygons).
+
+<<fig=TRUE , echo=TRUE>>=
+line <- rbind(c(-180,-20), c(-150,-10), c(-140,55), c(10, 0), c(-140,-60))
+pnts <- rbind(c(-170,0), c(-75,0), c(-70,-10), c(-80,20), c(-100,-50), c(-100,-60), c(-100,-40), c(-100,-20), c(-100,-10), c(-100,0))
+d = distPoint2Line(pnts, line)
+plot( makeLine(line), type='l')
+points(line)
+points(pnts, col='blue', pch=20)
+points(d[,2], d[,3], col='red', pch='x', cex=2)
+for (i in 1:nrow(d)) lines(gcIntermediate(pnts[i,], d[i,2:3], 10), lwd=2, col='green')
+@
 
 
 \section{Rhumb lines}
