@@ -3,11 +3,48 @@
 # version 1
 # license GPL3
 
+.spDistPoint2Line <- function(p, line, distfun) {
+	test <- !is.projected(line)
+	if (! isTRUE (test) ) {
+		if (is.na(test)) {
+			warning('Coordinate reference system of SpatialPolygons object is not set. Assuming it is degrees (longitude/latitude)!')  			
+		} else {
+			stop('Points are projected. They should be in degrees (longitude/latitude)')  
+		}
+		# or rather transform them ....?
+	}
+	
+	x = line@lines
+	n = length(x)
+	res <- matrix(nrow=nrow(p), ncol=3)
+	colnames(res) <- c("distance","lon","lat")
+	res[] <- Inf
+	
+	for (i in 1:n) {
+		parts = length(x[[i]]@Lines )
+		for (j in 1:parts) {
+			crd = x[[i]]@Lines[[j]]@coords
+			r <- distPoint2Line(p, crd, distfun)
+			k <- r[,1] < res[,1]
+			res[k, ] <- r[k, ]
+		}
+	}
+	return(res)
+}		
+		
 
 distPoint2Line <- function(p, line, distfun=distHaversine) {
 
-	p <- .pointsToMatrix(p)
-	line <- .pointsToMatrix(line) 
+	p <- geosphere:::.pointsToMatrix(p)
+	
+	if (inherits(line, 'SpatialPolygons')) {
+		line <- as(line, 'SpatialLines')
+	}
+	if (inherits(line, 'SpatialLines')) {
+		return( .spDistPoint2Line(p, line, distfun) )
+	}
+
+	line <- geosphere:::.pointsToMatrix(line) 
 	line1 <- line[-nrow(line), ,drop=FALSE]
 	line2 <- line[-1, ,drop=FALSE]
 	seglength  <- distfun(line1, line2)
@@ -39,7 +76,7 @@ distPoint2Line <- function(p, line, distfun=distHaversine) {
 		options('warn'= warnopt) 
 		
 		if (distmin1 <= distmin2) {
-			j <- which.min(distmin1)
+			j <- which.min(nodedist)
 			res[i,] <- c(distmin1, line[j,])
 		} else {
 			j <- which.min(crossdist)
@@ -59,4 +96,3 @@ distPoint2Line <- function(p, line, distfun=distHaversine) {
 }
 
  
-
