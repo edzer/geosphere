@@ -49,7 +49,7 @@ gcIntermediate <- function( p1, p2, n=50, breakAtDateLine=FALSE, addStartEnd=FAL
 	for (i in 1:nrow(p1)) {
 		x <- interm(p1[i,,drop=FALSE], p2[i,,drop=FALSE], n[i])
 		if (addStartEnd) {
-			x <- rbind(p1, x, p2)
+			x <- rbind(p1[i,,drop=FALSE], x, p2[i,,drop=FALSE])
 		}
 		if (breakAtDateLine) {
 	
@@ -78,7 +78,7 @@ gcIntermediate <- function( p1, p2, n=50, breakAtDateLine=FALSE, addStartEnd=FAL
 	
 	if (spatialLines) {
 		for (i in 1:length(res)) {
-			if (length(res[[i]]) == 1) {
+			if (! is.list(res[[i]])) {
 				res[[i]] <- Lines( list( Line (res[[i]])), ID=as.character(i)) 	
 			} else {
 				res[[i]] <- Lines( list( Line (res[[i]][[1]]), Line(res[[i]][[2]])), ID=as.character(i))
