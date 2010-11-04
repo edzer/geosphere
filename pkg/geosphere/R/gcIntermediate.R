@@ -3,7 +3,7 @@
 # version 0.1
 # license GPL
 
-gcIntermediate <- function( p1, p2, n=50, breakAtDateLine=FALSE, addStartEnd=FALSE, spatialLines=FALSE ) {
+gcIntermediate <- function( p1, p2, n=50, breakAtDateLine=FALSE, addStartEnd=FALSE, sp=FALSE ) {
 # Intermediate points on a great circle
 # source: http://williams.best.vwh.net/avform.htm
 
@@ -76,7 +76,7 @@ gcIntermediate <- function( p1, p2, n=50, breakAtDateLine=FALSE, addStartEnd=FAL
 		}
 	}
 	
-	if (spatialLines) {
+	if (sp) {
 		for (i in 1:length(res)) {
 			if (! is.list(res[[i]])) {
 				res[[i]] <- Lines( list( Line (res[[i]])), ID=as.character(i)) 	
