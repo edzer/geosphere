@@ -12,7 +12,7 @@ Get intermediate points on a great circle inbetween the two points used to defin
 }
 
 \usage{
-gcIntermediate(p1, p2, n=50, breakAtDateLine=FALSE, addStartEnd=FALSE, spatialLines=FALSE) 
+gcIntermediate(p1, p2, n=50, breakAtDateLine=FALSE, addStartEnd=FALSE, sp=FALSE) 
 }
 
 \arguments{
@@ -21,7 +21,7 @@ gcIntermediate(p1, p2, n=50, breakAtDateLine=FALSE, addStartEnd=FALSE, spatialLi
   \item{n}{The requested number of points on the Great Circle}
   \item{breakAtDateLine}{Logical. Return two matrices if the dateline is crossed?}
   \item{addStartEnd}{Logical. Add p1 and p2 to the result?}
-  \item{spatialLines}{Logical. Return a SpatialLines object?}
+  \item{sp}{Logical. Return a SpatialLines object?}
 }  
 
 
