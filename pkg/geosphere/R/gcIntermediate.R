@@ -55,7 +55,7 @@ gcIntermediate <- function( p1, p2, n=50, breakAtDateLine=FALSE, addStartEnd=FAL
 	
 			r <- range(x[,1]) 
 			r <- r[2] - r[1]
-			if (r > 300) {
+			if (r > 200) {
 				dif <- abs(x[-nrow(x),1] - x[-1,1])
 				tr <- which(dif==max(dif))
 				x1 <- x[1:tr, ,drop=FALSE]
