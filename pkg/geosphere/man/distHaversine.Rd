@@ -45,7 +45,7 @@ Chris Veness and Robert Hijmans
 
 
 \seealso{
-\code{\link[geosphere]{distCosine}, \link[geosphere]{distVincentySphere}, \link[geosphere]{distVincentyEllipsoid}}
+\code{\link[geosphere]{distCosine}, \link[geosphere]{distVincentySphere}, \link[geosphere]{distVincentyEllipsoid}, \link{distMeeus}}
 }
 
 \examples{
