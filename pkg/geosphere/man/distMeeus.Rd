@@ -8,7 +8,7 @@
 }
 
 \description{
-The shortest distance between two points (i.e., the 'great-circle-distance' or 'as the crow flies'), according to the 'Meeus' method. This method uses parameters describing an ellipsoid, and the results should be very accurate. 
+The shortest distance between two points (i.e., the 'great-circle-distance' or 'as the crow flies'), according to the 'Meeus' method. This method uses an ellipsoid, and the results should be very accurate. 
 }
 
 \usage{
@@ -44,7 +44,7 @@ more info: \url{http://en.wikipedia.org/wiki/Reference_ellipsoid}
 }
 
 \value{
-Distance value in the same units as the ellipsoid (default is meters)
+Distance value in the same units as parameter \code{a} of the ellipsoid (default is meters)
 }
 
 \note{ This algorithm is also used in the sp package (spDists) }
