@@ -3,7 +3,7 @@
 # version 0.1
 # license GPL
 
-gcIntermediate <- function( p1, p2, n=50, breakAtDateLine=FALSE, addStartEnd=FALSE, sp=FALSE ) {
+gcIntermediate <- function( p1, p2, n=50, breakAtDateLine=FALSE, addStartEnd=FALSE, sp=FALSE, sepNA=FALSE ) {
 # Intermediate points on a great circle
 # source: http://williams.best.vwh.net/avform.htm
 
@@ -96,7 +96,13 @@ gcIntermediate <- function( p1, p2, n=50, breakAtDateLine=FALSE, addStartEnd=FAL
 		
 	} else if (nrow(p1) == 1 ) {
 		res <- res[[1]]
-	}	
+	} else if (sepNA) {
+		r <- res[[1]]
+		for (i in 2:length(res)) { 
+			r <- rbind(r, c(NA,NA), res[[i]]) 
+		}
+		return(r)
+	}
 	
 	return(res)
 }
