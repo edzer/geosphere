@@ -26,7 +26,7 @@ distMeeus(p1, p2, a=6378137, f=1/298.257223563)
 
 Parameters from the WGS84 ellipsoid are used by default. It is the best available global ellipsoid, but for some areas other ellipsoids could be preferable, or even necessary if you work with a printed map that refers to that ellipsoid. Here are parameters for some commonly used ellipsoids:
 
-\tabular{rllll}{
+\tabular{rlll}{
  \tab \code{ ellipsoid          } \tab \code{ a            } \tab \code{ f               } \cr
  \tab \code{ WGS84	            } \tab \code{ 6378137      } \tab \code{ 1/298.257223563 } \cr
  \tab \code{ GRS80	            } \tab \code{ 6378137      } \tab \code{ 1/298.257222101 } \cr
@@ -47,7 +47,7 @@ more info: \url{http://en.wikipedia.org/wiki/Reference_ellipsoid}
 Distance value in the same units as parameter \code{a} of the ellipsoid (default is meters)
 }
 
-\note{ This algorithm is also used in the sp package (spDists) }
+\note{ This algorithm is also used in the (\code{\link[sp]{spDists)}} in the sp package }
 
 \references{
 Meeus, J., 1999 (2nd edition). Astronomical algoritms. Willman-Bell, 477p.
