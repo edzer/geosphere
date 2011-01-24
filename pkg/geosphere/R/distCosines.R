@@ -14,6 +14,6 @@ distCosine <- function(p1, p2, r=6378137) {
 	
 #	cosd <- sin(lat1) * sin(lat2) + cos(lat1) * cos(lat2) * cos(lon1-lon2)
 	cosd <- sin(p[,2]) * sin(p[,4]) + cos(p[,2]) * cos(p[,4]) * cos(p[,1]-p[,3])
-	return ( acos(cosd) * p[,5] )
+	return ( as.vector( acos(cosd) * p[,5] ) )
 }
 
