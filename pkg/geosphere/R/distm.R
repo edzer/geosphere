@@ -6,13 +6,16 @@
 
 .distm1 <- function(x, fun) {
 	n = nrow(x)
-	dm = matrix(ncol=n, nrow=n)
-	dm[cbind(1:n, 1:n)] = 0
-	if (n == 1) {	return(dm) 	}
+	dm = matrix(0, ncol=n, nrow=n)
+	if (n == 1) {	
+		return(dm) 	
+	}
 	for (i in 2:n) {
 		j = 1:(i-1)
 		dm[i,j] = fun(x[i,], x[j,])
 	}
+
+	dm <- dm+t(dm)
 	return(dm)
 }
 
@@ -31,6 +34,10 @@ distm <- function(x, y, fun=distHaversine) {
 	dm = matrix(ncol=m, nrow=n)
 	for (i in 1:n) {
 		dm[i,] = fun(x[i,], y)
+	}
+	if (full) {
+		dm[is.na(dm)]=0
+		dm <- dm+t(dm)
 	}
 	return(dm)
 }
