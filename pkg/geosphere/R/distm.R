@@ -35,10 +35,6 @@ distm <- function(x, y, fun=distHaversine) {
 	for (i in 1:n) {
 		dm[i,] = fun(x[i,], y)
 	}
-	if (full) {
-		dm[is.na(dm)]=0
-		dm <- dm+t(dm)
-	}
 	return(dm)
 }
 
