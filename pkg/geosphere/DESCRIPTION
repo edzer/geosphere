@@ -3,7 +3,7 @@ Type: Package
 Title: Spherical Trigonometry
 Version: 1.2-21
 Date: 18-May-2011
-Depends: methods
+Depends: methods, R (>= 2.10.0)
 Suggests: sp, raster
 Author: Robert J. Hijmans, Ed Williams, Chris Vennes
 Maintainer: Robert J. Hijmans <r.hijmans@gmail.com>
