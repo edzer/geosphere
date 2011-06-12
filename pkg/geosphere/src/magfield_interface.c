@@ -26,14 +26,17 @@
 #include    "magfield.h"
 
 
-void magfield(int *n, double *lon, double *lat, double *h, int *dd, int *mm, int *yy, int*model, double *result) 
+void magfield(int *n, double *lon, double *lat, double *h, unsigned long *julday, int*model, double *result) 
 {
 	double dec;
 	double field[6];
 	int i;
 	
+/*	unsigned long julian; for 1950-2049 only
+	julian = yymmdd_to_julian_days(*yy, *mm, *dd); */
+	
 	for(i=0; i < *n; i++) {
-		dec = rad_to_deg( SGMagVar( deg_to_rad(lat[i]), deg_to_rad(lon[i]), *h, yymmdd_to_julian_days(*yy, *mm, *dd), *model, field) );
+		dec = rad_to_deg( SGMagVar( deg_to_rad(lat[i]), deg_to_rad(lon[i]), h[i], julday[i], model[i], field) );
 		result[i*5+0] = dec;
 		result[i*5+1] = rad_to_deg(atan(field[5]/pow(field[3]*field[3]+field[4]*field[4],0.5)));
 		result[i*5+2] = field[3];

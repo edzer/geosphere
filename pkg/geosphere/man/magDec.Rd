@@ -17,18 +17,14 @@ magDec(p, date='2005-06-30', model='IGRF2005', h=0)
 
 \arguments{
   \item{p}{longitude/latitude of point(s). Can be a vector of two numbers, a matrix of 2 columns (first one is longitude, second is latitude) or a SpatialPoints* object}
-  \item{date}{A single date between '1950-01-01' and '2049-12-31' (character, Date, or anything that works in as.Date) }
+  \item{date}{A single date between '1950-01-01' and '2049-12-31' (character, Date, or anything that works for \link{as.Date}) }
   \item{model}{Character. One of 'IGRF90', 'WMM85', 'WMM90', 'WMM95', 'IGRF95', 'WMM2000', 'IGRF2000', 'WMM2005', 'IGRF2005'}
-  \item{h}{The height above the speroid in meters }
+  \item{h}{The height above the spheroid in meters }
   
 }
 
 \value{
 A matrix with for each point the magnetic declination, dip angle (the angle the field lines make with the horizontal. As this approaches 90 degrees the magnetic compass becomes unuseable), and three components of the earth's magenetic field in nanotesla (nT): N and E components (Bx and By) in the horizon plane of the WGS84 ellipsoid, and the downward component(Bz).
-}
-
-\note{
-Arguments 'date', 'model' and 'h' are not recycled; only their first elements are used if they are a vector.
 }
 
 
