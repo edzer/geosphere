@@ -41,7 +41,7 @@ gcIntermediate <- function( p1, p2, n=50, breakAtDateLine=FALSE, addStartEnd=FAL
 # Intermediate points on a great circle
 # source: http://williams.best.vwh.net/avform.htm
 
-	internal=FALSE 
+#	internal=FALSE 
 
 	p1 <- .pointsToMatrix(p1)
 	p2 <- .pointsToMatrix(p2)
@@ -49,23 +49,18 @@ gcIntermediate <- function( p1, p2, n=50, breakAtDateLine=FALSE, addStartEnd=FAL
 	res <- list()
 
 	for (i in 1:nrow(p)) {
-		if (internal) {
-		
-			x <- .interm(p[i,1:2,drop=FALSE], p[i,3:4,drop=FALSE], p[i,5])
-			
-			if (addStartEnd) {
-				x <- rbind(p[i,1:2,drop=FALSE], x, p[i,3:4,drop=FALSE])
-			}
-			
-		} else {
-
-			n <- as.integer(p[i,5])
-			n2 <- n + 2*addStartEnd
-			x <- unlist(.C('interm', n, as.double(p[i,1]), as.double(p[i,2]), as.double(p[i,3]), as.double(p[,4]), 
-							as.integer(addStartEnd), vector('double', n2), vector('double', n2), PACKAGE='geosphere')[7:8])
-			x <- matrix(x, ncol=2)
-			
-		}
+		#if (internal) {
+		x <- .interm(p[i,1:2,drop=FALSE], p[i,3:4,drop=FALSE], p[i,5])
+		if (addStartEnd) {
+			x <- rbind(p[i,1:2,drop=FALSE], x, p[i,3:4,drop=FALSE])
+		}			
+		#} else {
+		#	n <- as.integer(p[i,5])
+		#	n2 <- n + 2*addStartEnd
+		#	x <- unlist(.C('interm', n, as.double(p[i,1]), as.double(p[i,2]), as.double(p[i,3]), as.double(p[,4]), 
+		#	as.integer(addStartEnd), vector('double', n2), vector('double', n2), PACKAGE='geosphere')[7:8])
+		#	x <- matrix(x, ncol=2)
+		#}
 		if (breakAtDateLine) {
 	
 			r <- range(x[,1]) 
