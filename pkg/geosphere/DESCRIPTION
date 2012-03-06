@@ -2,7 +2,7 @@ Package: geosphere
 Type: Package
 Title: Spherical Trigonometry
 Version: 1.2-27
-Date: 26-February-2012
+Date: 5-March-2012
 Depends: methods, sp, R (>= 2.10.0)
 Suggests: raster
 Author: Robert J. Hijmans, Ed Williams, Chris Vennes
