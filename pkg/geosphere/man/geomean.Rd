@@ -9,7 +9,7 @@ Mean location of sperhical coordinates
 }
 
 \description{
-mean location for spherical (longitude/latitude) coordinates.
+mean location for spherical (longitude/latitude) coordinates that deals with the angularity. I.e., the mean of longitudes -179 and 178 is 179.5
 }
 
 \usage{
