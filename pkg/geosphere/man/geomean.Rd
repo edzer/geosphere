@@ -25,6 +25,13 @@ geomean(xy, w)
 Ccoordinate pair (numeric)
 }
 
+
+\examples{
+xy <- cbind(x=c(-179,179, 177), y=c(12,14,16))
+xy
+geomean(xy)
+}
+
 \author{Robert J. Hijmans}
 
 \keyword{methods}
