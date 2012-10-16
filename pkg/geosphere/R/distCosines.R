@@ -11,7 +11,7 @@ distCosine <- function(p1, p2, r=6378137) {
 	pp  <- cbind(p1[,1], p1[,2], p2[,1], p2[,2], as.vector(r))
 
 	# remove identical points to avoid errors due to floating point math
-	i <- rowSums((p1 - p2) < .Machine$double.eps ^ 0.5) < 2
+	i <- rowSums(abs(p1 - p2) < .Machine$double.eps ^ 0.5) < 2
 	p <- pp[i, ,drop=FALSE]
 	r <- rep(0, nrow(pp))
 	if (nrow(p) > 0) {
@@ -21,7 +21,7 @@ distCosine <- function(p1, p2, r=6378137) {
 	r
 }
 
-# m = matrix(c(-69.652220, 7.348464, -69.652220,7.348464, -1,1 ,-1,1, -1,1.1,-1,1.1, -1,1.2,-1,1.2, -116.65220,72.01513,-121.48560,53.34847), ncol=4, byrow=T)
+# m = matrix(c(-58.65222,-19.65154,-52.985550,-1.484869, -69.652220, 7.348464, -69.652220,7.348464, -1,1 ,-1,1, -1,1.1,-1,1.1, -1,1.2,-1,1.2, -116.65220,72.01513,-121.48560,53.34847), ncol=4, byrow=T)
 # distCosine(m[,1:2], m[,3:4])
 
 #	n <- nrow(p)
