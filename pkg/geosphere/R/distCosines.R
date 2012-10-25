@@ -11,6 +11,7 @@ distCosine <- function(p1, p2, r=6378137) {
 	pp  <- cbind(p1[,1], p1[,2], p2[,1], p2[,2], as.vector(r))
 
 	# remove identical points to avoid errors due to floating point math
+	# problem reported by Bill Monahan
 	i <- rowSums(abs(pp[, 1:2, drop=FALSE] - pp[, 3:4, drop=FALSE]) < .Machine$double.eps ^ 0.5) < 2
 	p <- pp[i, ,drop=FALSE]
 	
