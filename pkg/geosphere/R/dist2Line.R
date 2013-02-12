@@ -14,17 +14,17 @@
 		# or rather transform them ....?
 	}
 	
-	x = line@lines
-	n = length(x)
-	res <- matrix(nrow=nrow(p), ncol=3)
-	colnames(res) <- c("distance","lon","lat")
+	x <- line@lines
+	n <- length(x)
+	res <- matrix(nrow=nrow(p), ncol=4)
+	colnames(res) <- c("distance","lon","lat","ID")
 	res[] <- Inf
 	
 	for (i in 1:n) {
-		parts = length(x[[i]]@Lines )
+		parts <- length(x[[i]]@Lines )
 		for (j in 1:parts) {
-			crd = x[[i]]@Lines[[j]]@coords
-			r <- dist2Line(p, crd, distfun)
+			crd <- x[[i]]@Lines[[j]]@coords
+			r <- cbind(dist2Line(p, crd, distfun), i)
 			k <- r[,1] < res[,1]
 			res[k, ] <- r[k, ]
 		}

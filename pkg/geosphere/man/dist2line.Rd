@@ -22,7 +22,7 @@ The shortest distance between points and polylines or polygons.
 
 
 \value{
-Distance and lon/lat of the nearest point on the line. Distance is in the same unit as \code{r} in the \code{distfun}(default is meters)
+matrix with distance and lon/lat of the nearest point on the line. Distance is in the same unit as \code{r} in the \code{distfun}(default is meters). If \code{line} is a \code{Spatial*} object, the ID (index) of the nearest object is also returned.
 }
 
 \author{
