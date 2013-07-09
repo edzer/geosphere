@@ -37,7 +37,8 @@ George Wang and Robert Hijmans
 
 \examples{
 line <- rbind(c(-180,-20), c(-150,-10), c(-140,55), c(10, 0), c(-140,-60))
-pnts <- rbind(c(-170,0), c(-75,0), c(-70,-10), c(-80,20), c(-100,-50), c(-100,-60), c(-100,-40), c(-100,-20), c(-100,-10), c(-100,0))
+pnts <- rbind(c(-170,0), c(-75,0), c(-70,-10), c(-80,20), c(-100,-50), 
+         c(-100,-60), c(-100,-40), c(-100,-20), c(-100,-10), c(-100,0))
 d = dist2Line(pnts, line)
 plot( makeLine(line), type='l')
 points(line)
