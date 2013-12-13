@@ -5,7 +5,11 @@ Version: 1.3-3
 Date: 2013-12-13
 Depends: methods, sp, R (>= 2.10.0)
 Suggests: raster
-Author: Robert J. Hijmans, Ed Williams, Chris Vennes
+Author: Robert J. Hijmans
+Authors@R: c(
+	person("Robert J.", "Hijmans", role = c("cre", "aut"),  email = "r.hijmans@gmail.com"),
+	person("Ed", "Williams", role = "ctb"),
+	person("Chris", "Vennes", role = "ctb"))
 Maintainer: Robert J. Hijmans <r.hijmans@gmail.com>
 Description:  Spherical trigonometry for geographic applications
 License: GPL (>=3)
