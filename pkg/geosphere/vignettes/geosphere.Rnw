@@ -12,6 +12,7 @@
 %\VignetteIndexEntry{Introduction to the geosphere package}
 
 \SweaveOpts{keep.source=TRUE}
+\SweaveOpts{png=TRUE, pdf=FALSE}
 
 \begin{document}
 
