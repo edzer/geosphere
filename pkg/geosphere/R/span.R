@@ -44,7 +44,7 @@ function(x, nbands='fixed', n=100, res=0.1, fun, r=6378137, ...) {
 setMethod("span", signature(x='SpatialPolygons'), 
 function(x, nbands='fixed', n=100, res=0.1, fun, r=6378137, ...) {
 
-	if (!require(raster)) {stop('you need to install the "raster" package to use this function')}
+	if (!requireNamespace('raster')) {stop('you need to install the "raster" package to use this function')}
 	
 	if (! nbands %in% c('fixed', 'variable')) {
 		stop('bandwidth should be "fixed" or "variable"')
@@ -66,15 +66,15 @@ function(x, nbands='fixed', n=100, res=0.1, fun, r=6378137, ...) {
 	
 	for (i in 1:npol) {
 		pp <- x[i,]
-		rs <- raster(pp)
+		rs <- raster::raster(pp)
 		if (nbands == 'fixed') {
 			dim(rs) <- c(n, n)
 		} else {
-			res(rs) <- res
+			raster::res(rs) <- res
 		}
 				
-		latitude <- yFromRow(rs, 1:nrow(rs))
-		longitude <- xFromCol(rs, 1:ncol(rs))
+		latitude <- raster::yFromRow(rs, 1:nrow(rs))
+		longitude <- raster::xFromCol(rs, 1:ncol(rs))
 		xd <- distHaversine(cbind(0,latitude), cbind(xres(rs),latitude), r=r)
 		yd <- distHaversine(cbind(0,0),   cbind(0,yres(rs)), r=r)
 		
