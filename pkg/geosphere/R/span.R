@@ -75,11 +75,11 @@ function(x, nbands='fixed', n=100, res=0.1, fun, r=6378137, ...) {
 				
 		latitude <- raster::yFromRow(rs, 1:nrow(rs))
 		longitude <- raster::xFromCol(rs, 1:ncol(rs))
-		xd <- distHaversine(cbind(0,latitude), cbind(xres(rs),latitude), r=r)
-		yd <- distHaversine(cbind(0,0),   cbind(0,yres(rs)), r=r)
+		xd <- distHaversine(cbind(0,latitude), cbind(raster::xres(rs),latitude), r=r)
+		yd <- distHaversine(cbind(0,0),   cbind(0,raster::yres(rs)), r=r)
 		
-		rs <- rasterize(pp, rs, silent=TRUE)
-		rs <- getValues(rs, format='matrix')
+		rs <- raster::rasterize(pp, rs, silent=TRUE)
+		rs <- raster::getValues(rs, format='matrix')
 		latspan[[i]] <- as.vector(apply(rs, 1, sum, na.rm=TRUE) * yd)
 		lonspan[[i]] <- as.vector(apply(rs, 2, sum, na.rm=TRUE) * xd)
 		lat[[i]] <- latitude
