@@ -53,9 +53,18 @@ function(x, r=6378137, ...) {
 } )
 
 
-
 setMethod('areaPolygon', signature(x='matrix'), 
-function(x, r=6378137, ...) {
+function(x, perimeter=FALSE, ...) {
+	r <- .Call("polygonarea", as.double(x[,1]), as.double(x[,2]), PACKAGE='geosphere')
+	if (perimeter) {
+		r[2]
+	} else {
+		abs(r[3])
+	}
+})
+	
+
+.oldAreaPolygon <- function(x, r=6378137, ...) {
 
 	haversine <- function(y) { (1-cos(y))/2 }
 
@@ -100,7 +109,4 @@ function(x, r=6378137, ...) {
 	
 	arsum <- abs( sum( excess ) ) * r * r
     return(arsum )
-} )
-
-
-
+} 
