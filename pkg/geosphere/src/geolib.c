@@ -1,21 +1,21 @@
-#include <stdio.h>
 #include "geodesic.h"
 
-#include <R.h>
 #include <Rinternals.h>
-#include "R_ext/Rdynload.h"
 
 /* Robert Hijmans, May 2015 */
 /**
  * A simple program to solve the inverse geodesic problem(for the WGS84 ellipsoid).
  **********************************************************************/
  
-SEXP inversegeodesic(SEXP latitude1, SEXP longitude1, SEXP latitude2, SEXP longitude2) {
+SEXP inversegeodesic(SEXP latitude1, SEXP longitude1, SEXP latitude2, SEXP longitude2, SEXP pa, SEXP pf) {
+
 
   PROTECT(latitude1 = coerceVector(latitude1, REALSXP));
   PROTECT(longitude1 = coerceVector(longitude1, REALSXP));
   PROTECT(latitude2 = coerceVector(latitude2, REALSXP));
   PROTECT(longitude2 = coerceVector(longitude2, REALSXP));
+  double a = REAL(pa)[0];
+  double f = REAL(pf)[0];
 
   double *lat1, *lon1, *lat2, *lon2, *xr;
   lat1 = REAL(latitude1);
@@ -30,7 +30,6 @@ SEXP inversegeodesic(SEXP latitude1, SEXP longitude1, SEXP latitude2, SEXP longi
   double azi1, azi2, s12;
   struct geod_geodesic g;
 
-  double a = 6378137, f = 1/298.257223563; /* WGS84 */
   geod_init(&g, a, f);
   
   int i;
@@ -46,15 +45,19 @@ SEXP inversegeodesic(SEXP latitude1, SEXP longitude1, SEXP latitude2, SEXP longi
 }
 
 
-SEXP polygonarea(SEXP latitude, SEXP longitude) {
+SEXP polygonarea(SEXP latitude, SEXP longitude, SEXP pa, SEXP pf) {
+
 
   PROTECT(latitude = coerceVector(latitude, REALSXP));
   PROTECT(longitude = coerceVector(longitude, REALSXP));
   double *lat, *lon, *xr;
   lat = REAL(latitude);
   lon = REAL(longitude);
- 
-  double a = 6378137, f = 1/298.257223563; /* WGS84 */
+
+  double a = REAL(pa)[0];
+  double f = REAL(pf)[0];
+  
+/*  double a = 6378137, f = 1/298.257223563; /* WGS84 */
   double A, P;
   int n, i;
   struct geod_geodesic g;
