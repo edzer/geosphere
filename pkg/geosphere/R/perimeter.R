@@ -55,11 +55,20 @@ function(x, a=6378137, f=1/298.257223563, ...) {
 
 setMethod("perimeter", signature(x='matrix'), 
 function(x, a=6378137, f=1/298.257223563, ...) {
-	r <- .Call("polygonarea", as.double(x[,1]), as.double(x[,2]), as.double(a), as.double(f), PACKAGE='geosphere')
-	abs(r[2])
+
+	r <- list(...)$r
+	if (!is.null(r)) {
+		# for backwards compatibility
+		warning('remove argument "r" to use improved method')
+		return( .old_perimeter(x, r=r) )
+	}
+
+	x <- .Call("polygonarea", as.double(x[,1]), as.double(x[,2]), as.double(a), as.double(f), PACKAGE='geosphere')
+	abs(x[2])
 })
 
-.oldperimeter <- function(x, r=6378137, ...) {
+
+.old_perimeter <- function(x, r=6378137, ...) {
 	x <- x[,1:2]
 	if (isTRUE(all.equal(x[1,], x[nrow(x),]))) {
 		x <- x[-nrow(x), ]

@@ -17,15 +17,15 @@ distGeo(p1, p2, a=6378137, f=1/298.257223563)
 }
 
 \arguments{
-  \item{p1}{longitude/latitude of point(s). Can be a vector of two numbers, a matrix of 2 columns (first one is longitude, second is latitude) or a SpatialPoints* object}
-  \item{p2}{as above}
+ \item{p1}{longitude/latitude of point(s). Can be a vector of two numbers, a matrix of 2 columns (first column is longitude, second column is latitude) or a SpatialPoints* object}
+ \item{p2}{as above}
  \item{a}{major (equatorial) radius of the ellipsoid. The default value is for WGS84 }
  \item{f}{ellipsoid flattening. The default value is for WGS84 } 
 }
 
 
 \value{
-Vector of distances in the same unit as \code{r} (default is meters)
+Vector of distances in meters
 }
 
 \author{
