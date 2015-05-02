@@ -4,20 +4,22 @@
 \alias{distGeo}
 
 \title{
-Geodectic great circle distance
+Distance on an ellipsoid
 }
 
 \description{
-High precision estimate of the shortest distance between two points (i.e., the 'great-circle-distance' or 'as the crow flies'), using the WGS84 ellipsoid.
+High precision estimate of the shortest distance between two points on an ellipsoid (default is WGS84 ellipsoid).
 }
 
 \usage{
-distGeo(p1, p2)
+distGeo(p1, p2, a=6378137, f=1/298.257223563)
 }
 
 \arguments{
   \item{p1}{longitude/latitude of point(s). Can be a vector of two numbers, a matrix of 2 columns (first one is longitude, second is latitude) or a SpatialPoints* object}
   \item{p2}{as above}
+ \item{a}{major (equatorial) radius of the ellipsoid. The default value is for WGS84 }
+ \item{f}{ellipsoid flattening. The default value is for WGS84 } 
 }
 
 
