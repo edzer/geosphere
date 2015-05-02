@@ -34,8 +34,10 @@ bearing <- function(p1, p2, a=6378137, f=1/298.257223563, sphere=FALSE) {
     y <- sin(dLon)  * cos(p2[,2]) 
     x <- cos(p1[,2]) * sin(p2[,2]) - sin(p1[,2]) * cos(p2[,2]) * cos(dLon) 
     azm <- atan2(y, x) / toRad
-#    azm[azm < 0] <-  360 + azm[azm < 0] 
-	res[keep] <- (azm+360) %% 360
+	azm <- (azm+360) %% 360
+	i <- azm > 180
+	azm[i] <- -1 * (360 - azm[i])
+	res[keep] <- azm
 	return(res)
 }
 
