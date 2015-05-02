@@ -34,7 +34,7 @@ SEXP inversegeodesic(SEXP latitude1, SEXP longitude1, SEXP latitude2, SEXP longi
   
   int i;
   for (i=0; i < length(latitude1); i++) {
-    geod_inverse(&g, lat1[i], lon1[i], lat2[i], lon2[i], &s12, &azi1, &azi2);
+    geod_inverse(&g, lon1[i], lat1[i], lon2[i], lat2[i], &s12, &azi1, &azi2);
     xr[i*3] = s12;
     xr[i*3+1] = azi1;
     xr[i*3+2] = azi2;

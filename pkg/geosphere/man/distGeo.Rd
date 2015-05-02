@@ -4,11 +4,12 @@
 \alias{distGeo}
 
 \title{
-Distance on an ellipsoid
+Distance on an ellipsoid (the geodesic)
 }
 
 \description{
-High precision estimate of the shortest distance between two points on an ellipsoid (default is WGS84 ellipsoid).
+Highly accurate estimate of the shortest distance between two points on an ellipsoid (default is WGS84 ellipsoid).
+The shortest path between two points on an ellipsoid is called the geodesic.
 }
 
 \usage{
@@ -27,16 +28,17 @@ distGeo(p1, p2, a=6378137, f=1/298.257223563)
 Vector of distances in the same unit as \code{r} (default is meters)
 }
 
-\references{
-\url{http://geographiclib.sourceforge.net/}
+\author{
+This function calls GeographicLib code by C.F.F. Karney
 }
 
-\author{
-Robert Hijmans
+\references{
+C.F.F. Karney, 2013. Algorithms for geodesics, J. Geodesy 87: 43-55. \url{https://dx.doi.org/10.1007/s00190-012-0578-z}. Addenda: \url{http://geographiclib.sf.net/geod-addenda.html}. Also see \url{http://geographiclib.sourceforge.net/}
 }
+
 
 \seealso{
-\code{\link[geosphere]{distGeo}, \link[geosphere]{distHaversine}, \link[geosphere]{distVincentySphere}, \link[geosphere]{distVincentyEllipsoid}, \link{distMeeus}}
+\code{\link[geosphere]{distCosine}, \link[geosphere]{distHaversine}, \link[geosphere]{distVincentySphere}, \link[geosphere]{distVincentyEllipsoid}, \link{distMeeus}}
 }
 
 \examples{
