@@ -1,14 +1,46 @@
 #include "geodesic.h"
-
 #include <Rinternals.h>
 
 /* Robert Hijmans, May 2015 */
-/**
- * A simple program to solve the inverse geodesic problem(for the WGS84 ellipsoid).
- **********************************************************************/
+ 
+SEXP geodesic(SEXP latitude, SEXP longitude, SEXP azimuth, SEXP distance, SEXP pa, SEXP pf) {
+
+  PROTECT(latitude = coerceVector(latitude, REALSXP));
+  PROTECT(longitude = coerceVector(longitude, REALSXP));
+  PROTECT(azimuth = coerceVector(azimuth, REALSXP));
+  PROTECT(distance = coerceVector(distance, REALSXP));
+  double a = REAL(pa)[0];
+  double f = REAL(pf)[0];
+  
+  double *lat1, *lon1, *azi1, *s12, *xr;
+  lat1 = REAL(latitude);
+  lon1 = REAL(longitude);
+  azi1 = REAL(azimuth);
+  s12 = REAL(distance);
+
+  double lat2, lon2, azi2;
+  struct geod_geodesic g;
+
+  geod_init(&g, a, f);
+
+  int i;
+  SEXP r;
+  PROTECT( r = allocVector(REALSXP, 3 * length(latitude) ) );
+  xr = REAL(r);  
+  for (i=0; i < length(latitude); i++) {
+    geod_direct(&g, lon1[i], lat1[i], azi1[i], s12[i], &lat2, &lon2, &azi2);
+    xr[i*3] = lon2;
+    xr[i*3+1] = lat2;
+    xr[i*3+2] = azi2;	
+  }
+  UNPROTECT(5);
+  return r;
+  
+}
+ 
+ 
  
 SEXP inversegeodesic(SEXP latitude1, SEXP longitude1, SEXP latitude2, SEXP longitude2, SEXP pa, SEXP pf) {
-
 
   PROTECT(latitude1 = coerceVector(latitude1, REALSXP));
   PROTECT(longitude1 = coerceVector(longitude1, REALSXP));
@@ -23,15 +55,13 @@ SEXP inversegeodesic(SEXP latitude1, SEXP longitude1, SEXP latitude2, SEXP longi
   lat2 = REAL(latitude2);
   lon2 = REAL(longitude2);
 
+  double azi1, azi2, s12;
+  struct geod_geodesic g;
+  geod_init(&g, a, f);
+  
   SEXP r;
   PROTECT( r = allocVector(REALSXP, 3 * length(latitude1) ));
   xr = REAL(r);  
-   
-  double azi1, azi2, s12;
-  struct geod_geodesic g;
-
-  geod_init(&g, a, f);
-  
   int i;
   for (i=0; i < length(latitude1); i++) {
     geod_inverse(&g, lon1[i], lat1[i], lon2[i], lat2[i], &s12, &azi1, &azi2);
@@ -57,7 +87,7 @@ SEXP polygonarea(SEXP latitude, SEXP longitude, SEXP pa, SEXP pf) {
   double a = REAL(pa)[0];
   double f = REAL(pf)[0];
   
-/*  double a = 6378137, f = 1/298.257223563; /* WGS84 */
+/*  double a = 6378137, f = 1/298.257223563;  WGS84 */
   double A, P;
   int n, i;
   struct geod_geodesic g;
