@@ -21,12 +21,12 @@ setMethod('areaPolygon', signature(x='data.frame'),
 setMethod('areaPolygon', signature(x='SpatialPolygons'), 
 function(x, a=6378137, f=1/298.257223563, ...) {
 
-	test <- !is.projected(x)
-	if (! isTRUE (test) ) {
+	test <- is.projected(x)
+	if ( isTRUE (test) ) {
 		if (is.na(test)) {
 			warning('Coordinate reference system of SpatialPolygons object is not set. Assuming it is degrees (longitude/latitude)!')  			
 		} else {
-			stop('The coordinate reference system is not in longitude/latitude. Use rgeos::gArea instead')  
+			stop('The coordinate reference system is not longitude/latitude. Use rgeos::gArea instead')  
 		}
 		# or rather transform them ....?
 	}
