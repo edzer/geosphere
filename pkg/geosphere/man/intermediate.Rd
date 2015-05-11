@@ -13,7 +13,8 @@ Get intermediate points (way points) between the two locations with longitude/la
 }
 
 \usage{
-gdIntermediate(p1, p2, n=50, breakAtDateLine=FALSE, addStartEnd=FALSE, sp=FALSE, sepNA, a=6378137, f=1/298.257223563) 
+gdIntermediate(p1, p2, n=50, breakAtDateLine=FALSE, addStartEnd=FALSE, sp=FALSE, sepNA,
+       a=6378137, f=1/298.257223563) 
 
 gcIntermediate(p1, p2, n=50, breakAtDateLine=FALSE, addStartEnd=FALSE, sp=FALSE, sepNA) 
 
