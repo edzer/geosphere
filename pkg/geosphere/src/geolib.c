@@ -3,7 +3,7 @@
 
 /* Robert Hijmans, May 2015 */
  
-SEXP geodesic(SEXP latitude, SEXP longitude, SEXP azimuth, SEXP distance, SEXP pa, SEXP pf) {
+SEXP geodesic(SEXP longitude, SEXP latitude, SEXP azimuth, SEXP distance, SEXP pa, SEXP pf) {
 
   PROTECT(latitude = coerceVector(latitude, REALSXP));
   PROTECT(longitude = coerceVector(longitude, REALSXP));
@@ -28,7 +28,7 @@ SEXP geodesic(SEXP latitude, SEXP longitude, SEXP azimuth, SEXP distance, SEXP p
   PROTECT( r = allocVector(REALSXP, 3 * length(latitude) ) );
   xr = REAL(r);  
   for (i=0; i < length(latitude); i++) {
-    geod_direct(&g, lon1[i], lat1[i], azi1[i], s12[i], &lat2, &lon2, &azi2);
+    geod_direct(&g, lat1[i], lon1[i], azi1[i], s12[i], &lat2, &lon2, &azi2);
     xr[i*3] = lon2;
     xr[i*3+1] = lat2;
     xr[i*3+2] = azi2;	
@@ -40,7 +40,7 @@ SEXP geodesic(SEXP latitude, SEXP longitude, SEXP azimuth, SEXP distance, SEXP p
  
  
  
-SEXP inversegeodesic(SEXP latitude1, SEXP longitude1, SEXP latitude2, SEXP longitude2, SEXP pa, SEXP pf) {
+SEXP inversegeodesic(SEXP longitude1, SEXP latitude1, SEXP longitude2, SEXP latitude2, SEXP pa, SEXP pf) {
 
   PROTECT(latitude1 = coerceVector(latitude1, REALSXP));
   PROTECT(longitude1 = coerceVector(longitude1, REALSXP));
@@ -64,7 +64,7 @@ SEXP inversegeodesic(SEXP latitude1, SEXP longitude1, SEXP latitude2, SEXP longi
   xr = REAL(r);  
   int i;
   for (i=0; i < length(latitude1); i++) {
-    geod_inverse(&g, lon1[i], lat1[i], lon2[i], lat2[i], &s12, &azi1, &azi2);
+    geod_inverse(&g, lat1[i], lon1[i], lat2[i], lon2[i], &s12, &azi1, &azi2);
     xr[i*3] = s12;
     xr[i*3+1] = azi1;
     xr[i*3+2] = azi2;
@@ -75,7 +75,7 @@ SEXP inversegeodesic(SEXP latitude1, SEXP longitude1, SEXP latitude2, SEXP longi
 }
 
 
-SEXP polygonarea(SEXP latitude, SEXP longitude, SEXP pa, SEXP pf) {
+SEXP polygonarea(SEXP longitude, SEXP latitude, SEXP pa, SEXP pf) {
 
 
   PROTECT(latitude = coerceVector(latitude, REALSXP));
@@ -97,7 +97,7 @@ SEXP polygonarea(SEXP latitude, SEXP longitude, SEXP pa, SEXP pf) {
   geod_polygon_init(&p, 0);
 
   for (i=0; i<length(latitude); i++) {
-    geod_polygon_addpoint(&g, &p, lon[i], lat[i]);
+    geod_polygon_addpoint(&g, &p, lat[i], lon[i]);
   }
   
   n = geod_polygon_compute(&g, &p, 0, 1, &A, &P);
