@@ -55,11 +55,12 @@ function(x, a=6378137, f=1/298.257223563, ...) {
 
 setMethod('areaPolygon', signature(x='matrix'), 
 function(x, a=6378137, f=1/298.257223563, ...) {
+	
 	r <- list(...)$r
 	if (!is.null(r)) {
 		# for backwards compatibility
-		warning('remove argument "r" to use improved method')
-		return( .old_areaPolygon(p2, p1, r=r) )
+		# warning('remove argument "r" to use improved method')
+		return( .old_areaPolygon(x, r=r) )
 	}
 
 	x <- .Call("polygonarea", as.double(x[,1]), as.double(x[,2]), as.double(a), as.double(f), PACKAGE='geosphere')
@@ -69,7 +70,7 @@ function(x, a=6378137, f=1/298.257223563, ...) {
 
 	
 	
-.old_AreaPolygon <- function(x, r=6378137, ...) {
+.old_areaPolygon <- function(x, r=6378137, ...) {
 
 # Based on code by Jason_Steven (http://forum.worldwindcentral.com/showthread.php?p=69704)
 # Reference: Bevis, M. and G. Cambareri, 1987. Computing the area of a spherical polygon of arbitrary shape. Mathematical Geology 19: 335-346
