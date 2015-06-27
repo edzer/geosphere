@@ -20,6 +20,6 @@ destPoint <- function(p, b, d, a=6378137, f=1/298.257223563, ...) {
 	
 	r <- matrix(r, ncol=3, byrow=TRUE)
 	colnames(r) <- c('lon', 'lat', 'finalbearing')
-	return(r[, 1:2])
+	return(r[, 1:2, drop=FALSE])
 }
 
