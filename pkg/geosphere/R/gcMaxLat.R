@@ -28,23 +28,28 @@ gcMaxLat <- function(p1, p2) {
 	pp1 <- p1[use, , drop=FALSE]
 	pp2 <- p2[use, , drop=FALSE]
 	
-	b <- bearing(pp1, pp2) * toRad
-
+	b <- .old_bearing(pp1, pp2) * toRad
 	lat <- pp1[,2] * toRad
-	lon <- pp1[,1] * -1 * toRad
 	
 # Clairaut's formula : the maximum latitude of a great circle path, given a bearing and latitude on the great circle
-	maxlat <- acos(abs(sin(b) * cos(lat)))
+	maxlat <- acos(abs(sin(b) * cos(lat))) / toRad
 	
-	maxlon <- rep(NA, length(maxlat))
-	i <- maxlat==0
-	j <- b < pi & !i
-	k <- !j & !i
-	maxlon[j] <- lon[j] - atan2(cos(b[j]), sin(b[j]) * sin(lat[j]))
-	maxlon[k] <- lon[k] + pi - atan2(cos(b[k]), sin(b[k]) * sin(lat[k]))
-	maxlon <- (maxlon+pi)%%(2*pi) - pi
+	maxlon <- gcLon(pp1, pp2, maxlat)[, 1]
+	res[use,] <- cbind(maxlon, maxlat)
+	
+	
+#	lon <- pp1[,1] * toRad
+#	maxlon <- rep(NA, length(maxlat))
+#	i <- maxlat==0
+#	j <- b < pi & !i
+#	k <- !j & !i
+	
+#	maxlon[j] <- lon[j] - atan2(cos(b[j]), sin(b[j]) * sin(lat[j]))
+#	maxlon[k] <- lon[k] + pi - atan2(cos(b[k]), sin(b[k]) * sin(lat[k]))
+#	maxlon <- -1 * ((maxlon+pi)%%(2*pi) - pi)
  
-	res[use,] <- cbind(maxlon, maxlat)/ toRad
+#	res[use,] <- cbind(maxlon, maxlat)/ toRad
+
 	return(res)
 }
 
