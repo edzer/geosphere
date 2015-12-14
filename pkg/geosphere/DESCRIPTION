@@ -1,8 +1,8 @@
 Package: geosphere
 Type: Package
 Title: Spherical Trigonometry
-Version: 1.4-3
-Date: 2015-7-1
+Version: 1.5-0
+Date: 2015-12-14
 Depends: sp, R (>= 2.10.0)
 Suggests: methods, raster
 Authors@R: c(
