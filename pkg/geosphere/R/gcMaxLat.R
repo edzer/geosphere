@@ -34,10 +34,12 @@ gcMaxLat <- function(p1, p2) {
 # Clairaut's formula : the maximum latitude of a great circle path, given a bearing and latitude on the great circle
 	maxlat <- acos(abs(sin(b) * cos(lat))) / toRad
 	
-	maxlon <- gcLon(pp1, pp2, maxlat)[, 1]
+	
+	ml <- maxlat - 0.000000000001
+	maxlon <- mean(gcLon(pp1, pp2, ml))
+	
 	res[use,] <- cbind(maxlon, maxlat)
-	
-	
+		
 #	lon <- pp1[,1] * toRad
 #	maxlon <- rep(NA, length(maxlat))
 #	i <- maxlat==0
