@@ -28,9 +28,7 @@ matrix with coordinate pairs
 }
 
 
-\author{
-Elias Pipping and Robert Hijmans
-}
+\author{ Elias Pipping and Robert Hijmans }
 
 \examples{
 midPoint(c(0,0),c(90,90))  
