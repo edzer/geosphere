@@ -12,7 +12,19 @@
 # License GPL3
 
 
-midPoint <- function(p1, p2) {
+midPoint <- function(p1, p2, a=6378137, f = 1/298.257223563) {
+	p1 <- .pointsToMatrix(p1)
+	p2 <- .pointsToMatrix(p2)
+	p <- cbind(p1[,1], p1[,2], p2[,1], p2[,2])
+
+	gi <- geosphere::geodesic_inverse(p[, 1:2], p[, 3:4], a=a, f=f);
+	# The second and third argument are identical to the output of
+	# `bearing` and `distGeo`, but each one calls `geodesic_inverse` internally.
+	geosphere::destPoint(p1, gi[,'azimuth1'], gi[,'distance']/2, a = a, f = f)
+}
+
+
+.old_midPoint <- function(p1, p2) {
 # calculate midpoint of great circle line between p1 & p2.
 # see http:#//mathforum.org/library/drmath/view/51822.html for derivation
 #  based on  http://www.movable-type.co.uk/scripts/latlong.html

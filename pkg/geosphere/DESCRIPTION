@@ -1,9 +1,9 @@
 Package: geosphere
 Type: Package
 Title: Spherical Trigonometry
-Version: 1.5-2
-Date: 2015-12-18
-Depends: sp, R (>= 2.10.0)
+Version: 1.5-3
+Date: 2016-06-12
+Depends: sp, R (>= 3.0.0)
 Suggests: methods, raster
 Authors@R: c(
 	person("Robert J.", "Hijmans", role = c("cre", "aut"),  email = "r.hijmans@gmail.com"),
