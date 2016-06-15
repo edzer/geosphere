@@ -61,7 +61,8 @@ areaPolygon(p)
 # this won't work:
 b <- matrix(c(-180, 0, 90, 90, 0, 0, -180, 0), ncol=2, byrow=TRUE)
 areaPolygon(b)
-# Becausee the shortest path between (-180,0) and (0,0) is over one of the poles, not along the equator!
+# Becausee the shortest path between (-180,0) and (0,0) is 
+# over one of the poles, not along the equator!
 # Inserting a point along the equator fixes that
 b <- matrix(c(-180, 0, 0, 0, -90,0, -180, 0), ncol=2, byrow=TRUE)
 areaPolygon(b)
