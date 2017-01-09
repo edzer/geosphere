@@ -71,7 +71,7 @@ plot(log(dhav), dhav-dvsp, col='blue',
             ylab="Vincenty Sphere minus Haversine distance")
 @
 
-The difference with the 'Vincenty Ellipsoid' method is more pronounced. In the example below (using the default WGS83 ellipsoid), the difference is about 0.3% at very small distances, and 0.15% at larger distances.
+The difference with the 'Vincenty Ellipsoid' method is more pronounced. In the example below (using the default WGS84 ellipsoid), the difference is about 0.3% at very small distances, and 0.15% at larger distances.
 
 <<fig=TRUE , echo=TRUE>>=
 dvse <- distVincentyEllipsoid(c(0,0), cbind(Lon, Lat))
