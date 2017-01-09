@@ -7,12 +7,14 @@
 lengthLine <- function(line) {
 
 	if (inherits(line, 'SpatialPolygons')) {
-		line <- geom(methods::as(line, 'SpatialLines'))
+		requireNamespace('raster')
+		line <- raster::geom(methods::as(line, 'SpatialLines'))
 	} else if (inherits(line, 'SpatialLines')) {
-		line <- geom(line)
+		requireNamespace('raster')
+		line <- raster::geom(line)
 	} else {
 		line <- cbind(object=1, part=1, cump=1, line[, 1:2])
-		colnames(line)[,4:5] <- c('x', 'y')
+		colnames(line)[4:5] <- c('x', 'y')
 	}
 
 	

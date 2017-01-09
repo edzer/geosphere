@@ -31,7 +31,7 @@ For planar coordinates, see \code{\link[rgeos]{gLength}}
 
 \examples{
 line <- rbind(c(-180,-20), c(-150,-10), c(-140,55), c(10, 0), c(-140,-60))
-d <- lengthLine(pnts, line)
+d <- lengthLine(line)
 }
 
 \keyword{ spatial }
